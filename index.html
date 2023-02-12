@@ -12,7 +12,7 @@
     var qindex = 0;    
     function askAI(question){
 
-
+       question = "what is github";
 	url = "https://script.google.com/macros/s/AKfycbwq6Sscov3gRDi9L6Xo72cHXWQFDcdhfpbYPTOaGDpkYz3ivZcc-mIuo-PoOpHZIypR/exec?AskAI="+question;
         $.get(url, function(data){
 		 $("#result").html(data);
