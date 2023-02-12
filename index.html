@@ -9,42 +9,7 @@
   var url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
   var myInterval,startTime;
  
-  async function sendPrompt(){
-    var xhr = new XMLHttpRequest();
-        xhr.open("POST", url);
-
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.setRequestHeader("Authorization", "Bearer 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");
-        xhr.addEventListener("error", XHRErrorHandler);    
-        var prompt = document.getElementById("prompt_div").value;
-        
-        var data = {
-            "prompt": prompt,
-            "temperature": 0.7,
-            "max_tokens": 256,
-            "top_p": 1,
-            "frequency_penalty": 0.75,
-            "presence_penalty": 0
-            };
-            document.getElementById("result").value = "Thinking.... give me a moment"
-            startTime = new Date().getTime();
-            myInterval = setInterval(displayWaitTime, 1000);   
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                //console.log(xhr.status);
-                //console.log(xhr.responseText);
-                open_ai_response = xhr.responseText;
-                res = (JSON.parse(open_ai_response));
-                //console.log(res.choices[0].text);
-                document.getElementById("result").value =res.choices[0].text;
-
-                clearInterval(myInterval);
-            }};
-            xhr.onerror = function () {
-                if (xhr.status === 429) {document.getElementById("result").value = "Oops... Something went wrong. Try again later.";}
-            }            
-            xhr.send(JSON.stringify(data));
-    }
+  
     function XHRErrorHandler(event) {
             document.getElementById("result").value = "Oops... Something went wrong. Try again later.";
         }
