@@ -1,0 +1,125 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>  
+
+<script>
+
+  var url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
+  var myInterval,startTime;
+ 
+  async function sendPrompt(){
+    var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("Authorization", "Bearer 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");
+        xhr.addEventListener("error", XHRErrorHandler);    
+        var prompt = document.getElementById("prompt_div").value;
+        
+        var data = {
+            "prompt": prompt,
+            "temperature": 0.7,
+            "max_tokens": 256,
+            "top_p": 1,
+            "frequency_penalty": 0.75,
+            "presence_penalty": 0
+            };
+            document.getElementById("result").value = "Thinking.... give me a moment"
+            startTime = new Date().getTime();
+            myInterval = setInterval(displayWaitTime, 1000);   
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                //console.log(xhr.status);
+                //console.log(xhr.responseText);
+                open_ai_response = xhr.responseText;
+                res = (JSON.parse(open_ai_response));
+                //console.log(res.choices[0].text);
+                document.getElementById("result").value =res.choices[0].text;
+
+                clearInterval(myInterval);
+            }};
+            xhr.onerror = function () {
+                if (xhr.status === 429) {document.getElementById("result").value = "Oops... Something went wrong. Try again later.";}
+            }            
+            xhr.send(JSON.stringify(data));
+    }
+    function XHRErrorHandler(event) {
+            document.getElementById("result").value = "Oops... Something went wrong. Try again later.";
+        }
+    var QAs = [];
+    var answers=[];
+    var qindex = 0;    
+    function askAI(question){
+
+
+	url = "https://script.google.com/macros/s/AKfycbwq6Sscov3gRDi9L6Xo72cHXWQFDcdhfpbYPTOaGDpkYz3ivZcc-mIuo-PoOpHZIypR/exec?AskAI="+question;
+        $.get(url, function(data){
+		 $("#result").html(data);
+	});
+
+
+}
+    function getQA(){
+       qindex = 0;
+       url ="https://script.google.com/macros/s/AKfycbxXmNBMnHqOPB4I0_kBANDb5nv80RJ8cyN5vqJMAsc-sVBivalJfy4hwRJUiqYtiKSn/exec?getQA";
+	$("#result").html("Loading..." );
+       $.get(url, function(data){
+               
+                QAs = (JSON.parse(data));
+               
+           
+                showNext();
+               
+						});
+
+       
+  }
+  
+   function showNext(){
+    $("#result").css('opacity','0');
+   
+    if(qindex < QAs.length){
+    
+	if(qindex !==0){
+	 answers.push([QAs[qindex][0],$("#prompt_div").val()]);
+    $("#result").html("<div style='margin:5px;color:grey;background:#eff'><b>Prev question </b>:"+ QAs[qindex-1][0] + "<br> <b>Best Answer</b> : "+  QAs[qindex-1][1] +" <br></div><hr><b>Your next question</B>: "+ QAs[qindex][0] );
+    $("#result").css('opacity','1');
+      }else{
+
+	 $("#result").html(" <b>Your first question</b>: "+ QAs[qindex][0] );
+          $("#result").css('opacity','1');
+	}
+    qindex++;
+    }else{
+       $("#result").html("That ends your test");
+        //$("#result").html(JSON.stringify(answers));
+         $("#result").css('opacity','1');
+         $("#result").html("AI is checking your answers");
+        question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[0]);
+          askAI(question);
+    }
+    
+
+  }
+    function displayWaitTime() {
+            var currentTime = new Date().getTime();
+            var waitTime = Math.round((currentTime - startTime)/1000);
+            document.getElementById("result").value = ("Working on this for : " + waitTime + " seconds");
+    }
+
+ 
+
+  
+
+</script>
+<div id='result' style="height: 200px;width: 80%;font-size: 14px;font-family:helvetica"><button id="get" onclick="getQA()">Start</button></div>
+
+<br><button id="send" onclick="showNext()">Send</button><br>
+
+<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></textarea>
+</body>  
+</html>
+
+
