@@ -62,7 +62,9 @@
         //$("#result").html(JSON.stringify(answers));
          $("#result").css('opacity','1');
          $("#result").html("AI is checking your answers...");
-        question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[1]);
+        question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[2]);
+          askAI(question);
+	     question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[3]);
           askAI(question);
     }
     
