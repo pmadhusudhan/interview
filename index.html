@@ -65,7 +65,7 @@
 	 const results = [];
 		  for (let i = 0; i <= 3; i++) {
 		    question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[2]);
-          $("#result").html($("#result").html()+ wait askAI(question));
+          $("#result").html($("#result").html()+ await askAI(question));
 		  }
         
     }
