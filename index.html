@@ -21,7 +21,7 @@
 
 	url = "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question;
         $.get(url, function(data){
-		 return new Promise("{'"+question +"','"+data+"'}");
+		 return ("{'"+question +"','"+data+"'}");
 	});
 
 
