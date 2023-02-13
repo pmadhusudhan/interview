@@ -6,13 +6,19 @@
 
 <script>
 
-
+  var url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
+  var myInterval,startTime;
+ 
+ 
+    function XHRErrorHandler(event) {
+            document.getElementById("result").value = "Oops... Something went wrong. Try again later.";
+        }
     var QAs = [];
     var answers=[];
     var qindex = 0;    
     function askAI(question){
 
-       question = "what is github";
+
 	url = "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question;
         $.get(url, function(data){
 		 $("#result").html(data);
@@ -80,5 +86,6 @@
 <textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></textarea>
 </body>  
 </html>
+
 
 
