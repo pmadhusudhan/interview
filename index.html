@@ -21,7 +21,7 @@
 
 	url = "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question;
         $.get(url, function(data){
-		 return "{'"+question +"','"+data+"'}";
+		 return New Promise("{'"+question +"','"+data+"'}");
 	});
 
 
@@ -62,10 +62,12 @@
         //$("#result").html(JSON.stringify(answers));
          $("#result").css('opacity','1');
          $("#result").html("AI is checking your answers...");
-        question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[2]);
-          $("#result").html($("#result").html()+askAI(question));
-	     question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[3]);
-          $("#result").html($("#result").html()+askAI(question));
+	 const results = [];
+		  for (let i = 0; i <= 3; i++) {
+		    question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[2]);
+          $("#result").html($("#result").html()+ wait askAI(question));
+		  }
+        
     }
     
 
