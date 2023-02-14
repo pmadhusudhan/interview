@@ -1,0 +1,39 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>  
+
+<script>
+
+  
+
+    function askAI() {
+        
+        question = $("#prompt_div").val();
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question,
+            type: 'GET',
+            complete: function() {
+            },
+            success: function(result) {
+                $("#result").html(result);
+            }
+        });
+    }
+    
+  
+ 
+
+  
+
+</script>
+
+<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br><button id="send" onclick="askAI()">Send</button><br>
+
+<textarea id="result" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></textarea>
+</body>  
+</html>
+
+
+
