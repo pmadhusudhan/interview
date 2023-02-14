@@ -11,6 +11,7 @@
     function askAI() {
         
         question = $("#prompt_div").val();
+        $("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question,
             type: 'GET',
