@@ -8,24 +8,39 @@
 
   var url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
   var myInterval,startTime;
- 
- 
-    function XHRErrorHandler(event) {
-            document.getElementById("result").value = "Oops... Something went wrong. Try again later.";
-        }
     var QAs = [];
     var answers=[];
-    var qindex = 0;    
-    async function askAI(question){
+    var qindex = 0;  
+    var q = 0;
+    
 
-
-	url = "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question;
-        $.get(url, function(data){
-		 return ("{'"+question +"','"+data+"'}");
-	});
-
-
-}
+    function askAI(Questions) {
+        
+        question = 'grade this (0-10) and explain: '+ JSON.stringify(Questions[q]);
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question,
+            type: 'GET',
+            complete: function() {
+            q++;
+            if (q<=QAs.length) {
+                
+                //console.log("calling one more");
+                askAI(Questions);
+            }
+            },
+            success: function(result) {
+                $("#result").html($("#result").html()+ "<hr><p> Question " +q+ ":" + Questions[q][0]+ "</p><p><b>Answer :</b>" + Questions[q][1] + " </p><br> Grade: " + result +"</p>");
+            //console.log("Download Success ");
+            }
+        });
+    }
+    function getAI_q(topic){
+            url = "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI= 10 interview questions on "+topic +" each seperated by '@@'";
+            $.get(url,function(data){
+                QAs = (data.split("@@"));
+                console.log(QAs);
+            })
+    }
     function getQA(){
        qindex = 0;
        url ="https://script.google.com/macros/s/AKfycbxXmNBMnHqOPB4I0_kBANDb5nv80RJ8cyN5vqJMAsc-sVBivalJfy4hwRJUiqYtiKSn/exec?getQA";
@@ -62,12 +77,8 @@
         //$("#result").html(JSON.stringify(answers));
          $("#result").css('opacity','1');
          $("#result").html("AI is checking your answers...");
-	 const results = [];
-		  for (let i = 0; i <= 3; i++) {
-		    question = 'grade this (0-10) and explain: '+ JSON.stringify(QAs[2]);
-          $("#result").html($("#result").html()+ await askAI(question));
-		  }
-        
+         
+		 askAI(QAs);
     }
     
 
@@ -83,7 +94,7 @@
   
 
 </script>
-<div id='result' style="height: 200px;width: 80%;font-size: 14px;font-family:helvetica"><button id="get" onclick="getQA()">Start</button></div>
+<div id='result' style="height: 200px;width: 80%;font-size: 14px;font-family:helvetica;overflow:auto;"><button id="get" onclick="getQA()">Start</button></div>
 
 <br><button id="send" onclick="showNext()">Send</button><br>
 
