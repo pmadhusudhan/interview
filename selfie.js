@@ -4,7 +4,7 @@ let startButton = document.getElementById("startButton");
 let stopButton = document.getElementById("stopButton");
 let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
-
+console.log("updated version");
 let recordingTimeMS = 50000;
 function log(msg) {
   logElement.innerHTML += msg + "\n";
