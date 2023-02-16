@@ -1,65 +1,147 @@
 <html>
+ <head>
+   
+   <style>
+     body {
+  font: 14px "Open Sans", "Arial", sans-serif;
+}
+
+video {
+  margin-top: 2px;
+  border: 1px solid black;
+}
+
+.button {
+  cursor: pointer;
+  display: block;
+  width: 160px;
+  border: 1px solid black;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  color: white;
+  background-color: darkgreen;
+  text-decoration: none;
+}
+
+h2 {
+  margin-bottom: 4px;
+}
+
+.left {
+  margin-right: 10px;
+  float: left;
+  width: 160px;
+  padding: 0px;
+}
+
+.right {
+  margin-left: 10px;
+  float: left;
+  width: 160px;
+  padding: 0px;
+}
+
+.bottom {
+  clear: both;
+  padding-top: 10px;
+}
+   </style>
+  </head>
   <body>
-    <video id="player" controls autoplay></video>
-    <a id="download" href>Download</a>
-    <button id="start" onclick="start_record()">Record</button>
-    <button id="stop" onclick="stop_record()">Stop</button>
+  <!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Recording_a_media_element -->
 
-    <script>
-      let shouldStop = false;
-      let stopped = true; // initialize to true
-      let mediaRecorder;
-      const chunks = [];
-      const downloadLink = document.getElementById("download");
-      const stopButton = document.getElementById("stop");
-      const player = document.getElementById("player");
+<p>Click the "Start" button to begin video recording for a few seconds. You can stop
+   the video by clicking the creatively-named "Stop" button. The "Download"
+   button will download the received data (although it's in a raw, unwrapped form
+   that isn't very useful).
+</p>
+<br>
+<div class="left">
+  <div id="startButton" class="button">
+    Start
+  </div>
+  <h2>Preview</h2>
+  <video id="preview" width="160" height="120" autoplay muted></video>
+</div>
+<div class="right">
+  <div id="stopButton" class="button">
+    Stop
+  </div>
+  <h2>Recording</h2>
+  <video id="recording" width="160" height="120" controls></video>
+  <a id="downloadButton" class="button">
+    Download
+  </a>
+</div>
+<div class="bottom">
+  <pre id="log"></pre>
+</div>
+  <script>
+    let preview = document.getElementById("preview");
+let recording = document.getElementById("recording");
+let startButton = document.getElementById("startButton");
+let stopButton = document.getElementById("stopButton");
+let downloadButton = document.getElementById("downloadButton");
+let logElement = document.getElementById("log");
 
-      function stop_record() {
-        shouldStop = true;
-        console.log("clicked stop");
-        if (mediaRecorder && mediaRecorder.state !== "inactive") {
-          mediaRecorder.stop();
-          downloadLink.href = URL.createObjectURL(new Blob(chunks));
-          downloadLink.download = "acetest.webm";
-        }
-      }
+let recordingTimeMS = 5000;
+function log(msg) {
+  logElement.innerHTML += msg + "\n";
+}
+function wait(delayInMS) {
+  return new Promise(resolve => setTimeout(resolve, delayInMS));
+}
+function startRecording(stream, lengthInMS) {
+  let recorder = new MediaRecorder(stream);
+  let data = [];
+ 
+  recorder.ondataavailable = event => data.push(event.data);
+  recorder.start();
+  log(recorder.state + " for " + (lengthInMS/1000) + " seconds...");
+ 
+  let stopped = new Promise((resolve, reject) => {
+    recorder.onstop = resolve;
+    recorder.onerror = event => reject(event.name);
+  });
 
-      function start_record() {
-        if (stopped) { // start the media recorder if stopped is true
-          stopped = false;
-          shouldStop = false;
-          navigator.mediaDevices
-            .getUserMedia({ audio: true, video: true })
-            .then(handleSuccess)
-            .catch(handleError);
-        } else {
-          stopped = true;
-          mediaRecorder.start();
-        }
-      }
-
-      function handleSuccess(stream) {
-        const options = { mimeType: "video/webm" };
-        chunks.length = 0;
-
-        mediaRecorder = new MediaRecorder(stream, options);
-        player.srcObject = stream;
-        mediaRecorder.ondataavailable = (e) => {
-          if (shouldStop === true) return;
-          chunks.push(e.data);
-        };
-
-        mediaRecorder.onstop = (e) => {
-          downloadLink.href = URL.createObjectURL(new Blob(chunks));
-          downloadLink.download = "acetest.webm";
-        };
-
-        mediaRecorder.start();
-      }
-
-      function handleError(error) {
-        console.error(error);
-      }
+  let recorded = wait(lengthInMS).then(
+    () => recorder.state == "recording" && recorder.stop()
+  );
+ 
+  return Promise.all([
+    stopped,
+    recorded
+  ])
+  .then(() => data);
+}
+function stop(stream) {
+  stream.getTracks().forEach(track => track.stop());
+}
+startButton.addEventListener("click", function() {
+  navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: true
+  }).then(stream => {
+    preview.srcObject = stream;
+    downloadButton.href = stream;
+    preview.captureStream = preview.captureStream || preview.mozCaptureStream;
+    return new Promise(resolve => preview.onplaying = resolve);
+  }).then(() => startRecording(preview.captureStream(), recordingTimeMS))
+  .then (recordedChunks => {
+    let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+    recording.src = URL.createObjectURL(recordedBlob);
+    downloadButton.href = recording.src;
+    downloadButton.download = "RecordedVideo.webm";
+    
+    log("Successfully recorded " + recordedBlob.size + " bytes of " +
+        recordedBlob.type + " media.");
+  })
+  .catch(log);
+}, false);stopButton.addEventListener("click", function() {
+  stop(preview.srcObject);
+}, false);
     </script>
   </body>
 </html>
