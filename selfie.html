@@ -7,7 +7,7 @@
 
     <script>
       let shouldStop = false;
-      let stopped = false;
+      let stopped = true; // initialize to true
       let mediaRecorder;
       const chunks = [];
       const downloadLink = document.getElementById("download");
@@ -25,18 +25,16 @@
       }
 
       function start_record() {
-        if (!stopped) {
-          stopped = true;
+        if (stopped) { // start the media recorder if stopped is true
+          stopped = false;
           shouldStop = false;
           navigator.mediaDevices
             .getUserMedia({ audio: true, video: true })
             .then(handleSuccess)
             .catch(handleError);
         } else {
-          stopped = false;
-          if (mediaRecorder && mediaRecorder.state === "inactive") {
-            mediaRecorder.start();
-          }
+          stopped = true;
+          mediaRecorder.start();
         }
       }
 
