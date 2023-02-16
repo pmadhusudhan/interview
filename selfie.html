@@ -15,8 +15,7 @@
 </script>
   
   
-  <a id="download">Download</a>
-<button id="stop">Stop</button>
+  <a id="download">Download</a><button id="stop">Stop</button>
 <script>
   let shouldStop = false;
   let stopped = false;
@@ -51,8 +50,7 @@
     mediaRecorder.start();
   };
 
-  navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-      .then(handleSuccess);
+ 
 </script>
   </body>
 </html>
