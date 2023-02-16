@@ -16,7 +16,7 @@
 
       function stop_record() {
         shouldStop = true;
-        console.log("clicked stop");
+        console.log(mediaRecorder.state);
         if (mediaRecorder && mediaRecorder.state !== "inactive") {
           mediaRecorder.stop();
           console.log("stopped");
