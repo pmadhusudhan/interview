@@ -34,7 +34,9 @@
             .catch(handleError);
         } else {
           stopped = false;
-          mediaRecorder.start();
+          if (mediaRecorder && mediaRecorder.state === "inactive") {
+            mediaRecorder.start();
+          }
         }
       }
 
