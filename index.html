@@ -98,15 +98,15 @@
 </script>
 	
     <video id="video" width="640" height="480" autoplay></video>
-    <canvas id="canvas" width="640" height="480"></canvas>
+  
     <script>
    const video = document.getElementById('video');
 	navigator.mediaDevices.getUserMedia({video: true})
 	  .then(stream => {
 	    video.srcObject = stream;
 	  });
-   const startButton = document.getElementById('start-recording');
-startButton.addEventListener('click', () => {
+   
+function start_recording(){
   const chunks = [];
   const mediaRecorder = new MediaRecorder(video.srcObject);
   mediaRecorder.ondataavailable = event => chunks.push(event.data);
@@ -117,12 +117,13 @@ startButton.addEventListener('click', () => {
     // Upload formData to server using XMLHttpRequest or fetch()
   };
   mediaRecorder.start();
-  setTimeout(() => {
+}
+function stop_recording(){	    
     mediaRecorder.stop();
-  }, 5000); // Stop recording after 5 seconds
-});
+ 
+};
     </script>
-    <button id="start-recording">Start</button>
+    <button id="start-recording" onclick="start_recording()">Start</button>
  	
  	 
 <div id='result' style="height: 200px;width: 80%;font-size: 14px;font-family:helvetica;overflow:auto;"><button id="get" onclick="getQA()">Start</button></div>
