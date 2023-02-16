@@ -39,6 +39,7 @@
       if(shouldStop === true && stopped === false) {
         mediaRecorder.stop();
         stopped = true;
+        console.log("stopped");
         downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
       downloadLink.download = 'acetest.webm';
       }
