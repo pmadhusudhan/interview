@@ -1,53 +1,53 @@
 <html>
-<body>
-  
-  <video id="player" controls autoplay></video>
+  <body>
+    <video id="player" controls autoplay></video>
+    <a id="download" href>Download</a>
+    <button id="start" onclick="start_record()">Record</button>
+    <button id="stop" onclick="stop_record()">Stop</button>
 
-  
-  <a id="download" href>Download</a><button id="start" onclick="start_record()">Record</button><button id="stop" onclick="stop_record()">Stop</button>
-<script>
-  let shouldStop = false;
-  let stopped = false;
-  var mediaRecorder;
-  const chunks = [];
-  const downloadLink = document.getElementById('download');
-  const stopButton = document.getElementById('stop');
-   var player = document.getElementById('player');
-  
+    <script>
+      let shouldStop = false;
+      let stopped = false;
+      let mediaRecorder;
+      const chunks = [];
+      const downloadLink = document.getElementById("download");
+      const stopButton = document.getElementById("stop");
+      const player = document.getElementById("player");
 
-  function stop_record() {
-    shouldStop = true;
-    console.log("clicked stop");
-    mediaRecorder.stop();
-    downloadLink.href = URL.createObjectURL(new Blob(chunks));
-      downloadLink.download = 'acetest.webm';
-   
-  };
-  
-  function start_record() {
-    
-    mediaRecorder.start();
-    
-  };
+      function stop_record() {
+        shouldStop = true;
+        console.log("clicked stop");
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+          downloadLink.href = URL.createObjectURL(new Blob(chunks));
+          downloadLink.download = "acetest.webm";
+        }
+      }
 
+      function start_record() {
+        if (!stopped) {
+          stopped = true;
+          shouldStop = false;
+          navigator.mediaDevices
+            .getUserMedia({ audio: true, video: true })
+            .then(handleSuccess);
+        } else {
+          stopped = false;
+          mediaRecorder.start();
+        }
+      }
 
-  var handleSuccess = function(stream) {
-    const options = {mimeType: 'video/webm'};
-    
-     mediaRecorder = new MediaRecorder(stream, options);
-     player.srcObject = stream;
-    mediaRecorder.ondataavailable = e => chunks.push(e.data);
-  
- 
-     
-    };
-  
-  
-    navigator.mediaDevices
-    .getUserMedia({audio: true, video: true})
-    .then(handleSuccess);
+      function handleSuccess(stream) {
+        const options = { mimeType: "video/webm" };
+        chunks.length = 0;
 
- 
-</script>
+        mediaRecorder = new MediaRecorder(stream, options);
+        player.srcObject = stream;
+        mediaRecorder.ondataavailable = (e) => {
+          if (shouldStop === true) return;
+          chunks.push(e.data);
+        };
+      }
+    </script>
   </body>
 </html>
