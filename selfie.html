@@ -3,15 +3,7 @@
   
   <video id="player" controls></video>
 <script>
-  var player = document.getElementById('player');
 
-  var handleSuccess = function (stream) {
-    player.srcObject = stream;
-  };
-
-  navigator.mediaDevices
-    .getUserMedia({audio: true, video: true})
-    .then(handleSuccess);
 </script>
   
   
@@ -21,6 +13,8 @@
   let stopped = false;
   const downloadLink = document.getElementById('download');
   const stopButton = document.getElementById('stop');
+   var player = document.getElementById('player');
+
 
   stopButton.addEventListener('click', function() {
     shouldStop = true;
@@ -52,6 +46,10 @@
 
     mediaRecorder.start();
   };
+  
+    navigator.mediaDevices
+    .getUserMedia({audio: true, video: true})
+    .then(handleSuccess);
 
  
 </script>
