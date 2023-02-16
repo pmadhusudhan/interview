@@ -21,7 +21,7 @@
     const options = {mimeType: 'video/webm'};
     const recordedChunks = [];
     const mediaRecorder = new MediaRecorder(stream, options);
-
+     player.srcObject = stream;
     mediaRecorder.addEventListener('dataavailable', function(e) {
       if (e.data.size > 0) {
         recordedChunks.push(e.data);
