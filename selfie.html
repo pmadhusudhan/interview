@@ -19,7 +19,9 @@
     shouldStop = true;
     console.log("clicked stop");
     mediaRecorder.stop();
-    console.log(chunks);
+    downloadLink.href = URL.createObjectURL(new Blob(chunks));
+      downloadLink.download = 'acetest.webm';
+   
   };
   
   function start_record() {
