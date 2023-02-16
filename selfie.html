@@ -1,10 +1,10 @@
 <html>
 <body>
   
-  <video id="player" controls></video>
+  <video id="player" controls autoplay></video>
 
   
-  <a id="download" href>Download</a><button id="stop" onclick="stop_record()">Stop</button>
+  <a id="download" href>Download</a><button id="start" onclick="start_record()">Record</button><button id="stop" onclick="stop_record()">Stop</button>
 <script>
   let shouldStop = false;
   let stopped = false;
@@ -21,6 +21,13 @@
     mediaRecorder.stop();
     console.log(chunks);
   };
+  
+  function start_record() {
+    
+    mediaRecorder.start();
+    
+  };
+
 
   var handleSuccess = function(stream) {
     const options = {mimeType: 'video/webm'};
@@ -29,7 +36,7 @@
      player.srcObject = stream;
     mediaRecorder.ondataavailable = e => chunks.push(e.data);
   
-    mediaRecorder.start()
+ 
      
     };
   
