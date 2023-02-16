@@ -39,12 +39,14 @@
       if(shouldStop === true && stopped === false) {
         mediaRecorder.stop();
         stopped = true;
+        downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+      downloadLink.download = 'acetest.webm';
       }
     });
 
     mediaRecorder.addEventListener('stop', function() {
-      downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-      downloadLink.download = 'acetest.webm';
+      //downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+      //downloadLink.download = 'acetest.webm';
     });
 
     mediaRecorder.start();
