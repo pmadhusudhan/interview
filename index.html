@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -94,8 +96,30 @@
   
 
 </script>
-	   <video id="video" autoplay></video>
- 	 <button id="record">Record</button><button id="stop">Stop</button>
+	
+    <video id="video" width="640" height="480" autoplay></video>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <script>
+      const video = document.getElementById('video');
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      navigator.mediaDevices.getUserMedia({video: true})
+        .then((stream) => {
+          video.srcObject = stream;
+        })
+        .catch((err) => {
+          console.log('Error: ' + err);
+        });
+
+      function capture() {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/png');
+        console.log(dataUrl); // do something with the captured image data
+      }
+    </script>
+    <button onclick="capture()">Capture</button>
+ 	
  	 
 <div id='result' style="height: 200px;width: 80%;font-size: 14px;font-family:helvetica;overflow:auto;"><button id="get" onclick="getQA()">Start</button></div>
 
@@ -105,5 +129,6 @@
 </body>  
 </html>
 
-
+  </body>
+</html>
 
