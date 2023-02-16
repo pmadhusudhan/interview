@@ -100,25 +100,29 @@
     <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" width="640" height="480"></canvas>
     <script>
-      const video = document.getElementById('video');
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d');
-
-      navigator.mediaDevices.getUserMedia({video: true})
-        .then((stream) => {
-          video.srcObject = stream;
-        })
-        .catch((err) => {
-          console.log('Error: ' + err);
-        });
-
-      function capture() {
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const dataUrl = canvas.toDataURL('image/png');
-        console.log(dataUrl); // do something with the captured image data
-      }
+   const video = document.getElementById('video');
+	navigator.mediaDevices.getUserMedia({video: true})
+	  .then(stream => {
+	    video.srcObject = stream;
+	  });
+   const startButton = document.getElementById('start-recording');
+startButton.addEventListener('click', () => {
+  const chunks = [];
+  const mediaRecorder = new MediaRecorder(video.srcObject);
+  mediaRecorder.ondataavailable = event => chunks.push(event.data);
+  mediaRecorder.onstop = () => {
+    const blob = new Blob(chunks, {type: 'video/mp4'});
+    const formData = new FormData();
+    formData.append('video', blob, 'myvideo.mp4');
+    // Upload formData to server using XMLHttpRequest or fetch()
+  };
+  mediaRecorder.start();
+  setTimeout(() => {
+    mediaRecorder.stop();
+  }, 5000); // Stop recording after 5 seconds
+});
     </script>
-    <button onclick="capture()">Capture</button>
+    <button id="start-recording">Start</button>
  	
  	 
 <div id='result' style="height: 200px;width: 80%;font-size: 14px;font-family:helvetica;overflow:auto;"><button id="get" onclick="getQA()">Start</button></div>
