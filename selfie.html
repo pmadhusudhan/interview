@@ -30,7 +30,7 @@
   var handleSuccess = function(stream) {
     const options = {mimeType: 'video/webm'};
     const recordedChunks = [];
-    <strong>const mediaRecorder = new MediaRecorder(stream, options);
+    const mediaRecorder = new MediaRecorder(stream, options);
 
     mediaRecorder.addEventListener('dataavailable', function(e) {
       if (e.data.size > 0) {
