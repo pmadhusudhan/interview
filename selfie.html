@@ -16,10 +16,9 @@
 
       function stop_record() {
         shouldStop = true;
-        console.log(mediaRecorder.state);
+        console.log("clicked stop");
         if (mediaRecorder && mediaRecorder.state !== "inactive") {
           mediaRecorder.stop();
-          console.log("stopped");
           downloadLink.href = URL.createObjectURL(new Blob(chunks));
           downloadLink.download = "acetest.webm";
         }
@@ -31,11 +30,11 @@
           shouldStop = false;
           navigator.mediaDevices
             .getUserMedia({ audio: true, video: true })
-            .then(handleSuccess);
+            .then(handleSuccess)
+            .catch(handleError);
         } else {
           stopped = false;
           mediaRecorder.start();
-          console.log(mediaRecorder.state);
         }
       }
 
@@ -44,11 +43,22 @@
         chunks.length = 0;
 
         mediaRecorder = new MediaRecorder(stream, options);
-        player.srcObject = stream;
+
         mediaRecorder.ondataavailable = (e) => {
           if (shouldStop === true) return;
           chunks.push(e.data);
         };
+
+        mediaRecorder.onstop = (e) => {
+          downloadLink.href = URL.createObjectURL(new Blob(chunks));
+          downloadLink.download = "acetest.webm";
+        };
+
+        mediaRecorder.start();
+      }
+
+      function handleError(error) {
+        console.error(error);
       }
     </script>
   </body>
