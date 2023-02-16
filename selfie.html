@@ -4,7 +4,7 @@
   <video id="player" controls></video>
 
   
-  <a id="download" href>Download</a><button id="stop">Stop</button>
+  <a id="download" href>Download</a><button id="stop" onclick="stop_record()">Stop</button>
 <script>
   let shouldStop = false;
   let stopped = false;
@@ -14,10 +14,10 @@
    var player = document.getElementById('player');
   
 
-  stopButton.addEventListener('click', function() {
+  function stop_record() {
     shouldStop = true;
     console.log("clicked stop");
-  })
+  };
 
   var handleSuccess = function(stream) {
     const options = {mimeType: 'video/webm'};
