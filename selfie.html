@@ -9,6 +9,7 @@
   let shouldStop = false;
   let stopped = false;
   var mediaRecorder;
+  const recordedChunks = [];
   const downloadLink = document.getElementById('download');
   const stopButton = document.getElementById('stop');
    var player = document.getElementById('player');
@@ -17,11 +18,13 @@
   function stop_record() {
     shouldStop = true;
     console.log("clicked stop");
+    mediaRecorder.stop();
+    console.log(recordedChunks);
   };
 
   var handleSuccess = function(stream) {
     const options = {mimeType: 'video/webm'};
-    const recordedChunks = [];
+    
      mediaRecorder = new MediaRecorder(stream, options);
      player.srcObject = stream;
     mediaRecorder.ondataavailable = e => chunks.push(e.data);
