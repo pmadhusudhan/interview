@@ -43,7 +43,7 @@
         chunks.length = 0;
 
         mediaRecorder = new MediaRecorder(stream, options);
-
+        player.srcObject = stream;
         mediaRecorder.ondataavailable = (e) => {
           if (shouldStop === true) return;
           chunks.push(e.data);
