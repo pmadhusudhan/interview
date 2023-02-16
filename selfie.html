@@ -19,6 +19,7 @@
         console.log("clicked stop");
         if (mediaRecorder && mediaRecorder.state !== "inactive") {
           mediaRecorder.stop();
+          console.log("stopped");
           downloadLink.href = URL.createObjectURL(new Blob(chunks));
           downloadLink.download = "acetest.webm";
         }
