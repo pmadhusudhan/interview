@@ -32,8 +32,7 @@ function startRecording(stream, lengthInMS) {
   );
  
   return Promise.all([
-    stopped,
-    recorded
+    stopped
   ])
   .then(() => data);
 }
