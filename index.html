@@ -50,7 +50,7 @@
        $.get(url, function(data){
                
                 QAs = (JSON.parse(data));
-                record();
+                
            
                 showNext();
                
@@ -72,6 +72,7 @@
 
 	 $("#result").html(" <b>Your first question</b>: "+ QAs[qindex][0] );
           $("#result").css('opacity','1');
+	  record();
 	}
     qindex++;
     }else{
@@ -79,7 +80,7 @@
         //$("#result").html(JSON.stringify(answers));
          $("#result").css('opacity','1');
          $("#result").html("AI is checking your answers...");
-         
+         stopRecord();
 		 askAI(QAs);
 	    
     }
