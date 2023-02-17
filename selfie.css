@@ -1,7 +1,9 @@
 body {
   font: 14px "Open Sans", "Arial", sans-serif;
 }
-
+table{
+ border: 4px black solid; 
+}
 video {
   margin-top: 2px;
   border: 1px solid black;
