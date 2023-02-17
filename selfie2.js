@@ -5,7 +5,7 @@ let stopButton = document.getElementById("stopButton");
 let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
 let timer;
-
+ 
 let recordingTimeMS = 5000;
 function log(msg) {
   logElement.innerHTML += msg + "\n";
