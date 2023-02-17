@@ -58,6 +58,8 @@ startButton.addEventListener("click", function() {
         recordedBlob.type + " media.");
   })
   .catch(log);
-}, false);stopButton.addEventListener("click", function() {
+}, false);
+
+stopButton.addEventListener("click", function() {
   stop(preview.srcObject);
 }, false);
