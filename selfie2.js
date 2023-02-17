@@ -35,9 +35,7 @@ function startRecording(stream, lengthInMS) {
   ])
   .then(() => data);
 }
-function stop(stream) {
-  stream.getTracks().forEach(track => track.stop());
-}
+
 startButton.addEventListener("click", function() {
   navigator.mediaDevices.getUserMedia({
     video: true,
@@ -59,6 +57,10 @@ startButton.addEventListener("click", function() {
   })
   .catch(log);
 }, false);
+
+function stop(stream) {
+  stream.getTracks().forEach(track => track.stop());
+}
 
 stopButton.addEventListener("click", function() {
   stop(preview.srcObject);
