@@ -100,7 +100,7 @@
 </script>
 <table>
 	<tr>
-		<td> <img style="width:200px" src="https://www.point-star.com/wp-content/uploads/2021/06/menu-AI-icon-b.png" />
+		<td style="width:320px;border:1px solid black"> <img style="width:200px" src="https://www.point-star.com/wp-content/uploads/2021/06/menu-AI-icon-b.png" />
 		</td>
 		<td>
 			<div id='result' style="height: 200px;width: 80%;font-size: 14px;font-family:helvetica;overflow:auto;"><button id="get" onclick="getQA()">Start</button></div>
@@ -109,13 +109,15 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
-			 <video id="preview" width="320" height="240" autoplay></video> <video id="recording" width="320" height="240" controls></video>
-			  <a id="downloadButton" class="button">
+		<td style="width:320px;border:1px solid black">
+			 <video id="preview" width="320" height="240" autoplay></video> <video style="display:none" id="recording" width="320" height="240" controls></video>
+			<div style="display:none">  
+			<a id="downloadButton" class="button">
 			    Download
 			  </a>
   
    			 <button id="start-recording" onclick="record()">Record</button><button id="stop-recording" onclick="stopRecord()">Stop</button>
+			</div>
 		</td>
 		<td>
 			<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></textarea>
