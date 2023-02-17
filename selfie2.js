@@ -4,13 +4,14 @@ let startButton = document.getElementById("startButton");
 let stopButton = document.getElementById("stopButton");
 let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
+let timer;
 
 let recordingTimeMS = 500000;
 function log(msg) {
   logElement.innerHTML += msg + "\n";
 }
 function wait(delayInMS) {
-  return new Promise(resolve => setTimeout(resolve, delayInMS));
+  return new Promise(function resolve(){ timer = setTimeout(resolve, delayInMS);})
 }
 function startRecording(stream, lengthInMS) {
   let recorder = new MediaRecorder(stream);
@@ -64,4 +65,5 @@ function stop(stream) {
 
 stopButton.addEventListener("click", function() {
   stop(preview.srcObject);
+  clearTimeout(timer);
 }, false);
