@@ -7,7 +7,7 @@ let logElement = document.getElementById("log");
 let timer;
 let recorded;
  
-let recordingTimeMS = 5000;
+let recordingTimeMS = 600000;
 function log(msg) {
   logElement.innerHTML += msg + "\n";
 }
