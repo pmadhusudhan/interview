@@ -37,7 +37,7 @@ function startRecording(stream, lengthInMS) {
   .then(() => data);
 }
 
-startButton.addEventListener("click", function() {
+function record() {
   navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
@@ -57,14 +57,15 @@ startButton.addEventListener("click", function() {
         recordedBlob.type + " media.");
   })
   .catch(log);
-}, false);
+};
 
 function stop(stream) {
   stream.getTracks().forEach(track => track.stop());
 }
 
-stopButton.addEventListener("click", function() {
+function stopRecord(){
+
   stop(preview.srcObject);
   clearTimeout(timer);
   recorded = true;
-}, false);
+};
