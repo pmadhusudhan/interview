@@ -50,7 +50,7 @@
        $.get(url, function(data){
                
                 QAs = (JSON.parse(data));
-               
+                record();
            
                 showNext();
                
@@ -81,6 +81,7 @@
          $("#result").html("AI is checking your answers...");
          
 		 askAI(QAs);
+	    
     }
     
 
@@ -97,7 +98,7 @@
 
 </script>
 	
-    <video id="preview" width="640" height="480" autoplay></video> <video id="recording" width="320" height="240" controls></video>
+    <video id="preview" width="320" height="240" autoplay></video> <video id="recording" width="320" height="240" controls></video>
   <a id="downloadButton" class="button">
     Download
   </a>
