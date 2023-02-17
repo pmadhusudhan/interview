@@ -11,7 +11,7 @@ function log(msg) {
   logElement.innerHTML += msg + "\n";
 }
 function wait(delayInMS) {
-  return new Promise(function resolve(){ timer = setTimeout(resolve, delayInMS);})
+  return new Promise(resolve => setTimeout(resolve, delayInMS));
 }
 function startRecording(stream, lengthInMS) {
   let recorder = new MediaRecorder(stream);
