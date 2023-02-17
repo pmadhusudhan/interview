@@ -5,6 +5,7 @@ let stopButton = document.getElementById("stopButton");
 let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
 let timer;
+let recorded;
  
 let recordingTimeMS = 5000;
 function log(msg) {
@@ -26,7 +27,7 @@ function startRecording(stream, lengthInMS) {
     recorder.onerror = event => reject(event.name);
   });
 
-  let recorded = wait(lengthInMS).then(
+  recorded = wait(lengthInMS).then(
     () => recorder.state == "recording" && recorder.stop()
   );
  
@@ -66,4 +67,5 @@ function stop(stream) {
 stopButton.addEventListener("click", function() {
   stop(preview.srcObject);
   clearTimeout(timer);
+  recorded = true;
 }, false);
