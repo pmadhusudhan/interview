@@ -46,7 +46,7 @@
          function getQA(){
             qindex = 0;
 	    record();
-      topic = $("#prompt_div").val;
+      topic = $("#topic").val;
       url ="https://script.google.com/macros/s/AKfycbxcHmR_0qVo4-5Z_LnT0sCZlbqqRsn8R-V-Pc-lRmqIV8eBM5UwWbofsigLD3Aw5Q/exec?getQA="+topic;;
       $("#result").html("Loading..." );
             $.get(url, function(data){
@@ -136,7 +136,7 @@
 				  </div>
 				</td>
 				<td>
-             <button id="send" onclick="showNext()">Go</button><br />
+             <input id="topic" type"text><button id="send" onclick="showNext()">Go</button><br />
 				  <textarea
 				    id="prompt_div"
 				    style="height: 300px;width: 100%;font-size: 14px;font-family:helvetica"
