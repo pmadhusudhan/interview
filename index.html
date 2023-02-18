@@ -100,6 +100,7 @@
 	   
     </script>
     <table>
+     <td>
       <tr style="background-color:#333">
         <td>
           <img
@@ -117,9 +118,7 @@
 
          
         </td>
-	<td>
-		<div id="prevAnswer" style="height:300px;overflow:auto"> Welcome! When you are ready, click the go button. You will see a question on the left. After completing your answer, click GO</div>
-	 </td>
+	
       </tr>
       <tr>
         <td style="width:320px;border:1px solid black">
@@ -143,12 +142,15 @@
             id="prompt_div"
             style="height: 300px;width: 100%;font-size: 14px;font-family:helvetica"
           ></textarea>
+		<button id="send" onclick="showNext()">Go</button><br />
         </td>
-	      <td>
-		       <br /><button id="send" onclick="showNext()">Go</button><br />
-	      </td>
+	      
 		  
       </tr>
+	    </td>
+	    <td>
+		<div id="prevAnswer" style="height:700px;overflow:auto"> Welcome! When you are ready, click the go button. You will see a question on the left. After completing your answer, click GO</div>
+	 </td>
     </table>
 
     <label id="log" style="display:none"></label>
