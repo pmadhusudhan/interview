@@ -46,7 +46,8 @@
          function getQA(){
             qindex = 0;
 	    record();
-            url ="https://script.google.com/macros/s/AKfycbxcHmR_0qVo4-5Z_LnT0sCZlbqqRsn8R-V-Pc-lRmqIV8eBM5UwWbofsigLD3Aw5Q/exec?getQA=Calculus";
+      topic = $("#prompt_div").val;
+      url ="https://script.google.com/macros/s/AKfycbxcHmR_0qVo4-5Z_LnT0sCZlbqqRsn8R-V-Pc-lRmqIV8eBM5UwWbofsigLD3Aw5Q/exec?getQA="+topic;;
       $("#result").html("Loading..." );
             $.get(url, function(data){
 
@@ -135,11 +136,12 @@
 				  </div>
 				</td>
 				<td>
+             <button id="send" onclick="showNext()">Go</button><br />
 				  <textarea
 				    id="prompt_div"
 				    style="height: 300px;width: 100%;font-size: 14px;font-family:helvetica"
 				  ></textarea>
-				  <button id="send" onclick="showNext()">Go</button><br />
+				
 				</td>
 			      </tr>
 			   
@@ -148,8 +150,8 @@
 	</div>
         <div id="right" style="float:left;width:25%;background: #fcf6bf;padding: 10px;border:1px solid black;margin-top:50px">
 		<div id="prevAnswer" style="height:500px;overflow:auto;">
-				Welcome! When you are ready, click the go button. You will see a
-				question on the left. After completing your answer, click GO
+				Welcome! When you are ready, enter a topic and click the GO button. You will see a
+				question on the left. After completing each answer, click GO.
 			      </div>
 	</div>
 	  </div>
