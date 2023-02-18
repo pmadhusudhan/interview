@@ -45,6 +45,7 @@
          }
          function getQA(){
             qindex = 0;
+	    record();
             url ="https://script.google.com/macros/s/AKfycbxXmNBMnHqOPB4I0_kBANDb5nv80RJ8cyN5vqJMAsc-sVBivalJfy4hwRJUiqYtiKSn/exec?getQA";
       $("#result").html("Loading..." );
             $.get(url, function(data){
@@ -60,31 +61,34 @@
        }
 
         function showNext(){
-         $("#result").css('opacity','0');
+	 if(QAs.length === 0){
+		 getQA();
+	 }else{
+			 $("#result").css('opacity','0');
 
-         if(qindex < QAs.length){
+			 if(qindex < QAs.length){
 
-      if(qindex !==0){
-       answers.push([QAs[qindex][0],$("#prompt_div").val()]);
-         $("#result").html("<div style='margin:5px;color:grey;background:#eff'><b>Prev question </b>:"+ QAs[qindex-1][0] + "<br> <b>Best Answer</b> : "+  QAs[qindex-1][1] +" <br></div><hr><b>Your next question</B>: "+ QAs[qindex][0] );
-         $("#result").css('opacity','1');
-           }else{
+		      if(qindex !==0){
+		       answers.push([QAs[qindex][0],$("#prompt_div").val()]);
+			 $("#result").html("<div style='margin:5px;color:grey;background:#eff'><b>Prev question </b>:"+ QAs[qindex-1][0] + "<br> <b>Best Answer</b> : "+  QAs[qindex-1][1] +" <br></div><hr><b>Your next question</B>: "+ QAs[qindex][0] );
+			 $("#result").css('opacity','1');
+			   }else{
 
-       $("#result").html(" <b>Your first question</b>: "+ QAs[qindex][0] );
-               $("#result").css('opacity','1');
-        record();
-      }
-         qindex++;
-         }else{
-            $("#result").html("That ends your test");
-             //$("#result").html(JSON.stringify(answers));
-              $("#result").css('opacity','1');
-              $("#result").html("AI is checking your answers...");
-              stopRecord();
-      	 askAI(QAs);
+		       $("#result").html(" <b>Your first question</b>: "+ QAs[qindex][0] );
+			       $("#result").css('opacity','1');
 
-         }
+		      }
+			 qindex++;
+			 }else{
+			    $("#result").html("That ends your test");
+			     //$("#result").html(JSON.stringify(answers));
+			      $("#result").css('opacity','1');
+			      $("#result").html("AI is checking your answers...");
+			      stopRecord();
+			 askAI(QAs);
 
+			 }
+	 }
 
        }
          function displayWaitTime() {
@@ -92,6 +96,7 @@
                  var waitTime = Math.round((currentTime - startTime)/1000);
                  document.getElementById("result").value = ("Working on this for : " + waitTime + " seconds");
          }
+	   
     </script>
     <table>
       <tr style="background-color:#ddd">
