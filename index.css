@@ -1,0 +1,105 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+td {
+  border: 1px solid black;
+  padding: 10px;
+  vertical-align: top;
+}
+
+img {
+  max-width: 100%;
+}
+
+#result {
+  height: 200px;
+  width: 100%;
+  font-size: 14px;
+  font-family: helvetica;
+  overflow: auto;
+  padding: 10px;
+  background-color: #f7f7f7;
+  margin-bottom: 10px;
+}
+
+#send {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: helvetica;
+  transition: background-color 0.2s;
+}
+
+#send:hover {
+  background-color: #3e8e41;
+}
+
+textarea {
+  height: 300px;
+  width: 100%;
+  font-size: 14px;
+  font-family: helvetica;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+#preview, #recording {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#downloadButton {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: helvetica;
+  transition: background-color 0.2s;
+}
+
+#downloadButton:hover {
+  background-color: #3e8e41;
+}
+
+.button {
+  display: block;
+  margin-top: 10px;
+}
+
+#start-recording, #stop-recording {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: helvetica;
+  transition: background-color 0.2s;
+}
+
+#start-recording:hover, #stop-recording:hover {
+  background-color: #3e8e41;
+}
+
+#log {
+  display: none;
+}
