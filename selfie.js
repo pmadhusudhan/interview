@@ -1,3 +1,5 @@
+alert('success');
+/*
 let preview = document.getElementById("preview");
 let recording = document.getElementById("recording");
 let startButton = document.getElementById("startButton");
@@ -61,3 +63,4 @@ startButton.addEventListener("click", function() {
 }, false);stopButton.addEventListener("click", function() {
   stop(preview.srcObject);
 }, false);
+*/
