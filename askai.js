@@ -45,7 +45,9 @@ if(window.location.hostname === "www.youtube.com"){
 
 
         var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            
+          var s = innerDoc.createElement("script");
+            s.innerHTML = "function replaceq(question){alert(question);}";
+            innerDoc.body.appendChild(s);   
         var a = innerDoc.createElement("button");
             a.setAttribute("onclick","replaceq('Give me questions based on this')");
             a.innerHTML = "Give me questions based on this";
@@ -59,6 +61,4 @@ if(window.location.hostname === "www.youtube.com"){
   console.log("askai.js loaded");
 });
 
-function replaceq(question){
-    alert(question);
-}
+
