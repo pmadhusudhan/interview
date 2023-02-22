@@ -34,5 +34,5 @@ if(window.location.hostname === "finviz.com"){
 }
 
   
-   alert("jQuery is now loaded");
+  console.log("askai.js loaded");
 });
