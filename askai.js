@@ -34,7 +34,7 @@ if(window.location.hostname === "finviz.com"){
 }
 if(window.location.hostname === "youtube.com"){
     var t= $("#below").text();
-        //console.log(t)
+        console.log(t)
 
         var q = "Identify the topic and Summarize in max 100 words:";
         $('body').click(function(){
