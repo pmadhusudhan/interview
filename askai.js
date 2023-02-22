@@ -32,7 +32,7 @@ if(window.location.hostname === "finviz.com"){
     innerDoc.body.getElementsByTagName("textarea")[0].value = value;
    // });
 }
-if(window.location.hostname === "youtube.com"){
+if(window.location.hostname === "www.youtube.com"){
     var t= $("#below").text();
         console.log(t)
 
