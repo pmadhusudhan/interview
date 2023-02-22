@@ -1,3 +1,6 @@
+var j = document.createElement('script');
+j.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js";
+document.getElementsByTagName("body")[0].appendChild(j);
 var q = "List 10 key skills from this:";
 $('document').ready(function(){
   $('body').click(function(){
