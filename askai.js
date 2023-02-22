@@ -34,18 +34,24 @@ if(window.location.hostname === "finviz.com"){
 }
 if(window.location.hostname === "www.youtube.com"){
     var t= $("#below").text();
-        console.log(t)
+        //console.log(t)
 
         var q = "Give links to other youtube videos related to this and Summarize in max 100 words:";
         $('body').click(function(){
         var value = q + $("#below").text();
-        console.log(value);
+        //console.log(value);
         var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
         iframe.setAttribute("style","width:300px;height:90%");
 
 
         var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-
+            
+        var a = document.createElement("button");
+            a.setAttribute("onclick","replaceq('Give me questions based on this')");
+            a.innerHTML = "Give me questions based on this";
+            a.setAttribute("style","border:none;color:blue;padding:2px");
+            innerDoc.body.appendChild(a);
+        innerDoc.body.getElementsByTagName("textarea")[0].
         innerDoc.body.getElementsByTagName("textarea")[0].value = value;
         innerDoc.body.getElementsByTagName("button")[1].click();
         });
