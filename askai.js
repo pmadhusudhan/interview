@@ -28,7 +28,15 @@ if(window.location.hostname === "finviz.com"){
     console.log(value);
     var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-
+     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          var s = innerDoc.createElement("script");
+            s.innerHTML = "function replaceq(question){alert(question);}";
+            innerDoc.body.appendChild(s);   
+        var a = innerDoc.createElement("button");
+            a.setAttribute("onclick","replaceq('Give me questions based on this')");
+            a.innerHTML = "Give me questions based on this";
+            a.setAttribute("style","border:none;color:blue;padding:2px");
+            innerDoc.body.appendChild(a);
     innerDoc.body.getElementsByTagName("textarea")[0].value = value;
    // });
 }
