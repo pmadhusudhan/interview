@@ -36,7 +36,7 @@ if(window.location.hostname === "www.youtube.com"){
     var t= $("#below").text();
         console.log(t)
 
-        var q = "Identify the topic and Summarize in max 100 words:";
+        var q = "Give links to other youtube videos related to this and Summarize in max 100 words:";
         $('body').click(function(){
         var value = q + $("#below").text();
         console.log(value);
