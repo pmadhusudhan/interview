@@ -7,7 +7,7 @@ function defer(method) {
 }
 
 defer(function () {
-   
+ console.log(window.location.hostname);  
 if(window.location.hostname === "linkedin.com"){
 var q = "List 10 key skills from this:";
 
