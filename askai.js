@@ -30,7 +30,7 @@ if(window.location.hostname === "finviz.com"){
     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
      var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
           var s = innerDoc.createElement("script");
-            s.innerHTML = "function replaceq(question){t = innerDoc.body.getElementsByTagName("textarea")[0].value;t = question + ":"+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName("textarea")[0].value =t;}";
+            s.innerHTML = "function replaceq(question){t = innerDoc.body.getElementsByTagName('textarea')[0].value;t = question + ':'+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
             innerDoc.body.appendChild(s);   
         var a = innerDoc.createElement("button");
             a.setAttribute("onclick","replaceq('Give me questions based on this')");
