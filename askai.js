@@ -51,7 +51,7 @@ if(window.location.hostname === "www.youtube.com"){
             a.innerHTML = "Give me questions based on this";
             a.setAttribute("style","border:none;color:blue;padding:2px");
             innerDoc.body.appendChild(a);
-        innerDoc.body.getElementsByTagName("textarea")[0].
+       
         innerDoc.body.getElementsByTagName("textarea")[0].value = value;
         innerDoc.body.getElementsByTagName("button")[1].click();
         });
