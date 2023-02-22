@@ -39,7 +39,7 @@ if(window.location.hostname === "youtube.com"){
         var q = "Identify the topic and Summarize in max 100 words:";
         $('body').click(function(){
         var value = q + $("#below").text();
-        //console.log(value);
+        console.log(value);
         var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
         iframe.setAttribute("style","width:300px;height:90%");
 
