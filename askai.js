@@ -9,12 +9,12 @@ var iframe, innerDoc;
  var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
     var sc = innerDoc.createElement("script");
-    sc.innerHTML = "function replaceq(question){
-    iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
-    innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-    t = innerDoc.body.getElementsByTagName('textarea')[0].value;
-    t = question + ':'+ t.substring(t.indexOf(':')+1);
-    innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
+    sc.innerHTML = "function replaceq(question){";
+    sc.innerHTML += "iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c']";
+    sc.innerHTML += "innerDoc = iframe.contentDocument || iframe.contentWindow.document";
+    sc.innerHTML += "t = innerDoc.body.getElementsByTagName('textarea')[0].value";
+    sc.innerHTML += "t = question + ':'+ t.substring(t.indexOf(':')+1)";
+    sc.innerHTML += "innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
     innerDoc.appendChild(sc);
 
 defer(function () {
