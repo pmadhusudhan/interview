@@ -5,14 +5,17 @@ function defer(method) {
         setTimeout(function() { defer(method) }, 50);
     }
 }
-
+var iframe, innerDoc;
 defer(function () {
  //console.log(window.location.hostname); 
- var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
- var innerDoc = iframe.contentDocument || iframe.contentWindow.document;   
+ iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
+ innerDoc = iframe.contentDocument || iframe.contentWindow.document;   
  var s = innerDoc.createElement("script");
-            s.innerHTML = "function replaceq(question){var iframe = document.getElementsByTagName('iframe')['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c']; var innerDoc = iframe.contentDocument || iframe.contentWindow.document;t = innerDoc.body.getElementsByTagName('textarea')[0].value;t = question + ':'+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
+            s.innerHTML = "function replaceq(question){t = innerDoc.body.getElementsByTagName('textarea')[0].value;t = question + ':'+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
             innerDoc.body.appendChild(s);  
+    
+    
+    
 if(window.location.hostname === "linkedin.com"){
 var q = "List 10 key skills from this:";
 
