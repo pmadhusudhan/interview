@@ -15,7 +15,7 @@ var iframe, innerDoc;
     sc.innerHTML += "t = innerDoc.body.getElementsByTagName('textarea')[0].value";
     sc.innerHTML += "t = question + ':'+ t.substring(t.indexOf(':')+1)";
     sc.innerHTML += "innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
-    innerDoc.appendChild(sc);
+    innerDoc.body.appendChild(sc);
 
 defer(function () {
  //console.log(window.location.hostname); 
