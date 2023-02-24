@@ -7,7 +7,7 @@ function defer(method) {
 }
 
 defer(function () {
- console.log(window.location.hostname); 
+ //console.log(window.location.hostname); 
  var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
  var innerDoc = iframe.contentDocument || iframe.contentWindow.document;   
  var s = innerDoc.createElement("script");
