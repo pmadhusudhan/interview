@@ -8,7 +8,8 @@ function defer(method) {
 
 defer(function () {
  console.log(window.location.hostname); 
-    
+ var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
+ var innerDoc = iframe.contentDocument || iframe.contentWindow.document;   
  var s = innerDoc.createElement("script");
             s.innerHTML = "function replaceq(question){var iframe = document.getElementsByTagName('iframe')['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c']; var innerDoc = iframe.contentDocument || iframe.contentWindow.document;t = innerDoc.body.getElementsByTagName('textarea')[0].value;t = question + ':'+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
             innerDoc.body.appendChild(s);  
@@ -34,7 +35,7 @@ if(window.location.hostname === "finviz.com"){
     console.log(value);
     var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+     
           
         var a = innerDoc.createElement("button");
             a.setAttribute("onclick","replaceq('Give me questions based on this')");
