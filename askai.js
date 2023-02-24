@@ -6,14 +6,17 @@ function defer(method) {
     }
 }
 var iframe, innerDoc;
+function replaceq(question){
+    iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
+    innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    t = innerDoc.body.getElementsByTagName('textarea')[0].value;
+    t = question + ':'+ t.substring(t.indexOf(':')+1);
+    innerDoc.body.getElementsByTagName('textarea')[0].value =t;
+    
+}
 defer(function () {
  //console.log(window.location.hostname); 
- iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
- innerDoc = iframe.contentDocument || iframe.contentWindow.document;   
- var s = innerDoc.createElement("script");
-            s.innerHTML = "function replaceq(question){t = innerDoc.body.getElementsByTagName('textarea')[0].value;t = question + ':'+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
-            innerDoc.body.appendChild(s);  
-    
+ 
     
     
 if(window.location.hostname === "linkedin.com"){
