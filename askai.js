@@ -7,7 +7,11 @@ function defer(method) {
 }
 
 defer(function () {
- console.log(window.location.hostname);  
+ console.log(window.location.hostname); 
+    
+ var s = innerDoc.createElement("script");
+            s.innerHTML = "function replaceq(question){var iframe = document.getElementsByTagName('iframe')['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c']; var innerDoc = iframe.contentDocument || iframe.contentWindow.document;t = innerDoc.body.getElementsByTagName('textarea')[0].value;t = question + ':'+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
+            innerDoc.body.appendChild(s);  
 if(window.location.hostname === "linkedin.com"){
 var q = "List 10 key skills from this:";
 
@@ -18,6 +22,8 @@ var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-
 var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
 
 innerDoc.body.getElementsByTagName("textarea")[0].value = value;
+      
+
   });
 }
 
@@ -29,9 +35,7 @@ if(window.location.hostname === "finviz.com"){
     var iframe = document.getElementsByTagName("iframe")['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c'];
     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
      var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-          var s = innerDoc.createElement("script");
-            s.innerHTML = "function replaceq(question){var iframe = document.getElementsByTagName('iframe')['chatgpt-everywhere-iframe-7cbe6781-4d56-4425-8985-23b903e3d74c']; var innerDoc = iframe.contentDocument || iframe.contentWindow.document;t = innerDoc.body.getElementsByTagName('textarea')[0].value;t = question + ':'+ t.substring(t.indexOf(':')+1);innerDoc.body.getElementsByTagName('textarea')[0].value =t;}";
-            innerDoc.body.appendChild(s);   
+          
         var a = innerDoc.createElement("button");
             a.setAttribute("onclick","replaceq('Give me questions based on this')");
             a.innerHTML = "Give me questions based on this";
@@ -53,9 +57,7 @@ if(window.location.hostname === "www.youtube.com"){
 
 
         var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-          var s = innerDoc.createElement("script");
-            s.innerHTML = "function replaceq(question){alert(question);}";
-            innerDoc.body.appendChild(s);   
+          
         var a = innerDoc.createElement("button");
             a.setAttribute("onclick","replaceq('Give me questions based on this')");
             a.innerHTML = "Give me questions based on this";
