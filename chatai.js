@@ -70,7 +70,7 @@ function truncate(str, no_lines, delimit) {
                 alert("got results");
             },
             success: function(result) {
-                alert("got results");
+                alert(result);
                 $("#AIcontainer").html(result);
             }
         });
