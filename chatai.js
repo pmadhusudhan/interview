@@ -67,7 +67,7 @@ function truncate(str, no_lines, delimit) {
             url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
             type: 'GET',
             complete: function(result) {
-                alert(result);
+               console.log(result);
                 $("#AIcontainer").html(result);
             },
             success: function(result) {
