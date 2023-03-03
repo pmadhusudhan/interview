@@ -13,7 +13,7 @@ function toggle(){
 defer(function () {
  //console.log(window.location.hostname); 
 
-$('body').append("<div style='background:white;z-index:99999;width:400px;height:100%;position:fixed;right:0px;top:0px;border:2px orange solid' id='AIpopup'><div id='AIheader' style='width:20px;height:100%;float:left;background:orange;' onclick='toggle()'><></div><div id='AIcontainer' style='width:350px;height:100%;float:left;background:orange;'>toggle</div>hello</div>");
+$('body').append("<div style='background:white;z-index:99999;width:400px;height:100%;position:fixed;right:0px;top:0px;border:2px orange solid' id='AIpopup'><div id='AIheader' style='width:20px;height:100%;float:left;background:orange;' onclick='toggle()'><></div><div id='AIcontainer' style='height:100%;float:left;background:white;'>container</div></div>");
     
     
 if(window.location.hostname === "linkedin.com"){
