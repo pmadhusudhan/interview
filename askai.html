@@ -7,8 +7,19 @@
 
 <script>
 
-  alert(window.location.href);
-
+  if(loc.indexOf("AskAI=")>0){
+  question = (window.location.href).split("AskAI=")[1];
+    $("#prompt_div").val(question);
+     $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
+            type: 'GET',
+            complete: function() {
+            },
+            success: function(result) {
+                $("#result").html(result);
+            }
+        });
+  }
     function askAI() {
         
         question = $("#prompt_div").val();
