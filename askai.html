@@ -14,7 +14,7 @@
         question = $("#prompt_div").val();
         $("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
         $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbxtKsYrWU586A2O2sVJf0bg71dT0N1fVuBWIJlDCcmmlABCUKyM1rOdsyjwUp_tUjSs/exec?AskAI="+question,
+            url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question,
             type: 'GET',
             complete: function() {
             },
@@ -24,42 +24,13 @@
         });
     }
     
-  function countWords() {
-          
-            // Get the input text value
-            var text = document
-                .getElementById("prompt_div").value;
-          
-            // Initialize the word counter
-            var numWords = 0;
-          
-            // Loop through the text
-            // and count spaces in it 
-            for (var i = 0; i < text.length; i++) {
-                var currentCharacter = text[i];
-          
-                // Check if the character is a space
-                if (currentCharacter == " ") {
-                    numWords += 1;
-                }
-            }
-          
-            // Add 1 to make the count equal to
-            // the number of words 
-            // (count of words = count of spaces + 1)
-            numWords += 1;
-          
-            // Display it as output
-            document.getElementById("show")
-                .innerHTML = numWords;
-        }
- 
+  
 
   
 
 </script>
 
-<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br><button onclick="countWords()">Word count</button><label id="show"></label><button id="send" onclick="askAI()">Send</button><br>
+<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br>button id="send" onclick="askAI()">Send</button><br>
 
 <div id="result" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></div>
 </body>  
