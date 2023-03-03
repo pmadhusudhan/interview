@@ -16,7 +16,7 @@
             complete: function() {
             },
             success: function(result) {
-              $("#prompt_div").val(question);
+              $("#prompt_div").val(question).hide();
                 $("#result").html(result);
             }
         });
@@ -36,15 +36,18 @@
         });
     }
     
-  
+  $("#header").click(function(){ $("#prompt_div").toggle()});
 
   
 
 </script>
-
+<div id="container">
+<div style="height:20px;background:gray" id="header">toggle</div>
+<div id="form">
 <textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br><button id="send" onclick="askAI()">Send</button><br>
-
+</div>
 <div id="result" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></div>
+</div>
 </body>  
 </html>
 
