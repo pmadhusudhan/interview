@@ -39,7 +39,7 @@ if(window.location.hostname === "finviz.com"){
     var q = "What is driving the market based on these news:";
    // $('body').click(function(){
     var value = q + $("table").text();
-    console.log(value);
+    $("#AIcontainer").html(value);
     
    // });
 }
