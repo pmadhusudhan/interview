@@ -9,6 +9,7 @@
   var loc = window.location.href;
   if(loc.indexOf("AskAI=")>0){
   question = loc.split("AskAI=")[1];
+    console.log(question);
     $("#prompt_div").val(question);
      $.ajax({
             url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
