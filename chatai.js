@@ -68,6 +68,7 @@ function truncate(str, no_lines, delimit) {
             type: 'GET',
             complete: function() {
                 alert("got results");
+                $("#AIcontainer").html(result);
             },
             success: function(result) {
                 alert(result);
