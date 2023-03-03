@@ -10,7 +10,7 @@ function defer(method) {
 defer(function () {
  //console.log(window.location.hostname); 
 
-$('body').append("<div style='background:white;z-index:99999;width:400px;height:100%;position:fixed;right:0px;top:0px;border:2px orange solid' id='aipopup'><div id='headerbar' style='height:20px;background:orange;'>toggle</div>hello</div>");
+$('body').append("<div style='background:white;z-index:99999;width:400px;height:100%;position:fixed;right:0px;top:0px;border:2px orange solid' id='aipopup'><div id='headerbar' style='width:20px;height:100%;float:left;background:orange;'>toggle</div><div id='AIcontainer' style='width:350px;height:100%;float:left;background:orange;'>toggle</div>hello</div>");
     
     
 if(window.location.hostname === "linkedin.com"){
