@@ -39,7 +39,7 @@ if(window.location.hostname === "finviz.com"){
     var q = "What is driving the market based on these news:";
    // $('body').click(function(){
     
-    var value = q + truncate($("#body-table-news").text(), 10,"AM") ; // split into sentences and select only 10
+    var value = q + truncate($("#body-table-news").text(), 30,"AM") ; // split into sentences and select only 30
     $("#AIcontainer").html(value);
     
    // });
