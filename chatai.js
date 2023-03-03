@@ -40,7 +40,7 @@ if(window.location.hostname === "finviz.com"){
    // $('body').click(function(){
     
     var value = q + truncate($("#body-table-news").text(), 30,"AM") ; // split into sentences and select only 30
-    $("#AIcontainer").html(value);
+    askAI(value);
     
    // });
 }
