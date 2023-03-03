@@ -6,14 +6,20 @@ function defer(method) {
     }
 }
 function toggle(){
-    $('#AIpopup').css('right','-380px');
+    AIpopupstate = parseInt($('#AIpopup').css('right'));
+    
+    if(AIpopupstate === 0){
+        $('#AIpopup').css('right','-380px');
+    }else{
+        $('#AIpopup').css('right','0px');
+    }
     
 }
 
 defer(function () {
  //console.log(window.location.hostname); 
 
-$('body').append("<div style='background:white;z-index:99999;width:400px;height:100%;position:fixed;right:0px;top:0px;border:2px orange solid' id='AIpopup'><div id='AIheader' style='width:20px;height:100%;float:left;background:orange;' onclick='toggle()'><></div><div id='AIcontainer' style='height:100%;float:left;background:white;'>container</div></div>");
+$('body').append("<div style='background:white;z-index:99999;width:400px;height:100%;position:fixed;right:0px;top:0px;border:2px gray solid' id='AIpopup'><div id='AIheader' style='width:20px;height:100%;float:left;background:gray;' onclick='toggle()'><></div><div id='AIcontainer' style='height:100%;float:left;background:white;'>container</div></div>");
     
     
 if(window.location.hostname === "linkedin.com"){
