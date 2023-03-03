@@ -21,7 +21,7 @@ function toggle(){
 defer(function () {
  //console.log(window.location.hostname); 
 
-$('body').append("<div style='background:white;z-index:99999;width:400px;height:20px;position:fixed;right:-390px;top:0px;border:2px gray solid;font-size:12px' id='AIpopup'><div id='AIheader' style='width:20px;height:100%;float:left;background:gray;' onclick='toggle()'><></div><div id='AIcontainer' style='height:100%;float:left;background:white;'>container</div></div>");
+$('body').append("<div style='background:white;z-index:99999;width:400px;height:20px;position:fixed;right:-390px;top:0px;border:2px gray solid;font-size:12px' id='AIpopup'><div id='AIheader' style='width:20px;height:100%;float:left;background:gray;' onclick='toggle()'><></div><div id='AIcontainer' style='width:370px;overflow:auto;height:100%;float:left;background:white;'>container</div></div>");
     
     
 if(window.location.hostname === "linkedin.com"){
