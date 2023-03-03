@@ -39,7 +39,7 @@ if(window.location.hostname === "finviz.com"){
     var q = "What is driving the market based on these news:";
    // $('body').click(function(){
     
-    var value = q + text_truncate($("#body-table-news").text(),300) ;
+    var value = q + truncate($("#body-table-news").text(), 20) ;
     $("#AIcontainer").html(value);
     
    // });
@@ -55,16 +55,7 @@ if(window.location.hostname === "www.youtube.com"){
   console.log("askai.js loaded");
 });
 
-text_truncate = function(str, length, ending) {
-    if (length == null) {
-      length = 500;
-    }
-    if (ending == null) {
-      ending = '...';
-    }
-    if (str.length > length) {
-      return str.substring(0, length - ending.length) + ending;
-    } else {
-      return str;
-    }
-  };
+function truncate(str, no_lines) {
+    return str.split("AM ").splice(0,no_lines).join("AM ");
+}
+
