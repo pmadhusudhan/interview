@@ -59,3 +59,17 @@ function truncate(str, no_lines, delimit) {
     return str.split(delimit).splice(0,no_lines).join(delimit);
 }
 
+ function askAI(question) {
+        
+       
+        $("#AIcontainer").html("Loading...");
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
+            type: 'GET',
+            complete: function() {
+            },
+            success: function(result) {
+                $("#AIcontainer").html(result);
+            }
+        });
+    }
