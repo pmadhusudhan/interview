@@ -38,7 +38,7 @@ console.log(value);
 if(window.location.hostname === "finviz.com"){
     var q = "What is driving the market based on these news:";
     var value = q + truncate($("#body-table-news").text(), 30,"AM") ; // split into sentences and select only 30
-     $("#AIcontainer").attr("src","https://pmadhusudhan.github.io/interview/askai.html");
+     $("#AIcontainer").attr("src","https://pmadhusudhan.github.io/interview/askai.html?AskAI="+value);
 }
 if(window.location.hostname === "www.youtube.com"){
     var t= $("#below").text();
