@@ -49,7 +49,7 @@
         const uniqueTokens = [...new Set(promptTokens)];
 
         // Truncate the list of tokens to a specific length
-        const maxTokens = 10;
+        const maxTokens = 250;
         const truncatedTokens = uniqueTokens.slice(0, maxTokens);
 
         // Join the truncated tokens back into a single string
