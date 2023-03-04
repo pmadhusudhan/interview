@@ -7,7 +7,7 @@
 
 <div id="container">
 <div style="height:20px;background:gray" id="header" onclick='$("#form").toggle();'>toggle</div>
-<button onclick='askAI("56*78")'>another question</button>
+<button onclick='change(this.innerHTML)'>another question</button>
 <div id="form" >
 <textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br><button id="send" onclick="askAI()">Send</button><br>
 </div>
@@ -39,7 +39,10 @@
         });
     }
     
-    
+    function change(question){
+      alert(question);
+      
+    }
     
   $("#header").click(function(){ $("#form").toggle()});
 
