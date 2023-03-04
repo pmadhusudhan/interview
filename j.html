@@ -16,7 +16,7 @@
   </div>
     <div id="right" style="width:45%; margin:2%; float:left; border:1px solid gray">
   <div id="summary" style="display:none">summarized text will appear here</div>
-  
+  <input id="question" placeholder="Enter your question" value="list key skills and competencies from this in html format:" />
   <div id="result" > AI will write here...</div>
     </div>
   </div>
@@ -56,7 +56,7 @@
     function process(){
       summarize();
       s = document.getElementById('summary').textContent;
-      q = "list key skills and competencies from this in html format: ";
+      q = document.getElementById('question').value;
       askai(q+s);
       
       
