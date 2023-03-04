@@ -6,15 +6,20 @@
 </head>
 <body>
   <h1>1.22 Job Description Summarizer</h1>
+  <div id="main">
+    <div id="left" style="width:45%; margin:2%; float:left; border:1px solid gray">
   <form>
     <label for="job-description">Enter the job description:</label><br>
-    <textarea id="job-description" name="job-description" rows="10" cols="50"></textarea><br>
+    <textarea id="job-description" name="job-description" rows="20" cols="50"></textarea><br>
     <input type="button" value="Process" onclick="process()">
   </form>
-  <hr>
-  <div id="summary">summarized text will appear here</div>
-  <hr>
-  <div id="result"> AI will write here...</div>
+  </div>
+    <div id="right" style="width:45%; margin:2%; float:left; border:1px solid gray">
+  <div id="summary" style="display:none">summarized text will appear here</div>
+  
+  <div id="result" > AI will write here...</div>
+    </div>
+  </div>
   <script>
     function askai(question) {
     
