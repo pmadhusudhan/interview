@@ -9,9 +9,9 @@
   <form>
     <label for="job-description">Enter the job description:</label><br>
     <textarea id="job-description" name="job-description" rows="10" cols="50"></textarea><br>
-    <input type="button" value="Summarize" onclick="summarize()">
+    <input type="button" value="Summarize" onclick="summarize2()">
   </form>
-  <h2>Summary:</h2>
+  <h2>Summary2:</h2>
   <div id="summary"></div>
 
   <script>
@@ -39,6 +39,23 @@
 
       // Display the summary on the page
       document.getElementById('summary').textContent = summary;
+    }
+    function summarize2(){
+        const promptText = document.getElementById('job-description').value;
+              // Tokenize the prompt text
+        const promptTokens = promptText.split(' ');
+
+        // Remove duplicate tokens
+        const uniqueTokens = [...new Set(promptTokens)];
+
+        // Truncate the list of tokens to a specific length
+        const maxTokens = 10;
+        const truncatedTokens = uniqueTokens.slice(0, maxTokens);
+
+        // Join the truncated tokens back into a single string
+        const compressedPrompt = truncatedTokens.join(' ');
+      
+        document.getElementById('summary').textContent = compressedPrompt;
     }
   </script>
 </body>
