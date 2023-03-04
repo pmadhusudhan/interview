@@ -5,6 +5,16 @@
 </head>
 <body>  
 
+<div id="container">
+<div style="height:20px;background:gray" id="header">toggle</div>
+<button onclick='askAI("56*78")'>another question</button>
+<div id="form">
+<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br><button id="send" onclick="askAI()">Send</button><br>
+</div>
+<div id="result" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></div>
+</div>
+
+
 <script>
   var loc = window.location.href;
   if(loc.indexOf("AskAI=")>0){
@@ -36,14 +46,6 @@
   
 
 </script>
-<div id="container">
-<div style="height:20px;background:gray" id="header">toggle</div>
-<button onclick='askAI("56*78")'>another question</button>
-<div id="form">
-<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br><button id="send" onclick="askAI()">Send</button><br>
-</div>
-<div id="result" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></div>
-</div>
 </body>  
 </html>
 
