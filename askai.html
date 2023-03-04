@@ -11,7 +11,7 @@
   question = loc.split("AskAI=")[1];
     
   askAI(question);
-  $("#form").hide();
+  
   }
     function askAI(question) {
         
@@ -24,13 +24,14 @@
             },
             success: function(result) {
                 $("#result").html(result);
+                  $("#form").hide())
             }
         });
     }
     
     
     
-  $("#header").click(function(){ $("#prompt_div").toggle()});
+  $("#header").click(function(){ $("#form").toggle()});
 
   
 
