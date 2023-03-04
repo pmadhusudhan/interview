@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 </head>
 <body>
-  <h1>1.21 Job Description Summarizer</h1>
+  <h1>1.22 Job Description Summarizer</h1>
   <form>
     <label for="job-description">Enter the job description:</label><br>
     <textarea id="job-description" name="job-description" rows="10" cols="50"></textarea><br>
@@ -17,9 +17,9 @@
   <div id="result"> AI will write here...</div>
   <script>
     function askai(question) {
-        
+    
         //question = $("#prompt_div").val();
-        //$("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
+        $("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
             type: 'GET',
@@ -27,7 +27,7 @@
             },
             success: function(result) {
                 $("#result").html(result);
-                  $("#form").hide();
+                  
             }
         });
     }
