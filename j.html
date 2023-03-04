@@ -11,12 +11,12 @@
   <form>
     <label for="job-description">Enter the job description:</label><br>
     <textarea id="job-description" name="job-description" rows="20" cols="50"></textarea><br>
-    <input type="button" value="Process" onclick="process()">
+    
   </form>
   </div>
     <div id="right" style="width:45%; margin:2%; float:left; border:1px solid gray">
   <div id="summary" style="display:none">summarized text will appear here</div>
-  <input id="question" placeholder="Enter your question" value="list key skills and competencies from this in html format:" />
+  <input id="question" size="30" placeholder="Enter your question" value="list key skills and competencies from this in html format:" /><input type="button" value="Process" onclick="process()">
   <div id="result" > AI will write here...</div>
     </div>
   </div>
