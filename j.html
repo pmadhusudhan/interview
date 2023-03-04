@@ -1,46 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Job Description Summarizer</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
 </head>
 <body>
-  <h1>Job Description Summarizer</h1>
+  <h1>1.1 Job Description Summarizer</h1>
   <form>
     <label for="job-description">Enter the job description:</label><br>
     <textarea id="job-description" name="job-description" rows="10" cols="50"></textarea><br>
-    <input type="button" value="Summarize" onclick="summarize2()">
+    <input type="button" value="Process" onclick="process()">
   </form>
-  <h2>Summary3:</h2>
-  <div id="summary"></div>
-
+  
+  <div id="summary" placeholder="summarized text will appear here"></div>
+  <div id="result" placeholder="AI will write here..."></div>
   <script>
-    function summarize() {
-      // Get the job description text
-      const jobDescription = document.getElementById('job-description').value;
-
-      // Split the text into sentences
-      const sentences = jobDescription.split(/[.?!]/);
-
-      // Calculate the average sentence length
-      const totalWords = sentences.reduce((acc, sentence) => acc + sentence.split(' ').length, 0);
-      const avgWordsPerSentence = totalWords / sentences.length;
-
-      // Select sentences that meet the length criteria
-      const maxWordsPerSentence = 20;
-      const minWordsPerSentence = 5;
-      const summarySentences = sentences.filter(sentence => {
-        const words = sentence.split(' ').length;
-        return words >= minWordsPerSentence && words <= maxWordsPerSentence;
-      });
-
-      // Join the selected sentences into a summary
-      const summary = summarySentences.join('. ');
-
-      // Display the summary on the page
-      document.getElementById('summary').textContent = summary;
+    function askai(question) {
+        
+        //question = $("#prompt_div").val();
+        //$("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
+            type: 'GET',
+            complete: function() {
+            },
+            success: function(result) {
+                $("#result").html(result);
+                  $("#form").hide();
+            }
+        });
     }
-    function summarize2(){
+    function summarize(){
         const promptText = document.getElementById('job-description').value;
               // Tokenize the prompt text
         const promptTokens = promptText.split(' ');
@@ -54,8 +44,15 @@
 
         // Join the truncated tokens back into a single string
         const compressedPrompt = truncatedTokens.join(' ');
-      
+        
         document.getElementById('summary').textContent = compressedPrompt;
+    }
+    function process(){
+      summarize();
+      s = document.getElementById('summary').textContent;
+      askai(s);
+      
+      
     }
   </script>
 </body>
