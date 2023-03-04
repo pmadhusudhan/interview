@@ -10,21 +10,13 @@
   if(loc.indexOf("AskAI=")>0){
   question = loc.split("AskAI=")[1];
     
-     $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
-            type: 'GET',
-            complete: function() {
-            },
-            success: function(result) {
-              $("#prompt_div").val(question).hide();
-                $("#result").html(result);
-            }
-        });
+  askAI(question);
+  $("#form").hide();
   }
-    function askAI() {
+    function askAI(question) {
         
-        question = $("#prompt_div").val();
-        $("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
+        //question = $("#prompt_div").val();
+        //$("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbzM1DbNzmxKqygbeDTeo-6hAr8griyFjk1g1d-jpvkYZFc4RWxbmCrqnv6Z_RmzDQir/exec?AskAI="+question+"&Who=You are an expert",
             type: 'GET',
@@ -36,6 +28,8 @@
         });
     }
     
+    
+    
   $("#header").click(function(){ $("#prompt_div").toggle()});
 
   
@@ -43,6 +37,7 @@
 </script>
 <div id="container">
 <div style="height:20px;background:gray" id="header">toggle</div>
+<button onclick='askAI("56*78")'>another question</button>
 <div id="form">
 <textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea><br><button id="send" onclick="askAI()">Send</button><br>
 </div>
