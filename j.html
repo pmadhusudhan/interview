@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 </head>
 <body>
-  <h1>1.1 Job Description Summarizer</h1>
+  <h1>1.2 Job Description Summarizer</h1>
   <form>
     <label for="job-description">Enter the job description:</label><br>
     <textarea id="job-description" name="job-description" rows="10" cols="50"></textarea><br>
     <input type="button" value="Process" onclick="process()">
   </form>
-  
-  <div id="summary" placeholder="summarized text will appear here"></div>
-  <div id="result" placeholder="AI will write here..."></div>
+  <hr>
+  <div id="summary">summarized text will appear here</div>
+  <hr>
+  <div id="result"> AI will write here...</div>
   <script>
     function askai(question) {
         
