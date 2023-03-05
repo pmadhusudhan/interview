@@ -94,7 +94,7 @@ button.addEventListener("click", function() {
                 var scriptkey = "AKfycbyJMjBv0yzL7CLfS8mK4rRbbwpfCC-p_VPfC4EZlDm-Ktmy--abnmigSJnW6iegB9iu0g";
                 var url = "https://script.google.com/macros/s/" + scriptkey + "/exec";
                 var qq = document.querySelector('#questionbox').value;
-                var context = document.querySelector("#jobDescriptionText").textContent.substring(0, 1500);
+                var context = document.querySelector("body").textContent.substring(0, 1500);
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', url);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
