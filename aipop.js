@@ -87,7 +87,7 @@ button.addEventListener("click", function() {
               message.textContent = this.value;
               document.querySelector('#container').appendChild(message);
               document.querySelector('#container').scrollTop = document.querySelector('#container').scrollHeight;
-              var context = document.querySelector("#jobDescriptionText").textContent;
+              var context = document.querySelector("body").textContent;
               context = context.substring(0, 1500);
 
               document.querySelector('#waiting').style.display = 'block';
