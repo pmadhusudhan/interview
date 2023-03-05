@@ -73,4 +73,60 @@ button.addEventListener("click", function() {
         waiting.style.bottom = "100px";
         container.appendChild(waiting);
 
+        document.querySelector('#questionbox').addEventListener('keypress', function(event) {
+            if (event.which === 13) {
+              var qq = this.value;
+              var message = document.createElement('div');
+              message.style.margin = '5px';
+              message.style.background = '#c5e1cc';
+              message.style.border = '1px solid gray';
+              message.style.width = 'auto';
+              message.style.borderRadius = '10px';
+              message.style.padding = '4px';
+              message.style.textAlign = 'right';
+              message.textContent = this.value;
+              document.querySelector('#container').appendChild(message);
+              document.querySelector('#container').scrollTop = document.querySelector('#container').scrollHeight;
+              var context = document.querySelector("#jobDescriptionText").textContent;
+              context = context.substring(0, 1500);
+
+              document.querySelector('#waiting').style.display = 'block';
+                var scriptkey = "AKfycbyJMjBv0yzL7CLfS8mK4rRbbwpfCC-p_VPfC4EZlDm-Ktmy--abnmigSJnW6iegB9iu0g";
+                var url = "https://script.google.com/macros/s/" + scriptkey + "/exec";
+                var qq = document.querySelector('#questionbox').value;
+                var context = document.querySelector("#jobDescriptionText").textContent.substring(0, 1500);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', url);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.querySelector('#waiting').style.display = 'none';
+                    var textarea = document.createElement('textarea');
+                    textarea.style.background = 'rgb(246, 246, 244)';
+                    textarea.style.border = '1px solid gray';
+                    textarea.style.width = '250px';
+                    textarea.style.height = 'min-content';
+                    textarea.style.borderRadius = '10px';
+                    textarea.style.padding = '4px';
+                    textarea.style.bottom = '0px';
+                    textarea.style.overflow = 'overlay';
+                    textarea.classList.add('');
+                    textarea.rows = 20;
+                    textarea.cols = 20;
+                    textarea.textContent = xhr.responseText;
+                    document.querySelector('#container').appendChild(textarea);
+                } else {
+                    console.error("Error saving data: " + xhr.status);
+                }
+                };
+                xhr.onerror = function() {
+                console.error("Error saving data: " + xhr.status);
+                };
+                xhr.send("Q=" + qq + "for this job, write formatted text :" + context + "&W=");
+                document.querySelector('#questionbox').value = '';
+
+            }
+          });
+          
+
 });
