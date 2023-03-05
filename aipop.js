@@ -1,30 +1,76 @@
+// Create the button element
+const button = document.createElement("button");
+button.id = "askai";
+button.value = "askai";
+button.innerHTML = "AskAI";
+button.setAttribute("style","cursor:pointer;background:orange;padding:5px;border-radius:5px;position:fixed;bottom:0px;right:0px");
 
-//$("body").append("<script src='https://pmadhusudhan.github.io/interview/aipop.js'></script>");
-$("body").append("<button style='position:absolute;bottom:0px;right:0px' id='askai' value='askai'>AskAI</button>");
+// Append the button to the body
+document.body.appendChild(button);
 
-$("#askai").click(function(){
+// Add a click event listener to the button
+button.addEventListener("click", function() {
+        // Code to execute when the button is clicked
+        // Create the sidebar div element
+        const sidebar = document.createElement("div");
+        sidebar.id = "sidebar";
+        sidebar.style.position = "fixed";
+        sidebar.style.top = "0px";
+        sidebar.style.right = "0px";
+        sidebar.style.width = "300px";
+        sidebar.style.height = "100%";
+        sidebar.style.background = "#888";
+        sidebar.style.padding = "5px";
+        document.body.appendChild(sidebar);
 
+        // Set the html width property
+        document.documentElement.style.width = "calc(100% - 300px)";
 
+        // Create the container div element
+        const container = document.createElement("div");
+        container.id = "container";
+        container.style.background = "#ddd";
+        container.style.height = "calc(100% - 120px)";
+        container.style.overflow = "auto";
+        container.style.padding = "10px";
+        container.style.border = "2px inset gray";
+        container.style.borderRadius = "10px";
+        container.style.margin = "5px";
+        sidebar.appendChild(container);
 
-$("body").append("<div id='sidebar' style='position:fixed;top:0px;right:0px;width:300px;height:100%;background:#888;padding:5px;'></div>");
-$("html").css("width","calc(100% - 300px)");
+        // Create the message box element
+        const messageBox = document.createElement("div");
+        messageBox.style.background = "#f6f6f4";
+        messageBox.style.border = "1px solid gray";
+        messageBox.style.width = "auto";
+        messageBox.style.borderRadius = "10px";
+        messageBox.style.padding = "4px";
+        messageBox.style.bottom = "0px";
+        messageBox.innerHTML = "Hello, you can talk to me";
+        container.appendChild(messageBox);
 
-$("#sidebar").append("<div id='container' style='background:#ddd; height: calc(100% - 70px);overflow:auto;padding: 10px;border:2px inset gray;border-radius:10px;margin:5px'><div style='background:#f6f6f4;border:1px solid gray;width:auto;border-radius:10px;padding:4px;bottom:0px'>Hello you can talk to me</div></div>");
-$("#sidebar").append("<input id='questionbox' style='height:50px;width:280px;background:white;position:fixed;bottom:10px;border-radius:10px;padding:4px;' placeholder='Ask me' />");
+        // Create the input element
+        const input = document.createElement("input");
+        input.id = "questionbox";
+        input.style.height = "50px";
+        input.style.width = "280px";
+        input.style.background = "white";
+        input.style.position = "fixed";
+        input.style.bottom = "10px";
+        input.style.borderRadius = "10px";
+        input.style.padding = "4px";
+        input.placeholder = "Ask me";
+        sidebar.appendChild(input);
 
-$('#questionbox').keypress(function(event) {
-  if (event.which === 13) {
-  
-   $("#container").append("<div style='margin:5px;background:#c5e1cc;border:1px solid gray;width:auto;border-radius:10px;padding:4px;text-align:right;'>"+$(this).val()+"</div><br>");
-   $('#container').scrollTop($('#container')[0].scrollHeight);
-   $.get("https://script.google.com/macros/s/AKfycbyLcl9xo9REfOVjHjS6i0Qyp0n3UtY0KRtIL_pnudTpyFT7P2UvF_G1IVgLHl6YrIF22Q/exec?Q="+$(this).val()+"&W=you are an assistant",function(data){
-   
-   $("#container").append("<div style='background:#f6f6f4;border:1px solid gray;width:auto;border-radius:10px;padding:4px;bottom:0px'>"+data+"</div>");
-   
-   });
-   
-   $(this).val('');
-  }
+        // Create the waiting image element
+        const waiting = document.createElement("img");
+        waiting.id = "waiting";
+        waiting.src = "https://cdn.dribbble.com/users/2973561/screenshots/5757826/media/221d6bfc1960ab98a7585fcc2a4d0181.gif";
+        waiting.style.width = "50px";
+        waiting.style.display = "none";
+        waiting.style.position = "fixed";
+        waiting.style.zIndex = "9999999";
+        waiting.style.bottom = "100px";
+        container.appendChild(waiting);
+
 });
-
-}) // end of askai button click function
