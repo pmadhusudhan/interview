@@ -8,9 +8,9 @@ const button = document.querySelector('#compare');
 function handleClick() {
   
   question = document.getElementById("question").value;
-  document.getElementsByTagName("textarea")[0].value = question + "; Resume :"+ document.getElementById("resume").value + "; Job description :"+ document.getElementById("jd").value ;
+  document.getElementsByTagName("textarea")[0].value = question + "; Resume =[["+ document.getElementById("resume").value + "]] Job description =[["+ document.getElementById("jd").value+"]]" ;
 
-  document.getElementsByTagName("button")[5].click()
+  document.getElementsByTagName("button")[5].click();
 }
 
 button.addEventListener('click', handleClick);
