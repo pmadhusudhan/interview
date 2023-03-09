@@ -1,7 +1,10 @@
 <html>
 <body>
 Hello world! 1.0
+  <button onclick="askai()">Ask</button>
 <script>
+  
+function askai(){
 const PROMPT = "what is 4*5";
 const api_key = "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";
 const url = "https://api.openai.com/v1/chat/completions";
@@ -20,6 +23,8 @@ fetch(url, {
 .then(response => response.json())
 .then(data => alert(data.choices[0].text))
 .catch(error => console.error(error));
+}
+  
 </script>
 </body>
 </html>
