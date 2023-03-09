@@ -14,7 +14,7 @@ fetch(url, {
   },
   body: JSON.stringify({
     "model": "gpt-3.5-turbo",
-    "messages":[{"role": "system", "content": WhoamI},{"role": "user", "content": PROMPT}]
+    "messages":[{"role": "system", "content": "you are a math teacher"},{"role": "user", "content": PROMPT}]
     })
 })
 .then(response => response.json())
