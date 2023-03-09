@@ -1,0 +1,25 @@
+<html>
+<body>
+Hello world!
+<script>
+const prompt = "Hello, OpenAI";
+const api_key = "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";
+const url = "https://api.openai.com/v1/engines/davinci-codex/completions";
+
+fetch(url, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${api_key}`
+  },
+  body: JSON.stringify({
+    "prompt": prompt,
+    "max_tokens": 5
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data.choices[0].text))
+.catch(error => console.error(error));
+</script>
+</body>
+</html>
