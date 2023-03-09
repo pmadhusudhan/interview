@@ -1,6 +1,8 @@
 // this is the code which will be injected into a given page...
-
-(function() {
+var s = document.createElement("script");
+s.src= "https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js";
+document.getElementsByTagName("body")[0].appendChild(s);
+window.setTimeout(function() {
 
 $("body").append("<button style='cursor:pointer;background:orange;padding:5px;border-radius:5px;position:fixed;bottom:0px;right:0px' id='askai' value='askai'>AskAI</button>");
 
@@ -78,4 +80,4 @@ $('#questionbox').keypress(function(event) {
 }) // end of askai button click function
 
 
-})();
+},2000);
