@@ -73,7 +73,7 @@
         url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
         $.post( url, { Q: "what is 4*5", W: "you are an assistant" })
         .done(function( data ) {
-             
+             console.log(data);
         $(".sidebar").append('<textarea style="background: rgb(246, 246, 244);border: 1px solid gray;width: 250px;height: min-content;border-radius: 10px;padding: 4px;bottom: 0px;overflow: overlay;" cols="20" class="" rows="20">'+data+'</textarea>');
    
         })
