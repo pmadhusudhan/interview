@@ -93,7 +93,7 @@
     </div>
     <div class="content">
       <div id='metaData'>
-      <h1>Job Description - deep dive 1.3</h1>
+      <h1>Job Description - deep dive 1.4</h1>
       <p> Paste a job description below. And get AI enhanced Job details with questions.</p>
       <label id='jdskills'></label>
  
@@ -116,13 +116,7 @@
 "Which training and Certifications would help for this job"
 ]; 
   var scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
- var loc = location.href;
- if(loc.indexOf("jd=")>0){
- var jd_loaded = loc.substring(loc.indexOf("jd=")+3);
- jd_loaded = decodeURIComponent(jd_loaded);
 
- $("#description").val(jd_loaded);                   
-                               }
   
    $("#submit").click(function(){
       
@@ -133,6 +127,13 @@
      $("#submit").hide();
       $("#extras").slideDown();
     });
+   var loc = location.href;
+ if(loc.indexOf("jd=")>0){
+       var jd_loaded = loc.substring(loc.indexOf("jd=")+3);
+       jd_loaded = decodeURIComponent(jd_loaded);
+       $("#description").val(jd_loaded);  
+       $("#submit").click();
+   }
   function addQuestions(){
    for(i=0; i < jd_questions.length;i++){
      
