@@ -119,6 +119,8 @@
  var loc = location.href;
  if(loc.indexOf("jd=")>0){
  var jd_loaded = loc.substring(loc.indexOf("jd=")+3);
+ jd_loaded = decodeURIComponent(jd_loaded);
+
  $("#description").val(jd_loaded);                   
                                }
   
