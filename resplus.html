@@ -60,7 +60,16 @@
         border-radius: 5px;
         cursor: pointer;
       }
-      
+      button.question{
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        
+      }
       button:hover {
         background-color: #3e8e41;
       }
@@ -79,17 +88,47 @@
       <h1>Job description based on your profile /Resume</h1>
       <p> main page content. It can include text, images, and other elements.</p>
       <label id='jdskills'></label>
-      
-     </div>
-    <div class='right sidebar'>
+ 
       <textarea  id="description" placeholder="Enter a job description..."></textarea>
-      <button onclick="askai('description','jdskills',0)">Skills List</button>  
-      <button  onclick="askai('description','jdskills',2)">Interview questions</button>   
+      <div id="extras">
+        
+        </div>
+      
       </div>
     </div>
 <script>
-  var questions = ["List all the linkedin skills based on this ","List suitable job titles for this resume","List 10 interview questions based on this"];
-    function askai(input,container,q){
+  var questions = ["List all the linkedin skills based on this ","List suitable job titles for this resume"];
+  var jd_questions = ["List 10 interview questions based on this job description:"]; 
+  var scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
+  function addQuestions(){
+   for(i=0; i < jd_questions.length;i++){
+     
+    $("#extras").append('<button class="question" >'+ jd_questions + '</button><div class="answer"></div>');   
+     
+   }
+    $(".question").click(function(){
+      
+      prompt = $(this).text() + $("#description").val();
+      askai_generic(prompt, $(this).next());
+      
+    });
+    
+  }
+   function askai_generic(prompt,container){
+        
+        
+        url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
+        $.post( url, { Q: prompt, W: "you are an assistant" })
+            .done(function( data ) {
+                 //console.log(data);
+            $(container).append(data.replaceAll('/n','  '));
+
+            })
+      .fail(function( error ) {
+        console.error( "Error saving data: " + error );
+      });
+    }
+  function askai(input,container,q){
         prompt = questions[q] + $("#"+input).val();
         scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
         url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
