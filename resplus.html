@@ -98,12 +98,19 @@
     </div>
 <script>
   var questions = ["List all the linkedin skills based on this ","List suitable job titles for this resume"];
-  var jd_questions = ["List 10 interview questions based on this job description:"]; 
+  var jd_questions = ["List 10 interview questions based on this job ","List key skills and requirements for this job","What are key activities and responsibilities for this job",
+"How much salary can I expect for this job",
+"Give me best candidate’s resume for inspiration based on this job",
+"What is not in my resume / experience based on this job",
+"Give mock interview questions for this job",
+"What would be career path for this job", 
+"Which training and Certifications would help for this job"
+]; 
   var scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
   function addQuestions(){
    for(i=0; i < jd_questions.length;i++){
      
-    $("#extras").append('<button class="question" >'+ jd_questions + '</button><div class="answer"></div>');   
+    $("#extras").append('<b><button class="question" >'+ jd_questions + '</button></b><div class="answer"></div>');   
      
    }
     $(".question").click(function(){
