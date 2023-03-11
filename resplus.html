@@ -83,11 +83,12 @@
      </div>
     <div class='right sidebar'>
       <textarea  id="description" placeholder="Enter a job description..."></textarea>
-      <button onclick="askai('description','jdskills',0)">Skills List</button>    
+      <button onclick="askai('description','jdskills',0)">Skills List</button>  
+      <button  onclick="askai('description','jdskills',2)">Interview questions</button>   
       </div>
     </div>
 <script>
-  var questions = ["List all the linkedin skills based on this ","List suitable job titles for this resume"];
+  var questions = ["List all the linkedin skills based on this ","List suitable job titles for this resume","List 10 interview questions based on this"];
     function askai(input,container,q){
         prompt = questions[q] + $("#"+input).val();
         scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
