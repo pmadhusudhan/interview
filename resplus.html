@@ -30,8 +30,8 @@
         
         }
         #metaData{
-          background:gray;
-          color: white;
+          background:white;
+          color: black;
           
           }
       /* Set the style for the main page content */
@@ -114,6 +114,8 @@
     });
     
   }
+  addQuestions();
+  
    function askai_generic(prompt,container){
         
         
@@ -121,7 +123,7 @@
         $.post( url, { Q: prompt, W: "you are an assistant" })
             .done(function( data ) {
                  //console.log(data);
-            $(container).append(data.replaceAll('/n','  '));
+            $(container).append(data.replaceAll('\n','<br>'));
 
             })
       .fail(function( error ) {
