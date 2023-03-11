@@ -29,6 +29,11 @@
         right:0px;
         
         }
+        #metaData{
+          background:gray;
+          color: white;
+          
+          }
       /* Set the style for the main page content */
       .content {
         margin-left: 250px;
@@ -70,14 +75,14 @@
       <div id='resskills' style='height:200px;overflow:auto'></div>
     </div>
     <div class="content">
+      <div id='metaData'>
+      <label id='jdskills'>,/label>
       <h1>You will see enhanced Job description based on Resume</h1>
       <p>This is the main page content. It can include text, images, and other elements.</p>
-    </div>
-<div class="right sidebar">
-      <h2>Job description</h2>
-      <textarea  id="Description" placeholder="Enter some text here..."></textarea>
+     </div>
+      <textarea  id="Description" placeholder="Enter a job description..."></textarea>
       <button onclick="askai('jdskills',0)">Skills List</button>    <button onclick="askai(1)">Job title</button>
-      <div id='jdskills' style='height:200px;overflow:auto'></div>
+      
     </div>
 <script>
   var questions = ["List all the linkedin skills based on this resume ","List suitable job titles for this resume"];
