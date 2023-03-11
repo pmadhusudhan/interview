@@ -115,9 +115,9 @@
   
    $("#submit").click(function(){
       
-      $(this).next().html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
+      $("#summary").html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
       prompt = "Give short summary with list of key skills from this" + $("#description").val();
-      askai_generic(prompt, $(this).next());
+      askai_generic(prompt, $(this).next()).then($("#description").slideUp()).then($("#submit").hide());
       $("#extras").slideDown();
     });
   function addQuestions(){
