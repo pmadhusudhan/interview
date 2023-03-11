@@ -71,7 +71,7 @@
     <div class="left sidebar">
       <h2>Your profile</h2>
       <textarea  id="resume" placeholder="Enter some text here..."></textarea>
-      <button onclick="askai('resskills',0)">Skills List</button>    <button onclick="askai('resskills',1)">Job title</button>
+      <button onclick="askai('resume',resskills',0)">Skills List</button>    <button onclick="askai('resume','resskills',1)">Job title</button>
       <div id='resskills' style='height:200px;overflow:auto'></div>
     </div>
     <div class="content">
@@ -81,14 +81,14 @@
       <label id='jdskills'></label>
       
      </div>
-      <textarea  id="Description" placeholder="Enter a job description..."></textarea>
-      <button onclick="askai('jdskills',0)">Skills List</button>    
+      <textarea  id="description" placeholder="Enter a job description..."></textarea>
+      <button onclick="askai('description','jdskills',0)">Skills List</button>    
       
     </div>
 <script>
-  var questions = ["List all the linkedin skills based on this resume ","List suitable job titles for this resume"];
-    function askai(container,q){
-        prompt = questions[q] + $("#resume").val();
+  var questions = ["List all the linkedin skills based on this ","List suitable job titles for this resume"];
+    function askai(input,container,q){
+        prompt = questions[q] + $("#"+input).val();
         scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
         url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
         $.post( url, { Q: prompt, W: "you are an assistant" })
