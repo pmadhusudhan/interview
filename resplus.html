@@ -34,6 +34,10 @@
           color: black;
           
           }
+      #summary{
+       padding:10px;
+        padding-left:30px;
+      }
       /* Set the style for the main page content */
       .content {
         margin-left: 250px;
@@ -140,7 +144,7 @@
         $.post( url, { Q: prompt, W: "you are an assistant" })
             .done(function( data ) {
                  console.log(data);
-            $(container).html((data.substring(1,data.length -1)).replaceAll('\n','<br>'));
+            $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
 
             })
       .fail(function( error ) {
@@ -154,7 +158,7 @@
         $.post( url, { Q: prompt, W: "you are an assistant" })
         .done(function( data ) {
              //console.log(data);
-        $("#"+container).append('<div style="padding: 4px;bottom: 0px;overflow: overlay;color:white" cols="20" class="" rows="20">'+data.replaceAll('/n',' , ')+'</div>');
+        $("#"+container).append('<div style="padding: 4px;bottom: 0px;overflow: overlay;color:white" cols="20" class="" rows="20">'+data.replaceAll('\\n',' , ')+'</div>');
    
         })
   .fail(function( error ) {
