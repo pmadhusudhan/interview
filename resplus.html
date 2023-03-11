@@ -18,13 +18,16 @@
         width: 200px;
         height: 100vh;
         position: fixed;
-        left: 0;
+        
         top: 0;
         padding: 20px;
       }
+      .left{
+        left: 0;
+        }
       .right {
         right:0px;
-        left:auto;
+        
         }
       /* Set the style for the main page content */
       .content {
@@ -60,7 +63,7 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
-    <div class="sidebar">
+    <div class="left sidebar">
       <h2>Your profile</h2>
       <textarea  id="resume" placeholder="Enter some text here..."></textarea>
       <button onclick="askai('resskills',0)">Skills List</button>    <button onclick="askai(1)">Job title</button>
