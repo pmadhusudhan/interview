@@ -91,7 +91,7 @@
  
       <textarea  id="description" placeholder="Enter a job description..."></textarea>
         <button id='submit'>Process this</button><div ='summary'></div><br>
-      <ul id="extras">
+      <ul id="extras" style="display:none">
         
         </ul>
       
@@ -111,10 +111,10 @@
   
    $("#submit").click(function(){
       
-      $(this).next().html("<img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
+      $(this).next().html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
       prompt = "Give short summary with list of key skills from this" + $("#description").val();
       askai_generic(prompt, $(this).next());
-      
+      $("#extras").slideDown();
     });
   function addQuestions(){
    for(i=0; i < jd_questions.length;i++){
