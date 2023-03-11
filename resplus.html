@@ -131,7 +131,7 @@
         $.post( url, { Q: prompt, W: "you are an assistant" })
             .done(function( data ) {
                  console.log(data);
-            $(container).html((data.substring(1,data.length -1)).replaceAll('\n','<b>'));
+            $(container).html((data.substring(1,data.length -1)).replaceAll('\n','<br>'));
 
             })
       .fail(function( error ) {
