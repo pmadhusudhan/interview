@@ -130,8 +130,8 @@
         url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
         $.post( url, { Q: prompt, W: "you are an assistant" })
             .done(function( data ) {
-                 //console.log(data);
-            $(container).html(data.replaceAll('\n','<br>'));
+                 console.log(data);
+            $(container).html((data.substring(1,data.length -1)).replaceAll('\n','<b>'));
 
             })
       .fail(function( error ) {
