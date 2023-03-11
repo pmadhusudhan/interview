@@ -93,7 +93,7 @@
     </div>
     <div class="content">
       <div id='metaData'>
-      <h1>Job Description - deep dive 1.1</h1>
+      <h1>Job Description - deep dive 1.2</h1>
       <p> Paste a job description below. And get AI enhanced Job details with questions.</p>
       <label id='jdskills'></label>
  
@@ -121,7 +121,9 @@
       
       $("#summary").html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
       prompt = "Give short summary with list of key skills from this" + $("#description").val();
-      askai_generic(prompt, $(this).next()).then($("#description").slideUp()).then($("#submit").hide());
+      askai_generic(prompt, $(this).next());
+     $("#description").slideUp();
+     $("#submit").hide());
       $("#extras").slideDown();
     });
   function addQuestions(){
