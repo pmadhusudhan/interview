@@ -71,17 +71,18 @@
     <div class="left sidebar">
       <h2>Your profile</h2>
       <textarea  id="resume" placeholder="Enter some text here..."></textarea>
-      <button onclick="askai('resskills',0)">Skills List</button>    <button onclick="askai(1)">Job title</button>
+      <button onclick="askai('resskills',0)">Skills List</button>    <button onclick="askai('resskills',1)">Job title</button>
       <div id='resskills' style='height:200px;overflow:auto'></div>
     </div>
     <div class="content">
       <div id='metaData'>
-      <label id='jdskills'>,/label>
-      <h1>You will see enhanced Job description based on Resume</h1>
-      <p>This is the main page content. It can include text, images, and other elements.</p>
+      <h1>Job description based on your profile /Resume</h1>
+      <p> main page content. It can include text, images, and other elements.</p>
+      <label id='jdskills'></label>
+      
      </div>
       <textarea  id="Description" placeholder="Enter a job description..."></textarea>
-      <button onclick="askai('jdskills',0)">Skills List</button>    <button onclick="askai(1)">Job title</button>
+      <button onclick="askai('jdskills',0)">Skills List</button>    
       
     </div>
 <script>
@@ -93,7 +94,7 @@
         $.post( url, { Q: prompt, W: "you are an assistant" })
         .done(function( data ) {
              //console.log(data);
-        $("#"+container).append('<div style="background: rgb(246, 246, 244);border: 1px solid gray;width: 200px;height: min-content;border-radius: 10px;padding: 4px;bottom: 0px;overflow: overlay;" cols="20" class="" rows="20">'+data.replaceAll('/n','<br>')+'</div>');
+        $("#"+container).append('<div style="padding: 4px;bottom: 0px;overflow: overlay;color:white" cols="20" class="" rows="20">'+data.replaceAll('/n',' , ')+'</div>');
    
         })
   .fail(function( error ) {
