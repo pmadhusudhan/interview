@@ -108,6 +108,7 @@
    }
     $(".question").click(function(){
       
+      $(this).next().html("<img src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
       prompt = $(this).text() + $("#description").val();
       askai_generic(prompt, $(this).next());
       
@@ -123,7 +124,7 @@
         $.post( url, { Q: prompt, W: "you are an assistant" })
             .done(function( data ) {
                  //console.log(data);
-            $(container).append(data.replaceAll('\n','<br>'));
+            $(container).html(data.replaceAll('\n','<br>'));
 
             })
       .fail(function( error ) {
