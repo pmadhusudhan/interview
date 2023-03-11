@@ -22,7 +22,10 @@
         top: 0;
         padding: 20px;
       }
-      
+      .right {
+        right:0px;
+        left:auto;
+        }
       /* Set the style for the main page content */
       .content {
         margin-left: 250px;
@@ -60,24 +63,29 @@
     <div class="sidebar">
       <h2>My Sidebar</h2>
       <textarea  id="resume" placeholder="Enter some text here..."></textarea>
-      <button onclick="askai(0)">Submit</button>
-      <div id='skills' style='height:200px;overflow:auto'></div>
+      <button onclick="askai('resskills',0)">Skills List</button>    <button onclick="askai(1)">Job title</button>
+      <div id='resskills' style='height:200px;overflow:auto'></div>
     </div>
     <div class="content">
-      <h1>Welcome to My Page</h1>
+      <h1>You will see enhanced Job description based on Resume</h1>
       <p>This is the main page content. It can include text, images, and other elements.</p>
     </div>
-
+ class="right sidebar">
+      <h2>My Sidebar</h2>
+      <textarea  id="Description" placeholder="Enter some text here..."></textarea>
+      <button onclick="askai('jdskills',0)">Skills List</button>    <button onclick="askai(1)">Job title</button>
+      <div id='jdskills' style='height:200px;overflow:auto'></div>
+    </div>
 <script>
-  var questions = ["List all the linkedin skills based on this resume "];
-    function askai(q){
+  var questions = ["List all the linkedin skills based on this resume ","List suitable job titles for this resume"];
+    function askai(container,q){
         prompt = questions[q] + $("#resume").val();
         scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
         url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
         $.post( url, { Q: prompt, W: "you are an assistant" })
         .done(function( data ) {
-             console.log(data);
-        $("#skills").append('<div style="background: rgb(246, 246, 244);border: 1px solid gray;width: 200px;height: min-content;border-radius: 10px;padding: 4px;bottom: 0px;overflow: overlay;" cols="20" class="" rows="20">'+data+'</div>');
+             //console.log(data);
+        $("#"+container).append('<div style="background: rgb(246, 246, 244);border: 1px solid gray;width: 200px;height: min-content;border-radius: 10px;padding: 4px;bottom: 0px;overflow: overlay;" cols="20" class="" rows="20">'+data.replaceAll('/n','<br>')+'</div>');
    
         })
   .fail(function( error ) {
