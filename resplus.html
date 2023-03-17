@@ -268,14 +268,9 @@ $(".nav_btn").click(function(){
               //prompt = $(this).parent('li').text() + $("#description").text();
                 prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "I will give [context] and [question]"},{"role": "assistant", "content": "ok. I will answer the question based on context in neat html format"},{"role": "user", "content": "Here is the [context]="+ $("#description").text()},{"role": "assistant", "content": "ok. Now ask me the question"},{"role":"user","content":  $(this).attr("prompt") }] ;
          //alert(prompt[0].content);
-            google.script.run.withSuccessHandler(function onSuccess(result) {
+           
               
-                $(container).html(result);
-                //alert(result);
-              }).chat_AI("",prompt);
-                  
-              
-              //askai_generic(prompt, $(this).find(".answer"));
+              askai_generic(prompt, $(container));
               
             });
             $(".res_question").click(function(){
@@ -285,14 +280,10 @@ $(".nav_btn").click(function(){
               //prompt = $(this).parent('li').text() + $("#description").text();
                 prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "I will give [context] and [question]"},{"role": "assistant", "content": "ok. I will answer the question based on context in neat html format"},{"role": "user", "content": "Here is the [context]="+ $("#resume").text()},{"role": "assistant", "content": "ok. Now ask me the question"},{"role":"user","content":  $(this).attr("prompt") }] ;
          //alert(prompt[0].content);
-         google.script.run.withSuccessHandler(function onSuccess(result) {
-          
-            $(container).html(result);
-            //alert(result);
-          }).chat_AI("",prompt);
+         
               
               
-              //askai_generic(prompt, $(this).find(".answer"));
+              askai_generic(prompt, $(container));
             });  
       }
 
@@ -336,19 +327,17 @@ $(".nav_btn").click(function(){
           prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "I will give [resume] and questions array  [['category1','question1'],['category2','question2']] format. You will give HTML format answers in this format <li  class='res_question' ><b>category1</b><div class='answer'>answer1</div></li>'); "},{"role": "assistant", "content": "ok. I will answer all questions in that format without any other preceding text"},{"role": "user", "content": "Here is the [resume]="+ $("#resume").text()},{"role": "assistant", "content": "ok. Now give me the questions array"},{"role":"user","content":  JSON.stringify(res_questions) }] ;
 
     $("#res_extras").html("<img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-        google.script.run.withSuccessHandler(function onSuccess(result) {
+        /*google.script.run.withSuccessHandler(function onSuccess(result) {
 
             result_li = result.substring(result.indexOf("<li"));
             $("#res_extras").html("<ul>"+result_li+"</ul");
-            localStorage.setItem("resume",JSON.stringify($(".restab").html()));
-            $(".nav_btn").click(function(){
-                $(".tabs").hide();
-                target = $(this).attr("target");
-                $("."+target).show();
-              })
+            
+           
 
 
-          }).chat_AI("",prompt,500);
+          }).chat_AI("",prompt,500);*/
+        askai_generic(prompt, $("#res_extras"));
+        //localStorage.setItem("resume",JSON.stringify($(".restab").html()));
         //localStorage.setItem('resume',JSON.stringify(resume));
       }
       function read_resume(){
@@ -364,54 +353,7 @@ $(".nav_btn").click(function(){
         return resume;
       }
      
-    
- 
- function runFunction(prompt) {
-  // prompt =[{"role": "system", "content": "you are helpful assistant"},{"role": "user", "content": "4*5"}];
-  google.script.run.withSuccessHandler(onSuccess).chat_AI("",prompt);
-}
 
-function onSuccess(result) {
-  alert(result);
-}
-
-let open_ai_response;
-
-async function openai_test() {
-  
-  var url =  "https://api.openai.com/v1/chat/completions";
-  var prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "what is 4*5"}];
-  
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", url);
-
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("Authorization", "Bearer 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");
-
-  xhr.onreadystatechange = function () {
-     if (xhr.readyState === 4) {
-        console.log(xhr.status);
-        console.log(xhr.responseText);
-        open_ai_response = xhr.responseText;
-        $("#jd_summary").html(open_ai_response);
-     }};
-
-  var data = `{
-    "payload": JSON.stringify(
-    {
-    "model": "gpt-3.5-turbo",
-    "messages": "`+ prompt +`",
-    }
-    ),
-    "temperature": 0.7,
-    "max_tokens": 256,
-    "top_p": 1,
-    "frequency_penalty": 0.75,
-    "presence_penalty": 0
-  }`;
-
-  xhr.send(data);
-}
 </script>
 
 
