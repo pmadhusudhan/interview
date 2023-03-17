@@ -239,9 +239,12 @@
          //alert($("#resume").text());
          //runFunction(prompt, $("#jd_summary"));
          //openai_test(prompt);
+    /*
       google.script.run.withSuccessHandler(function onSuccess(result) {
             $("#jd_summary").html(result);
           }).chat_AI("",prompt,20);
+          */
+    askai_generic(prompt,$("#jd_summary"))
     
    }
 
