@@ -58,6 +58,20 @@
     $(".question:eq(2)").click();
 
   function askai_generic(prompt,container){
+          
+          
+          url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
+          $.post( url, { Q: prompt, W: "you are an expert" })
+              .done(function( data ) {
+                  console.log(data);
+              $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
+
+              })
+        .fail(function( error ) {
+          console.error( "Error saving data: " + error );
+        });
+      }
+  function askai_generic_aws(prompt,container){
     var urlp = "http://18.188.3.153:5000/api";
     prompt = prompt.substring(0,3000);
   // jQuery equivalent of the HTML form
