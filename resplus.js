@@ -73,7 +73,7 @@
     error: function(e) {
        console.log(e.message);
     });*/
-         $.get( url,crossDomain: true, { Q: prompt, W: "you are an expert" })
+         $.get( url, { Q: prompt, W: "you are an expert" })
               .done(function( data ) {
                   console.log(data);
               $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
