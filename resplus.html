@@ -6,32 +6,36 @@
     <style>
       /* Set the overall style for the page */
       body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: 0px;
+        padding: 20px;
+        width: 800px;
+        height:600px;
+        font-size: 16px;
       }
       
-      #nav_header{
-        height:70px;
-        position:fixed;
-        width:100%;
-        margin-top:-25px;
-        color:white;
-        background:black;
-        z-index:999999999;
+      /* Set the style for the left sidebar */
+      .sidebar {
+        background-color: #333;
+        color: #fff;
+        width: 50%;
+        height: 100vh;
+        position: fixed;
+        display: none;
+        top: 0;
+        padding: 20px;
       }
-     
-      .jdtab{
+      .left{
+        left: 0;
+        }
+      .right {
+        right:0px;
+        
+        }
+        #metaData{
           background:white;
           color: black;
-          padding-right:50px;
-          display:none;
-          }
-      .restab{
-          background:white;
-          color: black;
-          padding-right:50px;
-          display:block;
+          
           }
       #summary{
        padding:10px;
@@ -39,32 +43,17 @@
       }
       .answer{
        padding:10px;
-        background:#aaa;
-        border-radius:20px;
-        color:black;
-        
+        background:#eee;
+		border-radius: 10px;
       }
-      
       /* Set the style for the main page content */
       .content {
-        margin-left: 15%;
-        padding: 20px;
-        padding-top:50px;
+        margin: 30px;
+        padding: 30px;
       }
-    #resume,#description{
-        width: 90%;
-        height: 300px;
-        padding: 10px;
-        font-size: 16px;
-        font-family:sans-serif;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        overflow:auto;
-        background:white;
-      }
-
+      
       /* Set the style for the textarea and button */
-    textarea {
+      #resume,#description {
         width: 90%;
         height: 200px;
         padding: 10px;
@@ -72,18 +61,21 @@
         border: 2px solid #ccc;
         border-radius: 5px;
         resize: none;
+		background:white;
+		color:#111;
+		overflow: auto;
       }
-    button {
-        background-color: #333;
+      
+      button {
+        background-color: #4CAF50;
         color: #fff;
         border: none;
         padding: 10px 20px;
         font-size: 16px;
         border-radius: 5px;
         cursor: pointer;
-        width:80%;
       }
-    .question{
+      .question{
         background-color: white;
         color: black;
         border: none;
@@ -93,269 +85,50 @@
         cursor: pointer;
         
       }
-    #jd_summary{
-        padding: 20px;
-        background: #efe;
-        border-radius: 20px;
-        font-style: italic;
-        font-family: cursive;
-      }
-      .jd_question,.res_question{
-        cursor:pointer;
-      }
-      .jd_question > div{
-        background:#eee;
-        color:black;
-      }
-      .res_question > div{
-        background:#eee;
-        color:black;
-      }
       button:hover {
-        background-color: #555;
+        background-color: #3e8e41;
       }
-      .kws{
-        background:#efe;
-        color:black;
-        padding:5px;
-        margin:10px;
-        border-radius: 5px;
-        line-height:35px; 
-      }
-      #left_toggle{
-        float:right;
-        
-      }
-      #nav_btns{
-        position:fixed;
-        width:200px;
-        height:100%;
-        padding-top:100px;
-        top:10px;
-        background:#333;
-      }
-      #nav_btns>button{
-        margin:10px;
-      }
-      #res_section,#jd_section{
-        padding-left:100px;
-      }
+	  .kws{
+		  background:#efe;
+		  padding:10px;
+		  line-height: 35px;
+		  border-radius: 10px;
+	  }
     </style>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+     <script src="jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
-    <div id="nav_header"><center><h1> AI Career Companion </h1></center></div>
-    <div id='nav_btns'><button target="restab" class="nav_btn">Your profile</button><br><button target="jdtab"class="nav_btn">Job Description</button></div>
-     <div class="content">
-    <div class="restab tabs">
-      
-      <h2 id='res_h2' onclick='$("#res_section").toggle()'>Your profile <label style='color:#888' onclick='localStorage.setItem("resume","")'>x</label></h2>
-      
-       <ul id="res_extras" style="display:block">
-        
-        </ul>
-      <section id='res_section'>
-       
-      <div  id="resume" contentEditable="true" placeholder="Enter some text here..."></div>
-      <button onclick="save_resume()">Save</button>
-      </section>
-   
-    </div>
-   
-      <div class='jdtab tabs'>
-      <h2 id='jd_h2' onclick='$("#jd_section").toggle()'>Job Description <label style='color:#888'>></label></h2>
+	
+    <div class="left sidebar">
+		<button onclick="$('.sidebar').toggle()"><</button>	
+      <h2>Your profile</h2>
+	  <div contenteditable="true"  id="resume" placeholder="Enter some text here..."></div>
+	  <button id="savebtn">Save</button>
+      <button onclick="askai_generic('resume','resskills',0)">Skills List</button>    <button onclick="askai_generic('resume','resskills',1)">Job title</button>
+      <div id='resskills' style='height:200px;overflow:auto'></div>
+    </div><button onclick="$('.sidebar').toggle()">></button>
+    <div class="content">
+      <div id='metaData'>
+      <h1>Job Description - AI scanned</h1>
+      <p> Paste a job description below. And get AI enhanced Job details with questions.</p>
+      <label id='jdskills'></label>
+        <button onclick='$("#jd_section").toggle()'> Job Description </button>
         <section id="jd_section">
-       
-      <div  id="description" contentEditable="true" placeholder="Enter a job description..."></div>
+			<div contenteditable="true"   id="description" placeholder="Enter a job description..."></div>
         <button id='submit'>Process this</button>
         </section>
-        <h3> Does this job fit to you </h3>
-          <div id='jd_summary'></div><br>
+          <div id='summary'></div><br>
           
-      <ul id="jd_extras" style="display:none">
+      <ul id="extras" style="display:none">
         
         </ul>
       
       </div>
     </div>
-    
-<script>
-
-  var scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
-  var loc = location.href;
-  var res_questions = [["Summary","Write a summary for my resume "],
-                      ["Keywords","List keywords from my resume in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label>"],
-                      ["Skills","List all the linkedin skills based for my resume "],
-                      ["Job Titles","List suitable job titles for my resume"]
-                      ];
-  var jd_questions = [["Brief Summary","Summarize this "],
-                      ["Keywords","List 10 important keywords in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label>"],
-                      ["Activities and Responsibilities","What are key activities and responsibilities for this job"],
-                      ["Salary","How much salary can I expect for this job"],
-                      ["Interview Questions","List 10 interview questions based on this job "],
-                      ["Sample Resume","Update my <<resume>> for inspiration based on this <<job>>"],
-                      ["What to learn","What is not in my resume / experience based on this job"],
-                      ["Career path","What would be career path for this job"], 
-                      ["Training and Certifications","Which training and Certifications would help for this job"]
-                  ]; 
-   
-   
-   $("#submit").click(function(){
       
-      $("#jd_summary").html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-      prompt = "Give <p>Summary </p> and keywords from this in <label class='kws'>keyword1</label> <label class='kws'>keyword2</label>" + $("#description").text();
-      askai_generic(prompt, $("#jd_summary"));
-     $("#jd_section").slideUp();
-     
-      $("#jd_extras").slideDown();
-    });
-
-//load the saved resume
-    if(read_resume() !== ''){
-    
-      $(".restab").html(read_resume());
-      
-      $(".restab").hide();
-
-      $(".jdtab").show();
-
-     
-  }
- var loc = location.href;
-  var jd= decodeURIComponent(loc.substring(loc.indexOf("jd=") +3));
-  
-  if(jd.indexOf("?=") !== 1){
-      
-       $("#description").html(jd); 
-       $("#description").attr("contentEditable","false"); 
-       
-         $("#submit").hide(); 
-         $("#jd_extras").slideDown();
-         $("#jd_summary").html("AI is working to figure out <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-        // prompt = "Give <p>Summary </p> and keywords from this in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label> format :" + $("#description").text();
-        
-         prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "I will give [Job Description] and [Resume]"},{"role": "assistant", "content": "ok. I will provide job suitability score(0-10) with job keywords missing in the resume in 5 (max) sentences"},{"role": "user", "content": "Here is the Job description:"+ $("#description").text()},{"role": "assistant", "content": "ok. Now provide the resume"},{"role":"user","content":  $("#resume").text()}] ;
-         //+ $('#description').text() + "'},{'Assistant','Got it. Now give me resume'},{'user','"+$("#resume").text()+"}";
-         //alert($("#resume").text());
-         //runFunction(prompt, $("#jd_summary"));
-         //openai_test(prompt);
-    /*
-      google.script.run.withSuccessHandler(function onSuccess(result) {
-            $("#jd_summary").html(result);
-          }).chat_AI("",prompt,20);
-          */
-    askai_generic(prompt,$("#jd_summary"))
-    
-   }
-
-$(".nav_btn").click(function(){
-  $(".tabs").hide();
-  target = $(this).attr("target");
-  $("."+target).show();
-})
-
-/* functions are given below */
-      function addQuestions(question_set,container,classname){
-
-          for(i=0; i < question_set.length;i++){
-            
-            $(container).append('<li prompt="'+question_set[i][1]+'" class="'+classname+'" ><b>'+ question_set[i][0] + '</b><div class="answer"></div></li>');   
-            
-          }
-            $(".jd_question").click(function(){
-              var container = $(this).find(".answer");
-              $(container).html("<img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-              //prompt = $(this).parent('li').text() + $("#description").text();
-                prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "I will give [context] and [question]"},{"role": "assistant", "content": "ok. I will answer the question based on context in neat html format"},{"role": "user", "content": "Here is the [context]="+ $("#description").text()},{"role": "assistant", "content": "ok. Now ask me the question"},{"role":"user","content":  $(this).attr("prompt") }] ;
-         //alert(prompt[0].content);
-           
-              
-              askai_generic(prompt, $(container));
-              
-            });
-            $(".res_question").click(function(){
-            
-                var container = $(this).find(".answer");
-              $(container).html("<img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-              //prompt = $(this).parent('li').text() + $("#description").text();
-                prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "I will give [context] and [question]"},{"role": "assistant", "content": "ok. I will answer the question based on context in neat html format"},{"role": "user", "content": "Here is the [context]="+ $("#resume").text()},{"role": "assistant", "content": "ok. Now ask me the question"},{"role":"user","content":  $(this).attr("prompt") }] ;
-         //alert(prompt[0].content);
-         
-              
-              
-              askai_generic(prompt, $(container));
-            });  
-      }
-
-  addQuestions(jd_questions,$("#jd_extras"),'jd_question');
-  //addQuestions(res_questions,$("#res_extras"),'res_question');
-  $(".jd_question:eq(0)").click();
-  $(".jd_question:eq(1)").click(); 
-  
-    function askai_generic(prompt,container){
-          
-          
-          url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
-          $.post( url, { Q: prompt, W: "you are an expert" })
-              .done(function( data ) {
-                  console.log(data);
-              $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
-
-              })
-        .fail(function( error ) {
-          console.error( "Error saving data: " + error );
-        });
-      }
-      function askai(input,container,q){
-            prompt = questions[q] + $("#"+input).text();
-            $("#res_section").slideUp();
-            $("#"+container).html("<img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-            scriptkey = "AKfycbwPfgbUDEaZF_aGu6QNT3Nmzvx9SK290QUWRGC66PLSM3xVCOKsRqEjldWPvvGwiF2aIA";
-            url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
-            $.post( url, { Q: prompt, W: "you are an expert" })
-            .done(function( data ) {
-                //console.log(data);
-               $("#"+container).html('<div style="padding: 4px;bottom: 0px;overflow: overlay;color:white" cols="20" class="" rows="20">'+(data.substring(1,data.length -1)).replaceAll('\\n','<br>')+'</div>');
-      
-            })
-          .fail(function( error ) {
-            console.error( "Error saving data: " + error );
-          });
-        }
-      function save_resume(){
-
-          prompt = [{"role": "system", "content": "you are an assistant"},{"role": "user", "content": "I will give [resume] and questions array  [['category1','question1'],['category2','question2']] format. You will give HTML format answers in this format <li  class='res_question' ><b>category1</b><div class='answer'>answer1</div></li>'); "},{"role": "assistant", "content": "ok. I will answer all questions in that format without any other preceding text"},{"role": "user", "content": "Here is the [resume]="+ $("#resume").text()},{"role": "assistant", "content": "ok. Now give me the questions array"},{"role":"user","content":  JSON.stringify(res_questions) }] ;
-
-    $("#res_extras").html("<img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-        /*google.script.run.withSuccessHandler(function onSuccess(result) {
-
-            result_li = result.substring(result.indexOf("<li"));
-            $("#res_extras").html("<ul>"+result_li+"</ul");
-            
-           
-
-
-          }).chat_AI("",prompt,500);*/
-        askai_generic(prompt, $("#res_extras"));
-        //localStorage.setItem("resume",JSON.stringify($(".restab").html()));
-        //localStorage.setItem('resume',JSON.stringify(resume));
-      }
-      function read_resume(){
-          // check if the 'myKey' key exists in localStorage
-        if (localStorage.getItem('resume') !== null) {
-          // retrieve the value of the 'myKey' key from localStorage
-          var resume = JSON.parse(localStorage.getItem('resume'));
-          
-        } else {
-          
-          resume = '';
-        }
-        return resume;
-      }
-     
-
-</script>
-
+    <script src="resplus.js"></script>
+    <div style="display: none;" id="hiddendiv"></div>
 
 </body>
 </html>
