@@ -66,15 +66,13 @@
 		  type: "POST",
 		  url: url,
 		  data: data,
-		  dataType: "jsonp"
-		}).done(function( data ) {
-                  console.log(data);
-              $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
-
-              })
-        .fail(function( error ) {
-          console.error( "Error saving data: " + error );
-        });
+		  dataType: "jsonp",
+		  success: function(data) {
+       $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
+    },
+    error: function(e) {
+       console.log(e.message);
+    });
          /* $.post( url,crossDomain: true, { Q: prompt, W: "you are an expert" })
               .done(function( data ) {
                   console.log(data);
