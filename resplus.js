@@ -1,5 +1,5 @@
 
-  var scriptkey = "AKfycbyULX37isCRSpxKC-xf3Ychd38qA7i7tfQoVZcenfSAGcg5sog1Vj9rPdFkkCiJVvnSPg";
+  var scriptkey = "AKfycbyq5J88fRiXqw6c_ZFJRFObZYz9tBHYyRasYMiJ7dEx_ZYSRsrfHjV6966FW9f9cpzizA";
   var res_questions = [["Summary","Write a summary for my resume: <<resume>>"],
                       ["Keywords","List keywords from my resume in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label>"],
                       ["Skills","List all the linkedin skills based for my resume "],
@@ -61,7 +61,7 @@
           
           
           url ="https://script.google.com/macros/s/"+scriptkey+"/exec";
-	  data = { Q: prompt, W: "you are an expert" };
+	/*  data = { Q: prompt, W: "you are an expert" };
 	  $.ajax({
 		  type: "POST",
 		  url: url,
@@ -72,8 +72,8 @@
     },
     error: function(e) {
        console.log(e.message);
-    });
-         /* $.post( url,crossDomain: true, { Q: prompt, W: "you are an expert" })
+    });*/
+         $.get( url,crossDomain: true, { Q: prompt, W: "you are an expert" })
               .done(function( data ) {
                   console.log(data);
               $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
@@ -82,7 +82,7 @@
         .fail(function( error ) {
           console.error( "Error saving data: " + error );
         });
-	*/
+	
 	
       }
 //var token = $("#token").val("Enter your token");
