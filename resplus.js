@@ -61,7 +61,7 @@
           
           
           url ="https://script.google.com/macros/s/"+scriptkey+"/exec"
-          $.post( url, { Q: prompt, W: "you are an expert" })
+          $.post( url,crossDomain: true, { Q: prompt, W: "you are an expert" })
               .done(function( data ) {
                   console.log(data);
               $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
