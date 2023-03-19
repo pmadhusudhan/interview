@@ -71,7 +71,7 @@
           console.error( "Error saving data: " + error );
         });
       }
-var token = prompt("Enter your token");
+var token = $("#token").val("Enter your token");
 function OpenaiFetchAPI(prompt,container) {
     //console.log("Calling GPT3")
     var url = "https://api.openai.com/v1/engines/davinci/completions";
