@@ -103,12 +103,18 @@
 	    	height: 50px;
 	      	background:#333;
 	      	color:white;
+	       top:0px;
+	      margin:0px;
+	      padding:10px;
 		
 		
 	    }
 	#nav_title{
 		font-size:20px;
 		
+	    }
+	 .nav_btn{
+		float:right; 
 	    }
     </style>
      <script src="jquery.js"></script>
@@ -118,15 +124,15 @@
 	  <div id="nav_bar"><label id="nav_title">AI Guru </label><label class="nav_btn" onclick="$('.rescontent').show();$('.jdcontent').hide()"> Profile</label><label class="nav_btn" onclick="$('.jdcontent').show();$('.rescontent').hide();'"> Job </label>	<div>		
     <div class="left rescontent">
 	<div class='leftpanel'>	
-      <h2>Your profile</h2>
-	  <div contenteditable="true"  id="resume" placeholder="Enter some text here..."></div>
-	  <button id="savebtn">Save</button>
-    </div>
-    <div class="rightpanel">
-      <button onclick="askai_generic('resume','resskills',0)">Skills List</button>    <button onclick="askai_generic('resume','resskills',1)">Job title</button>
-      <div id='resskills' style='height:200px;overflow:auto'></div>
-    </div>
-	  
+      		<h2>Your profile</h2>
+	 	 <div contenteditable="true"  id="resume" placeholder="Enter some text here..."></div>
+	 	 <button id="savebtn">Save</button>
+    	</div>
+    	<div class="rightpanel">
+     		 <button onclick="askai_generic('resume','resskills',0)">Skills List</button>    <button onclick="askai_generic('resume','resskills',1)">Job title</button>
+      		<div id='resskills' style='height:200px;overflow:auto'></div>
+    	</div>
+</div>	  
     <div class="jdcontent">
       <div class='leftpanel'>
       <h1>Job Description </h1>
