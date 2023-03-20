@@ -15,12 +15,10 @@
       
       /* Set the style for the left sidebar */
       .rescontent {
-        background-color: #333;
-        color: #fff;
-        width: 50%;
-        height: 100vh;
-        position: fixed;
-        display: none;
+        background-color: white;
+        color: #222;
+        width: 100%;
+        
         top: 0;
         padding: 20px;
       }
@@ -107,12 +105,16 @@
 		
 		
 	    }
+	#nav_title{
+		font-size:20px;
+		
+	    }
     </style>
      <script src="jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
-  <div id="nav_bar"><label class="nav_btn" onclick="$('.rescontent').show();$('"><</label>	<div>		
+	  <div id="nav_bar"><label id="nav_title">AI Guru </label><label class="nav_btn" onclick="$('.rescontent').show();$('.jdcontent').hide()"> Profile</label><label class="nav_btn" onclick="$('.jdcontent').show();$('.rescontent').hide();'"> Job </label>	<div>		
     <div class="left rescontent">
 	<div class='leftpanel'>	
       <h2>Your profile</h2>
