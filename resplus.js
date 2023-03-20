@@ -35,7 +35,7 @@
   function addQuestions(arraychoice,container){
    for(i=0; i < arraychoice.length;i++){
      
-    $(container).append('<b><li class="question" q="'+jd_questions[i][2]+'">'+ jd_questions[i][0] + '</li></b><div class="answer">'+jd_questions[i][1]+'</div>');   
+    $(container).append('<b><li class="question" q="'+arraychoice[i][2]+'">'+ arraychoice[i][0] + '</li></b><div class="answer">'+arraychoice[i][1]+'</div>');   
      
    }
     $(".question").click(function(){
