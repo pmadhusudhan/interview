@@ -53,10 +53,11 @@
     
   }
     addQuestions();
+if($("#description").text() !== ""){
     $(".question:eq(0)").click();
     $(".question:eq(1)").click();
     $(".question:eq(2)").click();
-
+}
   function askai_generic(prompt,container){
           
           
