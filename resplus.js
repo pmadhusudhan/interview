@@ -22,7 +22,7 @@
       askai_generic(prompt, $("#summary"));
      
      
-      $("#extras").slideDown();
+      $("#description").css("height","auto");
     });
     $("#savebtn").click(function(){save();})
    var loc = location.href;
