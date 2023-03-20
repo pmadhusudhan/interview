@@ -80,7 +80,7 @@ if($("#description").text() !== ""){
 			data: $('form').serialize(),
 			type: 'POST',
 			success: function(data){
-				 $(container).html((data.replaceAll('\\n','<br>'));
+				 $(container).html(data.replaceAll('\\n','<br>'));
 			},
 			error: function(error){
 				console.log(error);
