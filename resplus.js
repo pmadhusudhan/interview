@@ -61,18 +61,7 @@
           
           
           url ="https://artatfalls.pythonanywhere.com/askai";
-	/*  data = { Q: prompt, W: "you are an expert" };
-	  $.ajax({
-		  type: "POST",
-		  url: url,
-		  data: data,
-		  dataType: "jsonp",
-		  success: function(data) {
-       $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
-    },
-    error: function(e) {
-       console.log(e.message);
-    });*/
+	
          $.get( url, { q: prompt })
               .done(function( data ) {
                   console.log(data);
@@ -85,46 +74,7 @@
 	
 	
       }
-//var token = $("#token").val("Enter your token");
-function OpenaiFetchAPI(prompt,container) {
-    //console.log("Calling GPT3")
-    var url = "https://api.openai.com/v1/engines/davinci/completions";
-    
-    var bearer = 'Bearer ' + token
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Authorization': bearer,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "prompt": prompt,
-            "max_tokens": 5,
-            "temperature": 1,
-            "top_p": 1,
-            "n": 1,
-            "stream": false,
-            "logprobs": null,
-            "stop": "\n"
-        })
 
-
-    }).then(response => {
-        
-        return response.json()
-       
-    }).then(data=>{
-        console.log(data)
-        console.log(typeof data)
-        console.log(Object.keys(data))
-        $(container).html(data['choices'][0].text)
-        
-    })
-        .catch(error => {
-            console.log('Something bad happened ' + error)
-        });
-
-}
   function askai_generic_aws(prompt,container){
     var urlp = "http://18.188.3.153:5000/api";
     prompt = prompt.substring(0,3000);
