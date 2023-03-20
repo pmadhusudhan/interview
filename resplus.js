@@ -1,9 +1,9 @@
 
   var scriptkey = "AKfycbyq5J88fRiXqw6c_ZFJRFObZYz9tBHYyRasYMiJ7dEx_ZYSRsrfHjV6966FW9f9cpzizA";
   var res_questions = [["Summary","A short summary of your profile", "Write a summary for my resume: <<resume>>"],
-                      ["Keywords","ATS Keywords scanned from your profile","List keywords from my resume in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label>"],
-                      ["Skills","List of skills from your profile","List all the linkedin skills based for my resume "],
-                      ["Job Titles","Job titles recommended based on your profile","List suitable job titles for my resume"]
+                      ["Keywords","ATS Keywords scanned from your profile","List keywords from my resume in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label> resume: <<resume>>"],
+                      ["Skills","List of skills from your profile","List all the linkedin skills based for my resume: <<resume>> "],
+                      ["Job Titles","Job titles recommended based on your profile","List suitable job titles for my resume: <<resume>>"]
                       ];
   var jd_questions = [["Keywords","List of ATS Keywords from the job description","List 10 important keywords for <<job>> in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label>"],
                       ["Activities and Responsibilities","List of activities and responsibilities from the job description","What are key activities and responsibilities for this job: <<job>>"],
