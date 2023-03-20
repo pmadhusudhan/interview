@@ -130,6 +130,7 @@
     </style>
      <script src="jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="samplejd.js"></script>
   </head>
   <body>
 	  <div id="nav_bar"><label id="nav_title">AI Guru </label><label class="nav_btn" onclick="$('.rescontent').show();$('.jdcontent').hide();"> Profile</label><label class="nav_btn" onclick="$('.jdcontent').show();$('.rescontent').hide();"> Job </label><label class="nav_btn login" onclick=""> login </label>	</div>		
@@ -150,9 +151,10 @@
       <h1>Job Description </h1>
       <p> Paste a job description below. And get AI enhanced Job details with questions.</p>
       <label id='jdskills'></label>
-        <button onclick='$("#jd_section").toggle()'> Job Description </button>
+        <button onclick='$("#description").html(jd)'> Load a sample job description </button>
         <section id="jd_section">
-			<div contenteditable="true"   id="description" placeholder="Enter a job description..."></div>
+		
+			<div contenteditable="true"   id="description" placeholder=" or enter a job description "></div>
         <button id='submit'>Process this</button>
 	
         </section>
