@@ -61,16 +61,29 @@
           
           
           url ="https://artatfalls.pythonanywhere.com/askai";
-	
+	  $("#q").val(prompt);
+	 /*
          $.get( url, { q: prompt })
               .done(function( data ) {
                   console.log(data);
-              $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
+             
 
               })
         .fail(function( error ) {
           console.error( "Error saving data: " + error );
         });
+	  */
+	 $.ajax({
+			url: url,
+			data: $('form').serialize(),
+			type: 'POST',
+			success: function(response){
+				 $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
 	
 	
       }
