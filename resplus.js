@@ -40,8 +40,8 @@
      
    }
     $(".question").click(function(){
-      jd = $("#description").html();
-      res = $("#resume").html();
+      jd = $("#description").text();
+      res = $("#resume").text();
       $(this).parent().next().html("<img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
       prompt = $(this).attr("q");
       prompt = prompt.replaceAll("<<resume>>",res);
