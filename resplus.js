@@ -77,7 +77,7 @@
 			url: url,
 			data: $('form').serialize(),
 			type: 'postform',
-			success: function(response){
+			success: function(data){
 				 $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
 			},
 			error: function(error){
