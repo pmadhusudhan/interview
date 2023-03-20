@@ -14,7 +14,7 @@
       }
       
       /* Set the style for the left sidebar */
-      .sidebar {
+      .rescontent {
         background-color: #333;
         color: #fff;
         width: 50%;
@@ -46,7 +46,7 @@
 		border-radius: 10px;
       }
       /* Set the style for the main page content */
-      .content {
+      .jdcontent {
         margin: 30px;
         padding: 30px;
 	position:relative;
@@ -93,27 +93,38 @@
       button:hover {
         background-color: #3e8e41;
       }
-	  .kws{
-		  background:#efe;
-		  padding:10px;
-		  line-height: 35px;
-		  border-radius: 10px;
-	  }
+  .kws{
+	  background:#efe;
+	  padding:10px;
+	  line-height: 35px;
+	  border-radius: 10px;
+  }
+      #nav_bar{
+		position:fixed;
+	    	height: 50px;
+	      	background:#333;
+	      	color:white;
+		
+		
+	    }
     </style>
      <script src="jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
-		
-    <div class="left sidebar">
-		<button onclick="$('.sidebar').toggle()"><</button>	
+  <div id="nav_bar"><label class="nav_btn" onclick="$('.rescontent').show();$('"><</label>	<div>		
+    <div class="left rescontent">
+	<div class='leftpanel'>	
       <h2>Your profile</h2>
 	  <div contenteditable="true"  id="resume" placeholder="Enter some text here..."></div>
 	  <button id="savebtn">Save</button>
+    </div>
+    <div class="rightpanel">
       <button onclick="askai_generic('resume','resskills',0)">Skills List</button>    <button onclick="askai_generic('resume','resskills',1)">Job title</button>
       <div id='resskills' style='height:200px;overflow:auto'></div>
-    </div><button onclick="$('.sidebar').toggle()">></button>
-    <div class="content">
+    </div>
+	  
+    <div class="jdcontent">
       <div class='leftpanel'>
       <h1>Job Description </h1>
       <p> Paste a job description below. And get AI enhanced Job details with questions.</p>
