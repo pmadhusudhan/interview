@@ -33,6 +33,7 @@
        $("#submit").click();
    }
   function addQuestions(arraychoice,container){
+	console.log(arraychoice);	  
    for(i=0; i < arraychoice.length;i++){
      
     $(container).append('<b><li class="question" q="'+arraychoice[i][2]+'">'+ arraychoice[i][0] + '</li></b><div class="answer">'+arraychoice[i][1]+'</div>');   
@@ -51,8 +52,8 @@
     });
     
   }
-    addQuestions(jd_questions,$("#jdextras"));
-    addQuestions(res_questions,$("#resextras"));
+    addQuestions(jd_questions,"#jdextras");
+    addQuestions(res_questions,"#resextras");
 if($("#description").text() !== ""){
     $(".question:eq(0)").click();
     $(".question:eq(1)").click();
