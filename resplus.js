@@ -60,7 +60,7 @@
   function askai_generic(prompt,container){
           
           
-          url ="https://script.google.com/macros/s/"+scriptkey+"/exec";
+          url ="https://artatfalls.pythonanywhere.com/askai";
 	/*  data = { Q: prompt, W: "you are an expert" };
 	  $.ajax({
 		  type: "POST",
@@ -73,7 +73,7 @@
     error: function(e) {
        console.log(e.message);
     });*/
-         $.get( url, { Q: prompt, W: "you are an expert" })
+         $.get( url, { q: prompt })
               .done(function( data ) {
                   console.log(data);
               $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
