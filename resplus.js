@@ -17,7 +17,8 @@
    $("#submit").click(function(){
       
       $("#summary").html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-      prompt = "Give short summary with list of key skills from this" + $("#description").text();
+      res = $("#resume").text();
+      prompt = "Give a matching score of the job based on my resume and explain in HTML format. Job:<<" + $("#description").text() +">> Resume: <<"+res+">>";
       askai_generic(prompt, $("#summary"));
      
      
