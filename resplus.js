@@ -76,7 +76,7 @@
 	 $.ajax({
 			url: url,
 			data: $('form').serialize(),
-			type: 'postform',
+			type: 'jsonp',
 			success: function(data){
 				 $(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
 			},
