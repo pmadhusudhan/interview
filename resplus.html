@@ -114,11 +114,16 @@
 		
 	    }
 	 .nav_btn{
-		float:right; 
+		 margin-top: -1px;
+    		 width: 100px;
+		float:left; 
 		 margin: 10px;
 		 cursor:pointer;
 		 font-size:16px;
 		 padding:10px;
+	    }
+	 .login{
+		 float:right !important;
 	    }
 	.nav_btn:hover{
 	       background:#555;
@@ -128,7 +133,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
-	  <div id="nav_bar"><label id="nav_title">AI Guru </label><label class="nav_btn" onclick="$('.rescontent').show();$('.jdcontent').hide();"> Profile</label><label class="nav_btn" onclick="$('.jdcontent').show();$('.rescontent').hide();"> Job </label><label class="nav_btn" onclick=""> login </label>	</div>		
+	  <div id="nav_bar"><label id="nav_title">AI Guru </label><label class="nav_btn" onclick="$('.rescontent').show();$('.jdcontent').hide();"> Profile</label><label class="nav_btn" onclick="$('.jdcontent').show();$('.rescontent').hide();"> Job </label><label class="nav_btn login" onclick=""> login </label>	</div>		
     <div class="left rescontent">
 	<div class='leftpanel'>	
       		<h2>Your profile</h2>
