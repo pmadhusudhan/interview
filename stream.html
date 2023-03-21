@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ChatGPT</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id="chat-box"></div>
+	<script>
+		// Create a new EventSource to receive streaming data
+		var source = new EventSource("https://artatfalls.pythonanywhere.com/stream?q=explain chatgpt");
+
+		// When a new message is received, add it to the chat box
+		source.onmessage = function(event) {
+			var chatBox = document.getElementById("chat-box");
+			chatBox.innerHTML += "<p>" + event.data + "</p>";
+			chatBox.scrollTop = chatBox.scrollHeight;
+		};
+	</script>
+</body>
+</html>
