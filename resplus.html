@@ -139,17 +139,7 @@
   <body>
 	  <div id="nav_bar"><label id="nav_title">AI Guru </label><label class="nav_btn" onclick="$('.rescontent').show();$('.jdcontent').hide();"> Profile</label><label class="nav_btn" onclick="$('.jdcontent').show();$('.rescontent').hide();"> Job </label><label class="nav_btn login" onclick=""> login </label>	</div>		
    
-	<script>
-		// Create a new EventSource to receive streaming data
-		var source = new EventSource("https://artatfalls.pythonanywhere.com/stream?q=calculate x in x^2+4x+3=0 .");
-
-		// When a new message is received, add it to the chat box
-		source.onmessage = function(event) {
-			var chatBox = document.getElementById("chat-box");
-			chatBox.innerHTML += " " + event.data + "";
-			chatBox.scrollTop = chatBox.scrollHeight;
-		};
-	</script>
+	
 	  
 	  <div class="left rescontent">
 	<div class='leftpanel'>	
@@ -158,7 +148,7 @@
 	 	 <button id="savebtn">Save</button>
     	</div>
     	<div class="rightpanel">
-		<div id="chat-box">Chatbox</div>
+		
 		<h2> Resume 360 - AI enhanced </h2>
 		<ul id="resextras" ></ul>
      		 
