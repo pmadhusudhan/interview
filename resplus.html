@@ -138,7 +138,20 @@
   </head>
   <body>
 	  <div id="nav_bar"><label id="nav_title">AI Guru </label><label class="nav_btn" onclick="$('.rescontent').show();$('.jdcontent').hide();"> Profile</label><label class="nav_btn" onclick="$('.jdcontent').show();$('.rescontent').hide();"> Job </label><label class="nav_btn login" onclick=""> login </label>	</div>		
-    <div class="left rescontent">
+   <div id="chat-box">Chatbox</div>
+	<script>
+		// Create a new EventSource to receive streaming data
+		var source = new EventSource("https://artatfalls.pythonanywhere.com/stream?q=explain chatgpt");
+
+		// When a new message is received, add it to the chat box
+		source.onmessage = function(event) {
+			var chatBox = document.getElementById("chat-box");
+			chatBox.innerHTML += "<p>" + event.data + "</p>";
+			chatBox.scrollTop = chatBox.scrollHeight;
+		};
+	</script>
+	  
+	  <div class="left rescontent">
 	<div class='leftpanel'>	
       		<h2>Your Resume</h2>
 	 	 <div contenteditable="true"  id="resume" placeholder="Enter some text here..."></div>
