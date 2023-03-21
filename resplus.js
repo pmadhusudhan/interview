@@ -34,7 +34,7 @@
        $("#submit").click();
    }
   function addQuestions(arraychoice,container){
-	console.log(arraychoice);	  
+	//console.log(arraychoice);	  
    for(i=0; i < arraychoice.length;i++){
      
     $(container).append('<b><li class="question" q="'+arraychoice[i][2]+'">'+ arraychoice[i][0] + '</li></b><div class="answer">'+arraychoice[i][1]+'</div>');   
@@ -55,29 +55,29 @@
   }
     addQuestions(jd_questions,"#jdextras");
     addQuestions(res_questions,"#resextras");
-if($("#description").text() !== ""){
-    $(".question:eq(0)").click();
-    $(".question:eq(1)").click();
-    $(".question:eq(2)").click();
-}
+  if($("#description").text() !== ""){
+      $(".question:eq(0)").click();
+      $(".question:eq(1)").click();
+      $(".question:eq(2)").click();
+  }
   function askai_generic(prompt,container){
           
-          
-          url ="https://artatfalls.pythonanywhere.com/askai";
-	  $("#q").val(prompt);
-	 
-	 $.ajax({
-			url: url,
-			data: $('form').serialize(),
-			type: 'POST',
-			success: function(data){
-				 $(container).html(data.replaceAll('\\n','<br>'));
-			},
-			error: function(error){
-				console.log(error);
-			}
-		});
-	
+              
+        url ="https://artatfalls.pythonanywhere.com/askai";
+        $("#q").val(prompt);
+      
+        $.ajax({
+            url: url,
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(data){
+              $(container).html(data.replaceAll('\\n','<br>'));
+            },
+            error: function(error){
+              console.log(error);
+            }
+          });
+      
 	
       }
 
