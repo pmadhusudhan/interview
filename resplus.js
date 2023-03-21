@@ -65,17 +65,7 @@ if($("#description").text() !== ""){
           
           url ="https://artatfalls.pythonanywhere.com/askai";
 	  $("#q").val(prompt);
-	 /*
-         $.get( url, { q: prompt })
-              .done(function( data ) {
-                  console.log(data);
-             
-
-              })
-        .fail(function( error ) {
-          console.error( "Error saving data: " + error );
-        });
-	  */
+	 
 	 $.ajax({
 			url: url,
 			data: $('form').serialize(),
@@ -91,36 +81,7 @@ if($("#description").text() !== ""){
 	
       }
 
-  function askai_generic_aws(prompt,container){
-    var urlp = "http://18.188.3.153:5000/api";
-    prompt = prompt.substring(0,3000);
-  // jQuery equivalent of the HTML form
-// create a new XMLHttpRequest object
-var xhr = new XMLHttpRequest();
-
-// set the HTTP method and URL
-xhr.open('POST', urlp, true);
-
-// set the request headers
-xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-// create a data object with the query parameter
-var data = 'q=' + encodeURIComponent(prompt);
-
-// send the request with the data
-xhr.send(data);
-
-// set up a callback for when the response is received
-xhr.onload = function() {
-  if (xhr.status === 200) {
-    response = JSON.parse(xhr.responseText);
-    $(container).html(response.message);
-  } else {
-    console.error('Request failed.  Returned status of ' + xhr.status);
-  }
-};
-		
-    }
+  
     if(localStorage.getItem("resume") !== undefined){
     $("#resume").html(localStorage.getItem("resume"));
     
