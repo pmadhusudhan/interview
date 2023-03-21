@@ -5,7 +5,7 @@
                       ["Skills","List of skills from your profile","List all the linkedin skills based for my resume: <<resume>> "],
                       ["Job Titles","Job titles recommended based on your profile","List suitable job titles for my resume: <<resume>>"]
                       ];
-  var jd_questions = [["Recommendations","Recomended changes to your profile","List 10 changes,in HTML format, to my resume.Given resume =<<resume>> and job=<<job>>"],
+  var jd_questions = [["Recommendations","Recomended changes to your profile","List 10 changes,in HTML <li> format, to my resume.Given resume =<<resume>> and job=<<job>>"],
                       ["Keywords","List of ATS Keywords from the job description","List 10 important keywords for <<job>> in format <label class='kws'>keyword1</label> <label class='kws'>keyword2</label>"],
                       ["Activities and Responsibilities","List of activities and responsibilities from the job description","What are key activities and responsibilities for this job: <<job>>"],
                       ["Salary","List of skills from your profile","How much salary can I expect for this job: <<job>>"],
