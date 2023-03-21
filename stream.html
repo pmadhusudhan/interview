@@ -14,7 +14,7 @@
 		// When a new message is received, add it to the chat box
 		source.onmessage = function(event) {
 			var chatBox = document.getElementById("chat-box");
-			chatBox.innerHTML += "<p>" + event.data + "</p>";
+			chatBox.innerHTML += " " + event.data + "";
 			chatBox.scrollTop = chatBox.scrollHeight;
 		};
 	</script>
