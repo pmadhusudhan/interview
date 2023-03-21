@@ -33,7 +33,8 @@
        $("#description").html(jd_loaded);  
        $("#submit").click();
    }
-  function addQuestions(arraychoice,container){
+  
+   function addQuestions(arraychoice,container){
 	//console.log(arraychoice);	  
    for(i=0; i < arraychoice.length;i++){
      
@@ -55,12 +56,14 @@
   }
     addQuestions(jd_questions,"#jdextras");
     addQuestions(res_questions,"#resextras");
-  if($("#description").text() !== ""){
-      $(".question:eq(0)").click();
-      $(".question:eq(1)").click();
-      $(".question:eq(2)").click();
-  }
-  function askai_generic(prompt,container){
+    
+    if($("#description").text() !== ""){
+        $(".question:eq(0)").click();
+        $(".question:eq(1)").click();
+        $(".question:eq(2)").click();
+    }
+  
+    function askai_generic(prompt,container){
           
               
         url ="https://artatfalls.pythonanywhere.com/askai";
@@ -80,7 +83,26 @@
       
 	
       }
-
+      function askai_bulk(questions,containers){
+          
+        prompt =  "I will give you <<Job description>>, <<Resume>>, <<Questions>> and <<Output format>>. You will give answers in the <<Output format>>.: ;Job:<<" + $("#description").text() +">>, Resume: <<"+res+">>, Questions:<<"+JSON.stringify(questions)+">>, Output format:<<[{'question1':'answer1},{'question2':'answer2'}]";     
+        url ="https://artatfalls.pythonanywhere.com/askai";
+        $("#q").val(prompt);
+      
+        $.ajax({
+            url: url,
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(data){
+              $(container).html(data.replaceAll('\\n','<br>'));
+            },
+            error: function(error){
+              console.log(error);
+            }
+          });
+      
+	
+      }
   
     if(localStorage.getItem("resume") !== undefined){
     $("#resume").html(localStorage.getItem("resume"));
