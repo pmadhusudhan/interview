@@ -83,7 +83,7 @@
       
 	
       }
-      function askai_bulk(questions,containers){
+      function askai_bulk(questions,container){
           
         prompt =  "I will give you <<Job description>>, <<Resume>>, <<Questions>> and <<Output format>>. You will give answers in the <<Output format>>.: ;Job:<<" + $("#description").text() +">>, Resume: <<"+$("#resume").text()+">>, Questions:<<"+JSON.stringify(questions)+">>, Output format:<<[{'question1':'answer1},{'question2':'answer2'}]";     
         url ="https://artatfalls.pythonanywhere.com/askai";
