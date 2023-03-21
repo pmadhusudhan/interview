@@ -90,7 +90,7 @@
           q.push(questions[i][2]);
         }
         $(container).html(JSON.stringify(q));
-        prompt =  "I will give you <<Job description>>, <<Resume>>, <<Questions>> and <<Output format>>. You will give answers in the <<Output format>>.: ;Job:<<" + $("#description").text() +">>, Resume: <<"+$("#resume").text()+">>, Questions:<<"+JSON.stringify(q)+">>, Output format:<<[{'question1':'answer1},{'question2':'answer2'}]";     
+        prompt =  "I will give you <<Job>>, <<Resume>>, <<Questions>> and <<Output format>>. You will give answers in the <<Output format>>;<<Job>> =" + $("#description").text() +",<<Resume>>= "+$("#resume").text()+",<<Questions>>="+JSON.stringify(q)+", <<Output format>>=[{'question1':'answer1},{'question2':'answer2'}]";     
         url ="https://artatfalls.pythonanywhere.com/askai";
         $("#q").val(prompt);
       
