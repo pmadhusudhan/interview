@@ -119,22 +119,7 @@ xhr.onload = function() {
     console.error('Request failed.  Returned status of ' + xhr.status);
   }
 };
-		/*
-		url ="/gpt?q="+ encodeURIComponent(prompt);
-		//$(container).html(url);
-        $.get( url)
-            .done(function( data ) {
-				 //console.log(data);
-				 
-				 $(container).html(data.message);
-				 //$("#jd_section").slideUp();
-            //$(container).html((data.substring(1,data.length -1)).replaceAll('\\n','<br>'));
-
-            })
-      .fail(function( error ) {
-        console.error( "Error saving data: " + error );
-      });
-      */
+		
     }
     if(localStorage.getItem("resume") !== undefined){
     $("#resume").html(localStorage.getItem("resume"));
