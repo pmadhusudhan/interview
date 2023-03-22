@@ -105,6 +105,15 @@
 		color:#0969da;
 		text-decoration:underline;
 	    }
+	.sample{
+		font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+	}
+	.sample:hover{
+		color:#0969da;
+		text-decoration:underline;
+	    }
       button:hover {
         background-color: #3e8e41;
       }
@@ -172,9 +181,9 @@
     <div class="jdcontent">
       <div class='leftpanel'>
       <h2>Job Description </h2>
-      <p> Paste a job description below. And get AI enhanced Job details with questions. or </p>
+      <p> Paste a job description below. And get AI enhanced Job details with questions. or <a class="sample" onclick='$("#description").html($("#samplejob").html());$("#submit").click()'> Load a sample job description </a></p>
       <label id='jdskills'></label>
-        <button onclick='$("#description").html($("#samplejob").html());$("#submit").click()'> Load a sample job description </button><button style='float:right' id='submit'>Process this</button>
+        <button style='float:right' id='submit'>Process this</button>
         <section id="jd_section">
 		
 			<div contenteditable="true"   id="description" placeholder=" or enter a job description "></div>
