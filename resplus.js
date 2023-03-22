@@ -152,7 +152,7 @@ function summarize(text,container,sentences=8) {
   });
 }
 function textToBullets(text) {
-  const lines = text.split('[...]');
+  const lines = text.split('. ');
   let html = '<ul>';
   for (let line of lines) {
     html += `<li>${line.trim()}</li>`;
