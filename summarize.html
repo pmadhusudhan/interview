@@ -13,13 +13,54 @@ textarea{
 }
 </style>
 <body>
-<textarea placeholder="Enter text to be summarized"></textarea><br>
-<button>Summarize</button>
+<textarea placeholder="Enter text to be summarized">When you join Honeywell, you become a member of our global team of thinkers, innovators, dreamers and doers who make the things that make the future.
+    That means changing the way we fly, fueling jets in an eco-friendly way, keeping buildings smart and safe and even making it possible to breathe on Mars.
+    Working at Honeywell isn’t just about developing cool things. That’s why all of our employees enjoy access to dynamic career opportunities across different fields and industries.
+    
+    Are you ready to help us make the future?
+    
+    
+    You will be a member of the senior leadership team for Honeywell’s Productivity Solutions and Services Business, which is part of Honeywell’s Safety and Productivity (SPS) Business Group. You will report directly to the SPS Global Head of PMO.
+    
+    
+    You will transform and lead the PMO organization through New Product Introductions (NPI), including all phases of development and launch. You will be a key contributor in the cross-functional creation of Strategic and Annual Operating Plans that tie to investments in technologies, platforms, and products through Zero Based Budgeting (ZBB).
+    
+    
+    
+    Key Responsibilities:
+    
+    Drive execution and launch of all New Product Introductions, New Product Enhancements and Break through initiatives, for the PSS business
+    Key contributor in all AOP, ZBB, and STRAP Decisions
+    Lead and develop the Global PMO function
+    Manage and drive the Management Operating System (MOS), analytics, and KPI reporting for continuous improvement of the organization
+    Develop daily management and reports for key KPIs such as Say/Do Revenue, launch compliance, Estimate at Complete, Milestone Fidelity and billability
+    Own and define the Program Management processes, practices, tools, and capability plan
+    Champion the new product introduction (NPI) w/ Z21 and Agile process adherence within the business
+    Drive the Product Approval Committee (PAC) MOS and effectiveness
+    Track and report all key NPI programs against approved schedules and stage gates, working cross-functionally
+    MUST HAVES
+    
+    Minimum 10 years of experience in program management, technical leadership, or portfolio management
+    Minimum 5 years of experience as a people leader of global teams
+    Bachelor’s Degree
+    Ability to travel 10-20% of the time, including international
+    
+    WE VALUE
+    
+    Master’s degree in a technical discipline
+    Strong analytical skills, ability to think strategically and influence business decisions using appropriate, fact-based financial information
+    Strong written and oral communications skills at all levels, from the factory floor to senior business leadership
+    Ability to develop strong partnerships and a collaborative, teaming environment within and across functional organizations
+    Ability to apply sound judgment to day-to-day and annual planning processes
+    Independent with ability to work productively with minimal direct supervision
+    Relies on a process and teamwork-oriented approach to accomplish objectives
+    Excellent time management, organization, and prioritization skills.</textarea><br>
+<button onclick="summarize()">Summarize</button>
 <br><br><div>5 Sentence Summary</div><span></span>
 
 <script>
 
-$('button').click(function(){
+function summarize(){
     var text = $('textarea').val();
     const formdata = new FormData();
     formdata.append("key", "b9812cebd408fb73a7f180f08ef604d9");
@@ -39,7 +80,7 @@ $('button').click(function(){
     }))
     .then(({ status, body }) => $("span").html(body))
     .catch(error => console.log('error', error));
-    })
+    }
 
 </script>
 </body>
