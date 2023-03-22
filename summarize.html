@@ -62,7 +62,12 @@ $('button').click(function(){
     
     //console.log(document);
     
-if(document.length >= 5){  $('span').text(sents[0] + " - " + document[1].sentence + " - " + document[2].sentence + " - " + document[3].sentence + " - " + document[4].sentence);
+if(document.length >= 5){ 
+    $('span').text(sents[0]);
+    for(i=0;i<document.length;i++){
+        $('span').append(document[i].sentence)
+    }
+    
 }
 else
   alert("Please enter atleast 5 sentences");
