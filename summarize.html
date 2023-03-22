@@ -23,8 +23,8 @@ $('button').click(function(){
     var text = $('textarea').val();
     const formdata = new FormData();
     formdata.append("key", "b9812cebd408fb73a7f180f08ef604d9");
-    formdata.append("txt", "YOUR TEXT HERE");
-    formdata.append("sentences", "NUMBER OF SENTENCES");
+    formdata.append("txt", text);
+    formdata.append("sentences", 10);
 
     const requestOptions = {
     method: 'POST',
