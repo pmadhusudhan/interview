@@ -18,6 +18,7 @@
      
    $("#submit").click(function(){
     res = $("#description").text();
+    $("#description").find("*").css("background","#eee");
     $("#summary").html("Summarizing <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
     summarize(res,"#summary",5);
     /*
@@ -146,7 +147,9 @@ function summarize(text,container,sentences=8) {
     contentType: false,
     success: function(response) {
         $(container).html(textToBullets(response.summary));
-     
+        $(".jdcontent").find(".question:eq(0)").click();
+        $$(".jdcontent").find(".question:eq(1)").click();
+        $$(".jdcontent").find(".question:eq(2)").click();
     },
     error: function(error) {
       console.log('error', error);

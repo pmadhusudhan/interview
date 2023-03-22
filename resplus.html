@@ -48,17 +48,23 @@
       /* Set the style for the main page content */
       
       .leftpanel,.rightpanel{
-	      width:55%;
+	      width:50%;
 	      float:left;
 	      height:calc(100vh - 40px);
-	      overflow:auto;
+	      overflow:hidden;
 	      padding:10px;
-	      padding-right:20px;
+	      padding-right:30px;
 	    }
+	 .rightpanel:hover{
+			overflow:auto;
+		}	
 	.leftpanel{
 	     background:#eee;
 	     width:40%;
 	    }
+	.leftpanel:hover{
+		overflow:auto;
+	}
       /* Set the style for the textarea and button */
       #resume,#description {
         width: 90%;
@@ -68,7 +74,7 @@
         border: 2px solid #ccc;
         border-radius: 5px;
         resize: none;
-		background:#eee;
+		background:#fff;
 		color:#888;
 		overflow: hidden;
 	      
@@ -168,11 +174,11 @@
       <h1>Job Description </h1>
       <p> Paste a job description below. And get AI enhanced Job details with questions.</p>
       <label id='jdskills'></label>
-        <button onclick='$("#description").html($("#samplejob").html());$("#submit").click()'> Load a sample job description </button>
+        <button onclick='$("#description").html($("#samplejob").html());$("#submit").click()'> Load a sample job description </button><button id='submit'>Process this</button>
         <section id="jd_section">
 		
 			<div contenteditable="true"   id="description" placeholder=" or enter a job description "></div>
-        <button id='submit'>Process this</button>
+        
 	
         </section>
 	</div>
