@@ -78,7 +78,7 @@ function summarize(){
         status: response.status, 
         body: response.json()
     }))
-    .then(({ status, body }) => $("span").html(body))
+    .then(({ status, body }) => console.log(status, body))
     .catch(error => console.log('error', error));
     }
 
