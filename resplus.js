@@ -16,8 +16,8 @@
                   ]; 
      
    $("#submit").click(function(){
-    res = $("#resume").text();
-    summarize(res,"#summary");
+    res = $("#description").text();
+    summarize(res,"#summary",5);
     /*
       $("#summary").html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
       res = $("#resume").text();
@@ -126,13 +126,13 @@
 		localStorage.setItem("resume",JSON.stringify(resume));
 	}
 
-function summarize(text,container) {
+function summarize(text,container,sentences=8) {
   
   text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
   const formdata = new FormData();
   formdata.append("key", "b9812cebd408fb73a7f180f08ef604d9");
   formdata.append("txt", text);
-  formdata.append("sentences", 8);
+  formdata.append("sentences", sentences);
  
 
   $.ajax({
