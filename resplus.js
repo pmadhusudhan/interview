@@ -19,7 +19,7 @@
    $("#submit").click(function(){
     res = $("#description").text();
     $("#summary").html("Summarizing <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
-    summarize(res,"#summary",5);
+    summarize(res,"#summary",10);
     /*
       
       res = $("#resume").text();
