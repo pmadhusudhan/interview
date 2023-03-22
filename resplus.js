@@ -17,9 +17,10 @@
      
    $("#submit").click(function(){
     res = $("#description").text();
+    $("#summary").html("Summarizing <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
     summarize(res,"#summary",5);
     /*
-      $("#summary").html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
+      
       res = $("#resume").text();
       prompt = "Give a matching score of the job based on my resume and explain in HTML format. Job:<<" + $("#description").text() +">> Resume: <<"+res+">>";
       askai_generic(prompt, $("#summary"));
