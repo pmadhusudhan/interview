@@ -60,27 +60,28 @@ textarea{
 
 <script>
 
-function summarize(){
-    var text = $('textarea').val();
-    const formdata = new FormData();
-    formdata.append("key", "b9812cebd408fb73a7f180f08ef604d9");
-    formdata.append("txt", text);
-    formdata.append("sentences", 10);
-    console.log(formdata);
-    const requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-    };
+function summarize() {
+  var text = $('textarea').val();
+  const formdata = new FormData();
+  formdata.append("key", "b9812cebd408fb73a7f180f08ef604d9");
+  formdata.append("txt", text);
+  formdata.append("sentences", 10);
+  alert(formdata);
 
-    const response = fetch("https://api.meaningcloud.com/summarization-1.0", requestOptions)
-    .then(response => ({
-        status: response.status, 
-        body: response.json()
-    }))
-    .then(({ status, body }) => console.log(status, body))
-    .catch(error => console.log('error', error));
+  $.ajax({
+    url: "https://api.meaningcloud.com/summarization-1.0",
+    type: "POST",
+    data: formdata,
+    processData: false,
+    contentType: false,
+    success: function(response) {
+      console.log(response.status, response.body);
+    },
+    error: function(error) {
+      console.log('error', error);
     }
+  });
+}
 
 </script>
 </body>
