@@ -16,7 +16,9 @@
                   ]; 
      
    $("#submit").click(function(){
-      
+    res = $("#resume").text();
+    summarize(res,"#summary");
+    /*
       $("#summary").html("AI is working <img height='50px' src='https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif' />");
       res = $("#resume").text();
       prompt = "Give a matching score of the job based on my resume and explain in HTML format. Job:<<" + $("#description").text() +">> Resume: <<"+res+">>";
@@ -24,6 +26,7 @@
      
      
       $("#description").css("height","auto");
+      */
     });
     $("#savebtn").click(function(){save();})
    var loc = location.href;
@@ -122,3 +125,38 @@
 		resume = $("#resume").html();
 		localStorage.setItem("resume",JSON.stringify(resume));
 	}
+
+function summarize(text,container) {
+  
+  text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+  const formdata = new FormData();
+  formdata.append("key", "b9812cebd408fb73a7f180f08ef604d9");
+  formdata.append("txt", text);
+  formdata.append("sentences", 8);
+ 
+
+  $.ajax({
+    url: "https://api.meaningcloud.com/summarization-1.0",
+    type: "POST",
+    data: formdata,
+    processData: false,
+    contentType: false,
+    success: function(response) {
+        $(container).html(textToBullets(response.summary));
+     
+    },
+    error: function(error) {
+      console.log('error', error);
+    }
+  });
+}
+function textToBullets(text) {
+  const lines = text.split('[...]');
+  let html = '<ul>';
+  for (let line of lines) {
+    html += `<li>${line.trim()}</li>`;
+  }
+  html += '</ul>';
+  return html;
+}
+
