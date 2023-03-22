@@ -129,7 +129,7 @@
 
 function summarize(text,container,sentences=8) {
   
-  text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+  text = text.replace(/(?:\r\n|\r|\n)/g, '. ');
   const formdata = new FormData();
   formdata.append("key", "b9812cebd408fb73a7f180f08ef604d9");
   formdata.append("txt", text);
