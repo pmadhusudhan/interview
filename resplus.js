@@ -148,8 +148,8 @@ function summarize(text,container,sentences=8) {
     success: function(response) {
         $(container).html(textToBullets(response.summary));
         $(".jdcontent").find(".question:eq(0)").click();
-        $$(".jdcontent").find(".question:eq(1)").click();
-        $$(".jdcontent").find(".question:eq(2)").click();
+        $(".jdcontent").find(".question:eq(1)").click();
+        $(".jdcontent").find(".question:eq(2)").click();
     },
     error: function(error) {
       console.log('error', error);
