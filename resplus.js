@@ -153,6 +153,7 @@ function summarize(text,container,sentences=8) {
   });
 }
 function textToBullets(text) {
+  text = text.replace(/\.(?=[a-zA-Z0-9])/g, ". ");//Fullstops enforced to have a space after
   const lines = text.split('. ');
   let html = '<ul>';
   for (let line of lines) {
