@@ -39,6 +39,7 @@
        jd_loaded = decodeURIComponent(jd_loaded);
        $("#description").html(jd_loaded);  
        $("#submit").click();
+	$('.jdcontent').show();$('.rescontent').hide();	 
    }
   
    function addQuestions(arraychoice,container){
