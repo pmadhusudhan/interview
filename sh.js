@@ -1,6 +1,6 @@
 
 loc = location.href;
-if(loc.indexOf("https://www.simplyhired.com/job/") === 0){
+if(loc.indexOf("simplyhired.com/job/") > 0){
 
  
 
