@@ -1,3 +1,4 @@
+var jts = ["DevOps engineer","Computer programmer","Lead programmer","Iteration manager","Frameworks specialist","Game developer","Cloud systems engineer","Cloud computing engineer","Cloud architect","Cloud system administrator","Cloud consultant","Cloud services provider","Cloud services developer","Cloud product manager","Chief information officer (CIO)","Chief technology officer (CTO)","IT manager","IT director","IT project manager","Director of technology","Technical operations officer","Information management systems director","Senior IT consultant","Technical lead"];
 
 loc = location.href;
 if(loc.indexOf("simplyhired.com/job/") > 0){
@@ -7,7 +8,13 @@ if(loc.indexOf("simplyhired.com/job/") > 0){
 alert(loc.indexOf("/job"));
 
 }else{
-   $(".css-jgc4wz").prepend("<div style='height:100px;overflow:auto'> your links will appear here </div>");
+
+    var links = "";
+   for(i=0;i<jts.length;i++){
+    links += "<a href='https://www.simplyhired.com/search?q="+jts[i]+"'>"+jts[i]+"</a>, ";
+   }
+
+   $(".css-jgc4wz").prepend("<div id='jts' style='height:100px;overflow:auto'> "+links+"</div>");
 }
 /*
 function fetchjd(jt,jd){
