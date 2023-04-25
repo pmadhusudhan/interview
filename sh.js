@@ -2,7 +2,7 @@ var jts = ["DevOps engineer","Computer programmer","Lead programmer","Iteration 
 
 loc = location.href;
 if(loc.indexOf("simplyhired.com/job/") > 0){
-
+ 
  
     $("[data-testid=viewJobTitle]").click(function(){alert("Aha got it")}).css("cursor","pointer");
 alert("h"+loc.indexOf("/job"));
