@@ -7,14 +7,6 @@ if(loc.indexOf("simplyhired.com/job/") > 0){
 
 alert(loc.indexOf("/job"));
 
-}else{
-
-    var links = "";
-   for(i=0;i<jts.length;i++){
-    links += "<a href='https://www.simplyhired.com/search?q="+jts[i]+"'>"+jts[i]+"</a>, ";
-   }
-
-   $(".css-jgc4wz").prepend("<div id='jts' style='height:100px;overflow:auto'> "+links+"</div>");
 }
 /*
 function fetchjd(jt,jd){
