@@ -6,6 +6,8 @@ if(loc.indexOf("simplyhired.com/job/") > 0){
 
 alert(loc.indexOf("/job"));
 
+}else{
+   $(".css-jgc4wz").prepend("<div style='height:100px;overflow:auto'> your links will appear here </div>");
 }
 /*
 function fetchjd(jt,jd){
