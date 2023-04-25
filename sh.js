@@ -2,7 +2,7 @@
 loc = location.href;
 if(loc.indexOf("https://www.simplyhired.com/job/") === 0){
 
-
+ 
 
 alert("inserted here")
 }
