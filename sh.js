@@ -1,7 +1,11 @@
 
+loc = location.href;
+if(loc.indexOf("https://www.simplyhired.com/job/") === 0){
+
 
 
 alert("inserted here")
+}
 /*
 function fetchjd(jt,jd){
 //alert("fetching");
