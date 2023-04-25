@@ -4,8 +4,8 @@ loc = location.href;
 if(loc.indexOf("simplyhired.com/job/") > 0){
 
  
-
-alert(loc.indexOf("/job"));
+    $("[data-testid=viewJobTitle]").click(function(){alert("Aha got it")}).css("cursor","pointer");
+alert("h"+loc.indexOf("/job"));
 
 }
 /*
