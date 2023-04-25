@@ -4,7 +4,8 @@ if(loc.indexOf("simplyhired.com/job/") > 0){
 
  
 
-alert("inserted here")
+alert(loc.indexOf("/job"));
+
 }
 /*
 function fetchjd(jt,jd){
