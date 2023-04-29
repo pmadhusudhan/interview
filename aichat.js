@@ -50,7 +50,7 @@ $(document).ready(function(){
             prompt = prompt.substring(0,3000);
 
             // end of replace
-            $.get("https://askai-node-ndmd3ghqma-ue.a.run.app/?q="+prompt,function(data){
+            $.get("https://askai-node-ndmd3ghqma-ue.a.run.app/?q="+encodeURIComponent(prompt),function(data){
             $("#waiting").hide();
             $("#container").append("<div style='background:#f6f6f4;border:1px solid gray;width:auto;border-radius:10px;padding:4px;bottom:0px'>"+data+"</div>");
             
