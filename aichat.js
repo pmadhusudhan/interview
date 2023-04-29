@@ -47,7 +47,7 @@ $(document).ready(function(){
             // replace ?excerpt? with excerpt and ?content? with content 
             prompt = prompt.replaceAll("?summary?",pagesummary);
             prompt = prompt.replaceAll("?content?",pagecontent);
-            
+            prompt = prompt.substring(0,3000);
 
             // end of replace
             $.get("https://askai-node-ndmd3ghqma-ue.a.run.app/?q="+prompt,function(data){
