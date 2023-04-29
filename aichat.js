@@ -40,8 +40,8 @@ $(document).ready(function(){
             $('#questionbox').keypress(function(event) {
             if (event.which === 13) {
             
-            $("#container").append("<div style='margin:5px;background:#c5e1cc;border:1px solid gray;width:auto;border-radius:10px;padding:4px;text-align:right;'>"+$(this).val()+"</div><br>");
-            $('#container').scrollTop($('#container')[0].scrollHeight);
+            $("#aicontainer").append("<div style='margin:5px;background:#c5e1cc;border:1px solid gray;width:auto;border-radius:10px;padding:4px;text-align:right;'>"+$(this).val()+"</div><br>");
+            $('#aicontainer').scrollTop($('#aicontainer')[0].scrollHeight);
             
             //alert(context);
             $("#waiting").show();
@@ -49,13 +49,13 @@ $(document).ready(function(){
 
             // replace ?excerpt? with excerpt and ?content? with content 
             prompt = prompt.replaceAll("?summary?",pagesummary);
-            prompt = prompt.replaceAll("?content?",pagecontent);
+            prompt = prompt.replaceAll("?page?",pagecontent);
             prompt = prompt.substring(0,3000);
 
             // end of replace
             $.get("https://askai-node-ndmd3ghqma-ue.a.run.app/?q="+encodeURIComponent(prompt),function(data){
             $("#waiting").hide();
-            $("#container").append("<div style='background:#f6f6f4;border:1px solid gray;width:auto;border-radius:10px;padding:4px;bottom:0px'>"+data+"</div>");
+            $("#aicontainer").append("<div style='background:#f6f6f4;border:1px solid gray;width:auto;border-radius:10px;padding:4px;bottom:0px'>"+data+"</div>");
             
             });
             
