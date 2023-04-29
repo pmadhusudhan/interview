@@ -21,8 +21,10 @@
   askAI(question);
   
   }
-    function askAI(question) {
-        
+    function askAI(question = "") {
+        if(question === ""){
+          question = $("#prompt_div").val();
+        }
         //question = $("#prompt_div").val();
         //$("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
         $.ajax({
@@ -32,7 +34,7 @@
             },
             success: function(result) {
                 $("#result").html(result);
-                  $("#form").hide();
+                 // $("#form").hide();
             }
         });
     }
