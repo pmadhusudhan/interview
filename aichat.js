@@ -9,7 +9,7 @@ This is for injecting onto anypage as a chat window. ask questions, and you will
 //$("body").append("<div id='sidebar' style='position:fixed;top:0px;right:0px;width:300px;height:100%;background:#888;padding:5px;z-index:99999999'><iframe src='https://chat.openai.com/chat'></iframe></div>");
 //$("html").css("width","calc(100% - 300px)");
 $("body").append("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js'></script>");
-$("body").append("<script src='https://pmadhusudhan.github.io/interview/Readability.js'></script>");
+
 var pagesummary, pagecontent;
 
  
