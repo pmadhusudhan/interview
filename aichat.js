@@ -11,13 +11,16 @@ This is for injecting onto anypage as a chat window. ask questions, and you will
 $("body").append("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js'></script>");
 $("body").append("<script src='https://pmadhusudhan.github.io/interview/Readability.js'></script>");
 var pagesummary, pagecontent;
- 
-$(document).ready(function(){
-
+window.setTimeout(function(){
     var documentClone = document.cloneNode(true);
     var article = new Readability(documentClone).parse();
     pagesummary = article.excerpt;
     pagecontent = article.textContent;
+},2000);
+ 
+$(document).ready(function(){
+
+    
 
             $("body").append("<button style='cursor:pointer;background:orange;padding:5px;border-radius:5px;position:fixed;bottom:0px;right:0px' id='askai' value='askai'>AskAI</button>");
 
