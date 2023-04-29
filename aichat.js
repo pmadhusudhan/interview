@@ -9,10 +9,15 @@ This is for injecting onto anypage as a chat window. ask questions, and you will
 //$("body").append("<div id='sidebar' style='position:fixed;top:0px;right:0px;width:300px;height:100%;background:#888;padding:5px;z-index:99999999'><iframe src='https://chat.openai.com/chat'></iframe></div>");
 //$("html").css("width","calc(100% - 300px)");
 $("body").append("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js'></script>");
-
+$("body").append("<script src='https://pmadhusudhan.github.io/interview/Readability.js'></script>");
+var pagesummary, pagecontent;
+ 
 $(document).ready(function(){
 
-
+    var documentClone = document.cloneNode(true);
+    var article = new Readability(documentClone).parse();
+    pagesummary = article.excerpt;
+    pagecontent = article.textContent;
 
             $("body").append("<button style='cursor:pointer;background:orange;padding:5px;border-radius:5px;position:fixed;bottom:0px;right:0px' id='askai' value='askai'>AskAI</button>");
 
@@ -34,11 +39,18 @@ $(document).ready(function(){
             
             $("#container").append("<div style='margin:5px;background:#c5e1cc;border:1px solid gray;width:auto;border-radius:10px;padding:4px;text-align:right;'>"+$(this).val()+"</div><br>");
             $('#container').scrollTop($('#container')[0].scrollHeight);
-            var context = ($(".MjjYud").text());
-            context = context.substring(0,1500);
+            
             //alert(context);
             $("#waiting").show();
-            $.get("https://askai-node-ndmd3ghqma-ue.a.run.app/?q="+$(this).val(),function(data){
+            prompt = $(this).val();
+
+            // replace ?excerpt? with excerpt and ?content? with content 
+            prompt = prompt.replaceAll("?summary?",pagesummary);
+            prompt = prompt.replaceAll("?content?",pagecontent);
+            
+
+            // end of replace
+            $.get("https://askai-node-ndmd3ghqma-ue.a.run.app/?q="+prompt,function(data){
             $("#waiting").hide();
             $("#container").append("<div style='background:#f6f6f4;border:1px solid gray;width:auto;border-radius:10px;padding:4px;bottom:0px'>"+data+"</div>");
             
@@ -50,8 +62,9 @@ $(document).ready(function(){
 
             }) // end of askai button click function
 
+           
 
 });
  /* get page contents using readability.js */
 
- $("body").append("<script src='https://pmadhusudhan.github.io/interview/Readability.js'></script>");
+ 
