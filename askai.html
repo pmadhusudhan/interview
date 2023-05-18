@@ -1,7 +1,19 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<style>
+  #result{
+    height: 300px;
+    width: 90%;
+    font-size: 14px;
+    font-family:helvetica;
+    background: #eee;
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 10px;
+  }
+</style>
 </head>
 <body>  
 
@@ -9,10 +21,10 @@
 <div id="form" >
 <textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea>
 <br>
-<button id="send" onclick="askAI()">Send</button>
-<button id="sendtoGPT" >SendtoGPT</button><br>
+
+<button id="AskGPT" >SendtoGPT</button><br>
 </div>
-<div id="result" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica"></div>
+<div id="result" style=""></div>
 </div>
 
 
