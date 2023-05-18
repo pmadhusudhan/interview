@@ -30,7 +30,7 @@
       }
   
       #prompt_div {
-        height: 300px;
+        height: 150px;
         width: 600px;
         font-size: 14px;
   padding:20px;
@@ -64,15 +64,15 @@
   <body>  
   
   <div id="container">
-  <div id="form" style="
+  <div id="result" contenteditable="true">Enter the topic for the session today in the below box.&nbsp;<div><br></div><div>I will give you a question, and will evaluate your answer.</div><div><br></div><div>I will then ask you another question.</div></div><div id="form" style="
      
   ">
-  <textarea id="prompt_div" placeholder="What do you want to ask AI" style="height: 150px;width: 616px;"></textarea>
+  <textarea contenteditable="true" id="prompt_div" placeholder="What do you want to ask AI" style="">I want check my understanding on the topic : </textarea>
   
   
   <button id="sendtoGPT">AskGPT</button><br>
   </div>
-<div id="result"></div>
+
 </div>
 
 
@@ -109,5 +109,4 @@
   
 
 
-
-
+</body></html>
