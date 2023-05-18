@@ -78,8 +78,8 @@
 
 <script>
   var loc = window.location.href;
-  if(loc.indexOf("AskAI=")>0){
-  question = loc.split("AskAI=")[1];
+  if(loc.indexOf("?q=")>0){
+  question = loc.split("?q=")[1];
     
   askAI(question);
   
