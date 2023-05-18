@@ -1,30 +1,71 @@
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<style>
-  #result{
-    height: 300px;
-    width: 90%;
-    font-size: 14px;
-    font-family:helvetica;
-    background: #eee;
-    border: 1px solid gray;
-    padding: 10px;
-    margin: 10px;
-  }
-</style>
-</head>
-<body>  
-
-<div id="container">
-<div id="form" >
-<textarea id="prompt_div" style="height: 300px;width: 80%;font-size: 14px;font-family:helvetica" placeholder="What do you want to ask AI"></textarea>
-<br>
-
-<button id="AskGPT" >SendtoGPT</button><br>
-</div>
-<div id="result" style=""></div>
+<html><head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+      <style>
+    body {
+        font-family: helvetica, sans-serif;
+      background:#333;
+      }
+  
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+  
+      #form {
+        font-family: helvetica, sans-serif;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+  
+      #prompt_div {
+        height: 300px;
+        width: 600px;
+        font-size: 14px;
+  padding:20px;
+  border-radius:10px;
+      }
+  
+      #sendtoGPT {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+      #result {
+        height: 300px;
+        width: 700px;
+        font-size: 14px;
+        background: #eee;
+        border: 1px solid gray;
+        padding: 20px;
+        margin: 10px;
+        overflow: auto;
+      border-radius:10px;
+      }
+  </style> 
+  </head>
+  <body>  
+  
+  <div id="container">
+  <div id="form" style="
+     
+  ">
+  <textarea id="prompt_div" placeholder="What do you want to ask AI"></textarea>
+  
+  
+  <button id="sendtoGPT">AskGPT</button><br>
+  </div>
+<div id="result" ></div>
 </div>
 
 
