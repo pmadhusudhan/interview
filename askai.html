@@ -124,9 +124,10 @@
   if(loc.indexOf("?topic=")>0){
   topic = loc.split("?topic=")[1];
   topic = decodeURIComponent(topic);
-  $("#topic").val(topic);
-  $("#topic_chooser").hide();
+    $("#topic").val(topic);
+    $("#topic_chooser").hide();
     $("#container").show();
+    $("#sendtoGPT").click();
   }else{
     $("#topic_chooser").show();
     $("#container").hide();
