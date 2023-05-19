@@ -128,7 +128,7 @@
     $("#topic").val(topic);
     $("#topic_chooser").hide();
     $("#container").show();
-    $("#sendtoGPT").click();
+    window.setTimeout(function(){("#sendtoGPT").click();},2000);
   }else{
     $("#topic_chooser").show();
     $("#container").hide();
