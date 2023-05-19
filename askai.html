@@ -41,8 +41,8 @@
       #sendtoGPT {
         margin: 10px;
         padding: 10px 20px;
-        font-size: 16px;
-        background-color: #6ba068;
+        font-size: 20px;
+        background-color: #6aa068;
         color: white;
         border: none;
         border-radius: 5px;
@@ -100,9 +100,9 @@
     <h1> Topic : <input id="topic" placeholder="Enter a topic you are interested" /> </h1>
   <div id="question_box" >
     <div id="result">
-      This app will help you access your understanding on any topic. 
+      Are you ready... let us go...
     </div>
-    <button id="sendtoGPT"> > </button>
+    <button id="sendtoGPT">Go > </button>
   </div>
   
   <textarea contenteditable="true" id="prompt_div" placeholder="Answer the question" ></textarea>
@@ -128,7 +128,7 @@
     $("#topic").val(topic);
     $("#topic_chooser").hide();
     $("#container").show();
-    window.setTimeout(function(){("#sendtoGPT").click();},2000);
+    
   }else{
     $("#topic_chooser").show();
     $("#container").hide();
