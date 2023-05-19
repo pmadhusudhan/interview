@@ -61,6 +61,7 @@
       }
       #topic{
         font-size: large;
+        width:50%;
       }
   </style>
   </head>
@@ -89,7 +90,7 @@
   var loc = window.location.href;
   if(loc.indexOf("?topic=")>0){
   topic = loc.split("?topic=")[1];
-    
+  topic = decodeURIComponent(topic);
   $("#topic").val(topic);
   
   }
