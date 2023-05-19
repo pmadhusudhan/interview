@@ -66,6 +66,30 @@
         border:none;
         border-radius: 10px;
       }
+      #topic_chooser{
+            
+           display: flex;
+           
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        background:#eee;
+        padding:20px;
+        width:fit-content;
+        border-radius:20px;
+       box-shadow:-5px -5px 5px gray;
+      }
+      .topic_option{
+        display: inline-block;
+        width:100px;
+        padding:30px;
+        margin:10px;
+        float:left;
+        border:1px solid gray;
+        border-radius:10px;
+        background:white;
+
+      }
   </style>
   </head>
   <body>  
@@ -83,7 +107,16 @@
  
 
 </div>
-
+<div id="topic_chooser">
+  <h1>Select a topic </h1>
+<span class="topic_option">High School Geometry</span>
+<span class="topic_option">High School Algebra</span>
+<span class="topic_option">High School Physics</span>
+<span class="topic_option">High School Chemistry</span>
+<span class="topic_option">High School US Geography</span>
+<span class="topic_option">High School Computer Science</span>
+<span class="topic_option">High School English</span>
+</div>
 
 <script>
   var loc = window.location.href;
@@ -91,7 +124,13 @@
   topic = loc.split("?topic=")[1];
   topic = decodeURIComponent(topic);
   $("#topic").val(topic);
-  
+  $("#topic_chooser").hide();
+    $("#container").show();
+  }else{
+    
+    $(".topic_option").click(function(){
+      loc.href = "askai.html?topic="+$(this).text();
+    })
   }
     function askAI(question = "") {
         if(question === ""){
