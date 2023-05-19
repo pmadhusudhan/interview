@@ -210,7 +210,7 @@ $("#sendtoGPT").click(function(){
  
   if(inputval.length >1){
     
-    prompt = "Question:###"+ $("#result").html() + "### Answer :###"+ $("#prompt_div").val() +"### Check my answer."  ;
+    prompt = "Question:###"+ $("#result").html() + "### Answer :###"+ $("#prompt_div").val() +"### Check and tell me how I can improve my answer if possible"  ;
       question_bank.push($("#result").html());
       user_answers.push(inputval);
       $("#report_card").append("<div class='question'><h3>"+(question_index++)+". "+$("#result").html() + " </h3></div>");
