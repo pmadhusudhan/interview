@@ -87,10 +87,10 @@
 
 <script>
   var loc = window.location.href;
-  if(loc.indexOf("?q=")>0){
-  question = loc.split("?q=")[1];
+  if(loc.indexOf("?topic=")>0){
+  topic = loc.split("?topic=")[1];
     
-  askAI(question);
+  $("#topic").val(topic);
   
   }
     function askAI(question = "") {
