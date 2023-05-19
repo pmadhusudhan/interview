@@ -88,6 +88,7 @@
         border-radius:10px;
         background:white;
         cursor:pointer;
+        text-decoration: none;
       }
   </style>
   </head>
@@ -108,13 +109,13 @@
 </div>
 <div id="topic_chooser">
   <h1>Select a topic </h1>
-<span class="topic_option">High School Geometry</span>
-<span class="topic_option">High School Algebra</span>
-<span class="topic_option">High School Physics</span>
-<span class="topic_option">High School Chemistry</span>
-<span class="topic_option">High School US Geography</span>
-<span class="topic_option">High School Computer Science</span>
-<span class="topic_option">High School English</span>
+<a href="?topic=High School Geometry" class="topic_option">High School Geometry</a>
+<a href="?topic=High School Algebra"  class="topic_option">High School Algebra</a>
+<a href="?topic=High School Physics" class="topic_option">High School Physics</a>
+<a href="?topic=High School Chemistry" class="topic_option">High School Chemistry</a>
+<a href="?topic=High School US Geography" class="topic_option">High School US Geography</a>
+<a href="?topic=High School Computer Science" class="topic_option">High School Computer Science</a>
+<a href="?topic=High School English" class="topic_option">High School English</a>
 </div>
 
 <script>
@@ -128,10 +129,11 @@
   }else{
     $("#topic_chooser").show();
     $("#container").hide();
-    $(".topic_option").click(function(){
+   
+  }
+  $(".topic_option").click(function(){
       loc.href = "askai.html?topic="+$(this).text();
     })
-  }
     function askAI(question = "") {
         if(question === ""){
           question = $("#prompt_div").val();
