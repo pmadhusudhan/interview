@@ -172,26 +172,87 @@
     $("#container").toggle();
     $("#topic_chooser").hide();
   })  
-    function askAI(question = "") {
-        if(question === ""){
-          question = $("#prompt_div").val();
-        }
-        //question = $("#prompt_div").val();
-        //$("#result").html("AI is slow :) ... if you are patient you will be pleasantly surprised");
-        $.ajax({
-            url: "https://askai-node-ndmd3ghqma-ue.a.run.app?q="+question,
-            type: 'GET',
-            complete: function() {
-            },
-            success: function(result) {
-                $("#result").append(result+"<br>");
-                 // $("#form").hide();
-            }
-        });
-    }
-    
+  var topic = "";
+  var question_bank = [];
+  var user_answers = [];
+var AI_answers = [];
+var question_index = 1;
+var answer = "";
+function process_response(text){
+     $(".waiting").hide();
+      if(text.indexOf(":")>0){
+        $("#result").html(text.substring(text.indexOf(":") +1));
 
+      }else{
+        
+        answer = text.substring(answer);
+        $("#result").html(text);
+      }
+      
+
+}
+function process_completion(){
   
+}
+function process_error_response(text){
+    
+}
+
+$("#sendtoGPT").click(function(){
+  
+  waiting = "<img class='waiting' src='https://static.wixstatic.com/media/34168b_d90dce54c59542ffa482c91aacbb6a32~mv2.gif' style='height: 15px;width: 50px;'/>";     
+  
+  if(topic ==""){
+     topic = $("#topic").val();
+  }
+  
+  inputval = $("#prompt_div").val();
+ 
+  if(inputval.length >1){
+    
+    prompt = "Question:###"+ $("#result").html() + "### Answer :###"+ $("#prompt_div").val() +"### Grade my answer (0-wrong,5-partially correct and 10-correct) and if not give correct answer."  ;
+      question_bank.push($("#result").html());
+      user_answers.push(inputval);
+      $("#report_card").append("<div class='question'><h3>"+(question_index++)+". "+$("#result").html() + " </h3></div>");
+      $("#report_card").append("<div class='user_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>Your answer</b> : "+inputval + "</div>");
+      $("#prompt_div").val("");
+      $("#prompt_div").hide();
+    
+    }else{
+      if(question_bank.length > 0){
+        $("#report_card").append("<div class='AI_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>AI Answer</b>: "+$("#result").html() + "</div>");
+      
+        prompt = "I already know answers to these questions :"+ JSON.stringify(question_bank) + " on the topic:"+ topic+". Ask me another question on the topic.";
+      }else{
+        prompt = "I want to learn on the topic :"+ topic+".Ask me a question. "
+      }
+      $("#prompt_div").show();
+    }
+  q = prompt.substring(0,1000);
+  $("#result").html(waiting);
+  try{   
+    //m_scrapeQuestion();
+    paidAI(q);
+  }catch{
+    
+   
+  }
+})
+
+
+function paidAI(question) {
+  //alert(question);
+$.ajax({
+      url: "https://askai-node-ndmd3ghqma-ue.a.run.app?q="+JSON.stringify(question),
+      type: 'GET',
+      complete: function() {
+      },
+      success: function(result) {
+         process_response(result);
+           
+      }
+  });
+}
 
 </script>
   
