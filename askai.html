@@ -106,10 +106,22 @@
         text-decoration: none;
         width: 100%;
     }
+    #report_card{
+        display: none;
+
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        background:#eee;
+        padding:20px;
+        width:fit-content;
+        border-radius:20px;
+        box-shadow:-5px -5px 5px gray;
+    }
   </style>
   </head>
   <body>  
-  <div id="toolbar"><a href="/interview/askai.html">Home</a> <button id="getReport">Get Report</button></div>
+  <div id="toolbar"><a style="text-decoration: none;" href="/interview/askai.html">Home</a> <button id="getReport">Get Report</button></div>
   <div id="container">
     <h1> Topic : <input id="topic" placeholder="Enter a topic you are interested" /> </h1>
   <div id="question_box" >
@@ -133,7 +145,7 @@
 <a href="?topic=High School Computer Science" class="topic_option">High School Computer Science</a>
 <a href="?topic=High School English" class="topic_option">High School English</a>
 </div>
-
+<div id="report_card"></div>
 <script>
   var loc = window.location.href;
   if(loc.indexOf("?topic=")>0){
@@ -151,6 +163,10 @@
   $(".topic_option").click(function(){
       loc.href = "askai.html?topic="+$(this).text();
     })
+
+  $("#getReport").click(function(){
+    $("#report_card").toggle();
+  })  
     function askAI(question = "") {
         if(question === ""){
           question = $("#prompt_div").val();
