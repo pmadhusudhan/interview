@@ -21,7 +21,7 @@
        box-shadow:-5px -5px 5px gray;
       }
   
-      #form {
+      #question_box {
         font-family: helvetica, sans-serif;
         display: flex;
         flex-direction: row;
@@ -72,19 +72,15 @@
    
   <div id="container">
     <h1> Topic : <input id="topic" placeholder="Enter a topic you are interested" /> </h1>
-  <div id="result" contenteditable="true">
-    <div>
+  <div id="question_box" >
+    <div id="result">
       This app will help you access your understanding on any topic. 
     </div>
-   
+    <button id="sendtoGPT"> > </button>
   </div>
-  <button id="sendtoGPT"> > </button><br>
-  <div id="form" >
+  
   <textarea contenteditable="true" id="prompt_div" placeholder="Answer the question" ></textarea>
-  
-  
  
-  </div>
 
 </div>
 
