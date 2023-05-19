@@ -166,6 +166,8 @@
 
   $("#getReport").click(function(){
     $("#report_card").toggle();
+    $("#container").toggle();
+    $("#topic_chooser").hide();
   })  
     function askAI(question = "") {
         if(question === ""){
