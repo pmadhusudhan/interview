@@ -169,7 +169,7 @@
     $("#topic").val(topic);
     $("#topic_chooser").hide();
     $("#container").show();
-    getQs(topic);
+    
     
   }else{
     $("#topic_chooser").show();
@@ -214,46 +214,46 @@ $("#sendtoGPT").click(function(){
 
 
 /*
-$("#sendtoGPT").click(function(){
-  
-  waiting = "<img class='waiting' src='https://static.wixstatic.com/media/34168b_d90dce54c59542ffa482c91aacbb6a32~mv2.gif' style='height: 15px;width: 50px;'/>";     
-  
-  if(topic ==""){
-     topic = $("#topic").val();
-  }
-  
-  inputval = $("#prompt_div").val();
- 
-  if(inputval.length >1){
+  $("#sendtoGPT").click(function(){
     
-    prompt = "Question:###"+ $("#result").html() + "### Answer :###"+ $("#prompt_div").val() +"### Check and tell me how I can improve my answer if possible"  ;
-      question_bank.push($("#result").html());
-      user_answers.push(inputval);
-      $("#report_card").append("<div class='question'><h3>"+(question_index++)+". "+$("#result").html() + " </h3></div>");
-      $("#report_card").append("<div class='user_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>Your answer</b> : "+inputval + "</div>");
-      $("#prompt_div").val("");
-      $("#prompt_div").hide();
+    waiting = "<img class='waiting' src='https://static.wixstatic.com/media/34168b_d90dce54c59542ffa482c91aacbb6a32~mv2.gif' style='height: 15px;width: 50px;'/>";     
     
-    }else{
-      if(question_bank.length > 0){
-        $("#report_card").append("<div class='AI_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>AI Answer</b>: "+$("#result").html() + "</div>");
-      
-        prompt = "I already know answers to these questions :"+ JSON.stringify(question_bank) + " on the topic:"+ topic+". Ask me another question on the topic.";
-      }else{
-        prompt = "I want to learn on the topic :"+ topic+".Ask me a question. "
-      }
-      $("#prompt_div").show();
+    if(topic ==""){
+      topic = $("#topic").val();
     }
-  q = prompt.substring(0,1000);
-  $("#result").html(waiting);
-  try{   
-    //m_scrapeQuestion();
-    paidAI(q);
-  }catch{
     
-   
-  }
-})
+    inputval = $("#prompt_div").val();
+  
+    if(inputval.length >1){
+      
+      prompt = "Question:###"+ $("#result").html() + "### Answer :###"+ $("#prompt_div").val() +"### Check and tell me how I can improve my answer if possible"  ;
+        question_bank.push($("#result").html());
+        user_answers.push(inputval);
+        $("#report_card").append("<div class='question'><h3>"+(question_index++)+". "+$("#result").html() + " </h3></div>");
+        $("#report_card").append("<div class='user_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>Your answer</b> : "+inputval + "</div>");
+        $("#prompt_div").val("");
+        $("#prompt_div").hide();
+      
+      }else{
+        if(question_bank.length > 0){
+          $("#report_card").append("<div class='AI_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>AI Answer</b>: "+$("#result").html() + "</div>");
+        
+          prompt = "I already know answers to these questions :"+ JSON.stringify(question_bank) + " on the topic:"+ topic+". Ask me another question on the topic.";
+        }else{
+          prompt = "I want to learn on the topic :"+ topic+".Ask me a question. "
+        }
+        $("#prompt_div").show();
+      }
+    q = prompt.substring(0,1000);
+    $("#result").html(waiting);
+    try{   
+      //m_scrapeQuestion();
+      paidAI(q);
+    }catch{
+      
+    
+    }
+  })
 */
 
 function paidAI(question) {
@@ -277,6 +277,7 @@ function getQs(topic = "AWS Lamda"){
     
   });
 }
+getQs(topic);
 </script>
   
 </body>
