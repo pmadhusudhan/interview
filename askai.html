@@ -259,10 +259,12 @@ $.ajax({
       }
   });
 }
-
+getQs();
 function getQs(topic = "AWS Lamda"){
   $.get("https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name=AWS Lamda",function(data){
-    $("#result").html(data);
+    
+   qa = JSON.parse(data); 
+    $("#result").html(qa[0][0]);
   });
 }
 </script>
