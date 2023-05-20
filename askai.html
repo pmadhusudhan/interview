@@ -281,18 +281,21 @@ $("#sendtoGPT").click(function(){
   })
 */
 
-async function paidAI(question) {
-  //alert(question);
-$.ajax({
-      url: "https://askai-node-ndmd3ghqma-ue.a.run.app?q="+encodeURIComponent(question),
+
+function paidAI(question) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: "https://askai-node-ndmd3ghqma-ue.a.run.app?q=" + encodeURIComponent(question),
       type: 'GET',
-      complete: function() {
+      complete: function () {
       },
-      success: function(result) {
-        alert(result);
-         //process_response(result);
-           return result;
+      success: function (result) {
+        resolve(result);
+      },
+      error: function (error) {
+        reject(error);
       }
+    });
   });
 }
 
