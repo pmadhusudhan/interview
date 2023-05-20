@@ -276,6 +276,7 @@ $.ajax({
 
 function getQs(){
   url = "https://gsproxy-ndmd3ghqma-ue.a.run.app?url=https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name="+(topic.replaceAll(" ","_"));
+  url = encodeURI(url);
  
   // url = "https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name=AWS Lamba";
   $.get(url,function(data){
