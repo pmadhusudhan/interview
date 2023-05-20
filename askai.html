@@ -50,6 +50,9 @@
   border-radius: 5px;
   cursor: pointer;
 }
+#sendtoGPT{
+  display:none;
+}
 
 #result {
   font-family: helvetica, sans-serif;
@@ -232,7 +235,7 @@ $("#sendtoGPT").click(function(){
   
   question_index++;
   }else{
-    getQs();
+    //getQs();
   }
 
 })
@@ -308,6 +311,7 @@ function getQs(){
   $.get(url,function(data){
     
    qa = JSON.parse(data); 
+   $("#sendtoGPT").show();
    
   });
 }
