@@ -282,8 +282,7 @@ function getQs(){
   $.get(url,function(data){
     
    qa = JSON.parse(data); 
-   $("#result").html(qa[question_index][0]);
-   question_index++; 
+   
   });
 }
 getQs();
