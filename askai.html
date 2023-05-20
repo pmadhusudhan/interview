@@ -219,7 +219,7 @@ $("#sendtoGPT").click(function(){
       
       prompt = "Grade this answer (0-incorrect,5-partially correct,10 - fully correct) answer: ###"+ans + "###, question:###"+qa[prev_index][0]+"###";
       
-        $("#report_card").append("<div class='question'><h3>"+(prev_index)+". "+qa[prev_index][0] + " </h3></div>");
+        $("#report_card").append("<div class='question'><h3>"+(question_index)+". "+qa[prev_index][0] + " </h3></div>");
       $("#report_card").append("<div class='user_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>Your answer</b> : "+ans + "</div>");
       
       paidAI(prompt).then(data => {
