@@ -143,7 +143,7 @@
     <button id="sendtoGPT">Go > </button>
   
   
-  <textarea contenteditable="true" id="prompt_div" placeholder="Answer the question" ></textarea>
+  <textarea contenteditable="true" id="prompt_div" placeholder="Answer the question" onpaste="preventPaste(event)"></textarea>
  
 
 </div>
@@ -189,7 +189,10 @@
     $("#container").toggle();
     $("#topic_chooser").hide();
   })  
-  
+  function preventPaste(event) {
+  event.preventDefault();
+}
+
 function process_response(text){
      $(".waiting").hide();
       if(text.indexOf(":")>0){
