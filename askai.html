@@ -155,6 +155,13 @@
 </div>
 <div id="report_card"><h2>Your report card</h2></div>
 <script>
+  var qa;
+  var topic = "";
+  var question_bank = [];
+  var user_answers = [];
+  var AI_answers = [];
+  var question_index = 0;
+  var answer = "";
   var loc = window.location.href;
   if(loc.indexOf("?topic=")>0){
   topic = loc.split("?topic=")[1];
@@ -162,6 +169,7 @@
     $("#topic").val(topic);
     $("#topic_chooser").hide();
     $("#container").show();
+    getQs(topic);
     
   }else{
     $("#topic_chooser").show();
@@ -178,12 +186,6 @@
     $("#topic_chooser").hide();
   })  
   
-  var topic = "";
-  var question_bank = [];
-  var user_answers = [];
-var AI_answers = [];
-var question_index = 1;
-var answer = "";
 function process_response(text){
      $(".waiting").hide();
       if(text.indexOf(":")>0){
@@ -205,13 +207,21 @@ function process_error_response(text){
 }
 
 $("#sendtoGPT").click(function(){
+  $("#result").html(qa[question_index][0]);
+  question_index++;
+
+})
+
+
+/*
+$("#sendtoGPT").click(function(){
   
   waiting = "<img class='waiting' src='https://static.wixstatic.com/media/34168b_d90dce54c59542ffa482c91aacbb6a32~mv2.gif' style='height: 15px;width: 50px;'/>";     
   
   if(topic ==""){
      topic = $("#topic").val();
   }
-  getQs(topic);
+  
   inputval = $("#prompt_div").val();
  
   if(inputval.length >1){
@@ -244,7 +254,7 @@ $("#sendtoGPT").click(function(){
    
   }
 })
-
+*/
 
 function paidAI(question) {
   //alert(question);
@@ -259,12 +269,12 @@ $.ajax({
       }
   });
 }
-getQs();
+
 function getQs(topic = "AWS Lamda"){
-  $.get("https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name=AWS Lamda",function(data){
+  $.get("https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name="+topic,function(data){
     
    qa = JSON.parse(data); 
-    $("#result").html(qa[0][0]);
+    
   });
 }
 </script>
