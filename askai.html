@@ -212,7 +212,13 @@ $("#sendtoGPT").click(function(){
   if(qa.length > 0) {
     if(ans.length >1){
       $("#result").append("<p>" +qa[question_index][1]);
-      
+      prompt = "Grade this answer (0-incorrect,5-partially correct,10 - fully correct) answer: ###"+ans + "###, question:###"+qa[question_index][0]+"###";
+      paidAI(prompt).then(data => {
+        $("#report_card").append("<div class='question'><h3>"+(question_index)+". "+qa[question_index][0] + " </h3></div>");
+        $("#report_card").append("<div class='user_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>Your grade</b> : "+data + "</div>");
+        $("#report_card").append("<div class='user_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>Your answer</b> : "+ans + "</div>");
+        
+      });
       $("#report_card").append("<div class='question'><h3>"+(question_index)+". "+qa[question_index][0] + " </h3></div>");
       $("#report_card").append("<div class='user_answer'>&nbsp;&nbsp;&nbsp;&nbsp;<b>Your answer</b> : "+ans + "</div>");
       
@@ -275,7 +281,7 @@ $("#sendtoGPT").click(function(){
   })
 */
 
-function paidAI(question) {
+async function paidAI(question) {
   //alert(question);
 $.ajax({
       url: "https://askai-node-ndmd3ghqma-ue.a.run.app?q="+encodeURIComponent(question),
