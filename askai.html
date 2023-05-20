@@ -289,8 +289,8 @@ $.ajax({
       complete: function() {
       },
       success: function(result) {
-         process_response(result);
-           
+         //process_response(result);
+           return result;
       }
   });
 }
