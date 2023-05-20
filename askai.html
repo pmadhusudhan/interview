@@ -214,8 +214,9 @@ $("#sendtoGPT").click(function(){
   ans = $("#prompt_div").val();
   if(qa.length > 0) {
     if(ans.length >1){
-      $("#result").append("<p>" +qa[question_index][1]);
       prev_index = parseInt(question_index)-1;
+      $("#result").append("<p>" +qa[prev_index][1]);
+      
       prompt = "Grade this answer (0-incorrect,5-partially correct,10 - fully correct) answer: ###"+ans + "###, question:###"+qa[prev_index][0]+"###";
       
         $("#report_card").append("<div class='question'><h3>"+(prev_index)+". "+qa[prev_index][0] + " </h3></div>");
