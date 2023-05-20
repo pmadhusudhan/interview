@@ -4,123 +4,122 @@
   <style>
     body {
         font-family: helvetica, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background:#dcdcda;
       }
-  
-      #container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        background:#eee;
-        padding:20px;
-        width:80%;
-        border-radius:20px;
-       box-shadow:-5px -5px 5px gray;
-      }
-  
-      #question_box {
-        font-family: helvetica, sans-serif;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-  
-      #prompt_div {
-        height: 150px;
-        width: 600px;
-        font-size: 14px;
-        padding:20px;
-        border-radius:10px;
-        display: none;
-      }
-  
-      #sendtoGPT,#getReport {
-        margin: 10px;
-        padding: 10px 20px;
-        font-size: 20px;
-        background-color: #6aa068;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-  
-      #result {
-        font-family: helvetica, sans-serif;
-        height: 200px;
-        width: 700px;
-        font-size: large;
-        background: #fcf9ef;
-        border: 1px solid gray;
-        padding: 20px;
-        margin: 10px;
-        overflow: auto;
-      border-radius:10px;
-      }
-      #topic{
-        font-size: x-large;
-        width:400px;
-        border:none;
-        border-radius: 10px;
-        padding:10px;
-      }
-      #topic_chooser{
-            
-           display: block;
-           
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        background:#eee;
-        padding:20px;
-        width:50%;
-        border-radius:20px;
-       box-shadow:-5px -5px 5px gray;
-      }
-      .topic_option{
-        display: inline-block;
-        width:100px;
-        padding:30px;
-        margin:10px;
-        border:1px solid gray;
-        border-radius:10px;
-        background:white;
-        cursor:pointer;
-        text-decoration: none;
-        color:gray;
-      }
-      #toolbar{
-        display: flex;
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        background-color: #333;
-        color: white;
-        text-decoration: none;
-        width: 100%;
-    }
-    #report_card{
-        display: none;
+  #container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  background:#eee;
+  padding:20px;
+  width:80%;
+  border-radius:20px;
+  box-shadow:-5px -5px 5px gray;
+}
 
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        background:white;
-        padding:20px;
-        width:80%;
-        height:80%;
-        overflow: auto;
-        border-radius:20px;
-        box-shadow:-5px -5px 5px gray;
-    }
+#question_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#prompt_div {
+  height: 150px;
+  width: 100%;
+  font-size: 14px;
+  padding:20px;
+  border-radius:10px;
+  display: none;
+}
+
+#sendtoGPT, #getReport {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #6aa068;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#result {
+  font-family: helvetica, sans-serif;
+  height: 200px;
+  width: 100%;
+  font-size: large;
+  background: #fcf9ef;
+  border: 1px solid gray;
+  padding: 20px;
+  margin: 10px;
+  overflow: auto;
+  border-radius:10px;
+}
+
+#topic {
+  font-size: x-large;
+  width: 100%;
+  border:none;
+  border-radius: 10px;
+  padding:10px;
+}
+
+#topic_chooser {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  background:#eee;
+  padding:20px;
+  width:100%;
+  border-radius:20px;
+  box-shadow:-5px -5px 5px gray;
+}
+
+.topic_option {
+  display: inline-block;
+  width:100px;
+  padding:30px;
+  margin:10px;
+  border:1px solid gray;
+  border-radius:10px;
+  background:white;
+  cursor:pointer;
+  text-decoration: none;
+  color:gray;
+}
+
+#toolbar {
+  display: flex;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+}
+
+#report_card {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  background:white;
+  padding:20px;
+  width:100%;
+  height:100%;
+  overflow: auto;
+  border-radius:20px;
+  box-shadow:-5px -5px 5px gray;
+}
+
+      
   </style>
   </head>
   <body>  
