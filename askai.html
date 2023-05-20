@@ -211,7 +211,7 @@ $("#sendtoGPT").click(function(){
   $("#result").html(qa[question_index][0]);
   question_index++;
   }else{
-    getQs(topic);
+    getQs();
   }
 
 })
@@ -276,6 +276,7 @@ $.ajax({
 
 function getQs(){
   url = "https://gsproxy-ndmd3ghqma-ue.a.run.app?url=https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name="+encodeURIComponent(topic);
+  url = "https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name=AWS Lamba";
   $.get(url,function(data){
     
    qa = JSON.parse(data); 
