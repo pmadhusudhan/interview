@@ -207,9 +207,17 @@ function process_error_response(text){
 }
 
 $("#sendtoGPT").click(function(){
+
+  ans = $("#prompt_div").val();
   if(qa.length > 0) {
-  $("#result").html(qa[question_index][0]);
-  $("#result").append(qa[question_index][1]);
+    if(ans.length >1){
+      $("#result").append(qa[question_index][1]);
+      $("#prompt_div").val("");
+    }else{
+      $("#result").html(qa[question_index][0]);
+    }
+  
+  
   question_index++;
   }else{
     getQs();
