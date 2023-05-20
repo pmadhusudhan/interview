@@ -211,7 +211,7 @@ $("#sendtoGPT").click(function(){
   ans = $("#prompt_div").val();
   if(qa.length > 0) {
     if(ans.length >1){
-      $("#result").append(qa[question_index][1]);
+      $("#result").append("<p>" +qa[question_index][1]);
       $("#prompt_div").val("");
       $("#prompt_div").hide();
     }else{
