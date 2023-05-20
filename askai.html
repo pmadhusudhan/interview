@@ -155,7 +155,7 @@
 </div>
 <div id="report_card"><h2>Your report card</h2></div>
 <script>
-  var qa;
+  var qa = [];
   var topic = "";
   var question_bank = [];
   var user_answers = [];
@@ -207,8 +207,12 @@ function process_error_response(text){
 }
 
 $("#sendtoGPT").click(function(){
+  if(qa.length > 0) {
   $("#result").html(qa[question_index][0]);
   question_index++;
+  }else{
+    getQs(topic);
+  }
 
 })
 
@@ -278,7 +282,7 @@ function getQs(topic = "AWS Lamda"){
    question_index++; 
   });
 }
-window.setTimeout(function(){ getQs(topic);},2000);
+
 </script>
   
 </body>
