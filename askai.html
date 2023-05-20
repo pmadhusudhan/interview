@@ -177,6 +177,7 @@
     $("#container").toggle();
     $("#topic_chooser").hide();
   })  
+  
   var topic = "";
   var question_bank = [];
   var user_answers = [];
@@ -210,7 +211,7 @@ $("#sendtoGPT").click(function(){
   if(topic ==""){
      topic = $("#topic").val();
   }
-  
+  getQs(topic);
   inputval = $("#prompt_div").val();
  
   if(inputval.length >1){
@@ -259,6 +260,11 @@ $.ajax({
   });
 }
 
+function getQs(topic = "AWS Lamda"){
+  $.get("https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name=AWS Lamda",function(data){
+    $("#result").html(data);
+  });
+}
 </script>
   
 </body>
