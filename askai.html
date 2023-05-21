@@ -151,13 +151,7 @@
 </div>
 <div id="topic_chooser">
   <h1>Select a topic </h1>
-<a href="?topic=java" class="topic_option">java</a>
-<a href="?topic=angularjs"  class="topic_option">angularjs</a>
-<a href="?topic=aws lambda" class="topic_option">AWS Lambda</a>
-<a href="?topic=High School Chemistry" class="topic_option">High School Chemistry</a>
-<a href="?topic=High School US Geography" class="topic_option">High School US Geography</a>
-<a href="?topic=High School Computer Science" class="topic_option">High School Computer Science</a>
-<a href="?topic=High School English" class="topic_option">High School English</a>
+
 </div>
 <div id="report_card"><h2>Your report card</h2></div>
 <script>
@@ -168,6 +162,7 @@
   var AI_answers = [];
   var question_index = 0;
   var answer = "";
+  var topics_list = ["application developer","data architect","database admin","director of technology","project manager","scrum master","security engineer","software engineer","systems admin","web developer"];
   var loc = window.location.href;
   if(loc.indexOf("?topic=")>0){
   topic = loc.split("?topic=")[1];
@@ -195,6 +190,12 @@
   event.preventDefault();
 }
 
+function add_topics(){
+  for(i=0;i<topics_list.length;i++){
+    $("#topic_chooser").append('<a href="?topic='+topics_list[i]+'" class="topic_option">'+topics_list[i]+'</a>')
+  }
+}
+add_topics();
 function process_response(text){
      $(".waiting").hide();
       if(text.indexOf(":")>0){
@@ -312,7 +313,7 @@ function paidAI(question) {
     });
   });
 }
-
+/*
 function getQs_old(){
   topic = topic.toLowerCase();
   url = "https://gsproxy-ndmd3ghqma-ue.a.run.app?url=https://script.google.com/macros/s/AKfycbzF7sduJuzMI5npM-McIXmX53W5DO1dCjjE8McrGkthY3MwC0GcH7T0tiKXuVINJVam/exec?name="+(topic.replaceAll(" ","_"));
@@ -326,7 +327,7 @@ function getQs_old(){
    
   });
 }
-
+*/
 function getQs(){
   topic = topic.toLowerCase();
   url = "https://tests-ndmd3ghqma-ue.a.run.app?data=&user="+(topic.replaceAll(" ","_"));
