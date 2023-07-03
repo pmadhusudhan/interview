@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    </head>
+    <body>
+        Hello world!
+        <input id="videourl" placeholder="type youtube url"><br>
+        <div id="transcript"></div>
+        <script>
+            async function getLangOptionsWithLink() {
+   
+                // Get a transcript URL
+                //$("#ai_content").html("");
+                l = "https://www.youtube.com/watch?v=tlHuhrXhCAc&list=PLWFn7BWCnY9Byx-lfUTomyxht2fq9MJY9";
+                const videoPageResponse = await fetch(l);
+                const videoPageHtml = await videoPageResponse.text();
+                const splittedHtml = videoPageHtml.split('"captions":')
+                $("#transcript").html(splittedHtml.length);
+                
+   
+            }
+        getLangOptionsWithLink()
+        </script>
+    </body>
+</html>
