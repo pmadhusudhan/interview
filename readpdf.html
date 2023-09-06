@@ -9,8 +9,11 @@
 		<h1>AI scan of any of your document</h1>
 		Load your pdf here to understand it in easily understandable language.<br>
 		 <input type="file" id="pdf-file" accept="application/pdf">
-		<input type="text" id="limit" value="1000"/>
+		Limit: <input type="text" id="limit" value="1000"/>
+		Question : <input type="text" id="prompt" value="Identify this document based on selected text and list easy to understand bullet points to understand the document"/>
 		<button onclick="getSummary()">Summarize</button>
+		<hr>
+		<br>
 		<div style="width:50%; height:600px;overflow:auto; " contenteditable="true" id="text-area">Paste the text here or upload PDF</div>
 		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
@@ -85,7 +88,7 @@
     			}else{
 			selectedtext = $('#text-area').html();
 			}
-			question = "Identify this document based on selected text and list easy to understand bullet points to understand the document";
+			question = $('#prompt').val();
 			
 			    if($("#ai_display").length > 0){
 			      $("#ai_display").html("Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div>"+selectedtext+"</p>");
