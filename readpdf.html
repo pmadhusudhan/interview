@@ -77,8 +77,13 @@
 				reader.readAsArrayBuffer(file);
 			});
 		function getSummary(){
-			selectedtext = $('#text-area').val();
-			 
+			const selection = window.getSelection();
+    			const selectedtext = selection.toString();
+    			if(selectedtext !== ""){
+
+    			}else{
+			selectedtext = $('#text-area').html();
+			}
 			question = "summarize in easy to understand bullet points";
 			
 			    if($("#ai_display").length > 0){
