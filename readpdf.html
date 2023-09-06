@@ -110,7 +110,12 @@
 		            $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+result+"</textarea>");
 		          }
 		             
-		        }
+		        },
+				error: function(error) {
+    if (error.status === 500) {
+      $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+error.message+"</textarea>"); 
+    }
+  }
 		    });
 		}
 	function limitCharacters(text, maxTokens) {
