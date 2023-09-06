@@ -4,6 +4,15 @@
 
 	<body>
         <input type="file" id="pdf-file">
+		In this post, you’ll learn how to extract text from PDF documents using JavaScript. It’ll cover open source solutions for extracting text, as well as how to extract text with PSPDFKit’s JavaScript PDF library. By the end, you’ll have a complete client-side JavaScript-based solution for extracting text from PDF documents.
+
+It’s important to note that there are two different types of text extraction:
+
+Extracting text that’s already selectable in a PDF viewer. PDFs are usually made up of text authored in a Word processing program.
+
+Extracting text from an image-based PDF document. PDFs are typically made up of images from documents that are scanned.
+
+This post will focus on extracting text that’s already selectable.
 		<textarea id="text-area"></textarea>
 		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
