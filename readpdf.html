@@ -13,7 +13,7 @@ Extracting text that’s already selectable in a PDF viewer. PDFs are usually ma
 Extracting text from an image-based PDF document. PDFs are typically made up of images from documents that are scanned.
 
 This post will focus on extracting text that’s already selectable.
-		<textarea id="text-area"></textarea>
+		<div id="text-area"></div>
 		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
 		
@@ -66,7 +66,7 @@ This post will focus on extracting text that’s already selectable.
 					
                     extractText(pdfUrl).then(
                         function (text) {
-                            textarea.value = text;
+                            textarea.innerHTML = text;
                         },
                         function (reason) {
                             console.error(reason);
