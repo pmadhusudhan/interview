@@ -96,7 +96,7 @@
 			$.ajax({
 			        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
 			        type: 'POST',
-			        data: JSON.stringify({q:question +": #transcript:"+ selectedtext.substr(0,3000)}),
+			        data: JSON.stringify({q:question +": #transcript:"+ selectedtext.substr(0,4000)}),
 			        contentType: "application/json",
 			        complete: function() {
 			          $("#ai_display").html();
