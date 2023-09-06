@@ -9,7 +9,7 @@
 		<h1>AI scan of any of your document</h1>
 		Load your pdf here to understand it in easily understandable language.<br>
 		 <input type="file" id="pdf-file" accept="application/pdf">
-		
+		<input type="text" id="limit" default="1000"/>
 		<button onclick="getSummary()">Summarize</button>
 		<div style="width:50%; height:600px;overflow:auto" id="text-area"></div>
 		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
@@ -79,6 +79,7 @@
 		function getSummary(){
 			selection = window.getSelection();
     			selectedtext = selection.toString();
+			limit = $("#limit").val();
     			if(selectedtext !== ""){
 
     			}else{
@@ -96,7 +97,7 @@
 			$.ajax({
 			        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
 			        type: 'POST',
-			        data: JSON.stringify({q:question +": #transcript:"+ limitCharacters(selectedtext,1000)}),
+			        data: JSON.stringify({q:question +": #transcript:"+ limitCharacters(selectedtext,limit)}),
 			        contentType: "application/json",
 			        complete: function() {
 			          $("#ai_display").html();
