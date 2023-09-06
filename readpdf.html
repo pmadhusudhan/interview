@@ -10,6 +10,7 @@
 		Load your pdf here to understand it in easily understandable language.
 		 <input type="file" id="pdf-file">
 		<div style="width:50%; height:600px;overflow:auto" id="text-area"></div>
+		<button onclick="getsummary()">Summarize</button>
 		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
 		
@@ -74,7 +75,9 @@
 
 				reader.readAsArrayBuffer(file);
 			});
-		function getSummary(selectedtext){
+		function getSummary(){
+			const textarea = document.getElementById('text-area');
+			selectedtext = textarea.value;
 			question = "summarize in easy to understand bullet points";
 			
     if($("#ai_display").length > 0){
