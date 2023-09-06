@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+
+	<body>
+        <input type="file" id="pdf-file">
+		<textarea id="text-area"></textarea>
+		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+		
+
+		<script>
+			pdfjsLib.GlobalWorkerOptions.workerSrc =
+				'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+			async function extractText(pdfUrl) {
+				var pdf = pdfjsLib.getDocument(pdfUrl);
+				return pdf.promise.then(function (pdf) {
+					var totalPageCount = pdf.numPages;
+					var countPromises = [];
+					for (
+						var currentPage = 1;
+						currentPage <= totalPageCount;
+						currentPage++
+					) {
+						var page = pdf.getPage(currentPage);
+						countPromises.push(
+							page.then(function (page) {
+								var textContent = page.getTextContent();
+								return textContent.then(function (text) {
+									return text.items
+										.map(function (s) {
+											return s.str;
+										})
+										.join('');
+								});
+							}),
+						);
+					}
+
+					return Promise.all(countPromises).then(function (texts) {
+						return texts.join('');
+					});
+				});
+			}
+
+			
+			const element = document.getElementById('pdf-file');
+			const textarea = document.getElementById('text-area');
+            
+			element.addEventListener('change', function () {
+				const file = element.files[0];
+				const reader = new FileReader();
+
+				reader.onload = function (event) {
+					const pdfUrl = event.target.result;
+					
+                    extractText(pdfUrl).then(
+                        function (text) {
+                            textarea.value = text;
+                        },
+                        function (reason) {
+                            console.error(reason);
+                        },
+			        );
+					//textarea.value = text;
+				};
+
+				reader.readAsArrayBuffer(file);
+			});
+		</script>
+
+		
+	</body>
+</html>
