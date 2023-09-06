@@ -77,36 +77,36 @@
 				reader.readAsArrayBuffer(file);
 			});
 		function getSummary(){
-			const textarea = document.getElementById('text-area');
-			selectedtext = textarea.value;
+			selectedtext = $('#text-area').val();
+			 
 			question = "summarize in easy to understand bullet points";
 			
-    if($("#ai_display").length > 0){
-      $("#ai_display").html("Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div>"+selectedtext+"</p>");
-    }else{
-      $("body").append("<div style='line-height:1.2 !important;font-size:14px;background:black;width:50%;height:800px;z-index:99999;position:fixed;top:0px;right:0px'></div><div id='ai_display' style='padding:50px;overflow:auto;position:fixed;z-index:999999999;top:10%;width:60%;right:20%;height:800px;background:white;'>Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div>"+selectedtext+"</p></div>");
-    
-    }
-			
+			    if($("#ai_display").length > 0){
+			      $("#ai_display").html("Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div>"+selectedtext+"</p>");
+			    }else{
+			      $("body").append("<div style='line-height:1.2 !important;font-size:14px;background:black;width:50%;height:800px;z-index:99999;position:fixed;top:0px;right:0px'></div><div id='ai_display' style='padding:50px;overflow:auto;position:fixed;z-index:999999999;top:10%;width:50%;right:0%;height:800px;background:white;'>Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div>"+selectedtext+"</p></div>");
+			    
+			    }
+						
 			$.ajax({
-        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
-        type: 'POST',
-        data: JSON.stringify({q:question +": #transcript:"+ selectedtext.substr(0,3000)}),
-        contentType: "application/json",
-        complete: function() {
-          $("#ai_display").html();
-        },
-        success: function(result) {
-          result = result.replace(/[0-9]+\./g, "\n");
-          
-// Replace using regex with newline character + number + "."
-       
-          if($("#ai_display").length > 0){
-            $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+result+"</textarea>");
-          }
-             
-        }
-    });
+			        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
+			        type: 'POST',
+			        data: JSON.stringify({q:question +": #transcript:"+ selectedtext.substr(0,3000)}),
+			        contentType: "application/json",
+			        complete: function() {
+			          $("#ai_display").html();
+			        },
+		        success: function(result) {
+		          result = result.replace(/[0-9]+\./g, "\n");
+		          
+			// Replace using regex with newline character + number + "."
+		       
+		          if($("#ai_display").length > 0){
+		            $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+result+"</textarea>");
+		          }
+		             
+		        }
+		    });
 		}
 		</script>
 
