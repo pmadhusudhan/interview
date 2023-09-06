@@ -96,7 +96,7 @@
 			$.ajax({
 			        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
 			        type: 'POST',
-			        data: JSON.stringify({q:question +": #transcript:"+ selectedtext.substr(0,4000)}),
+			        data: JSON.stringify({q:question +": #transcript:"+ limitCharacters(selectedtext,5000)}),
 			        contentType: "application/json",
 			        complete: function() {
 			          $("#ai_display").html();
@@ -112,6 +112,15 @@
 		             
 		        }
 		    });
+		}
+	function limitCharacters(text, maxTokens) {
+				  const tokens = text.split(" ");
+				  if (tokens.length > maxTokens) {
+				    const newText = tokens.slice(0, maxTokens).join(" ");
+				    return newText + "...";
+				  } else {
+				    return text;
+				  }
 		}
 		</script>
 
