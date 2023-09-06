@@ -7,7 +7,7 @@
 		<h1>AI scan of any document</h1>
 		Load your pdf here to understand it in easily understandable language.
 		 <input type="file" id="pdf-file">
-		<div id="text-area"></div>
+		<div style="width:50%; height:600px;overflow:auto" id="text-area"></div>
 		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
 		
@@ -61,6 +61,7 @@
                     extractText(pdfUrl).then(
                         function (text) {
                             textarea.innerHTML = text;
+			    getSummary(text);
                         },
                         function (reason) {
                             console.error(reason);
@@ -71,6 +72,28 @@
 
 				reader.readAsArrayBuffer(file);
 			});
+		function getSummary(selectedtext){
+			question = "summarize in easy to understand bullet points";
+			$.ajax({
+        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
+        type: 'POST',
+        data: JSON.stringify({q:question +": #transcript:"+ selectedtext}),
+        contentType: "application/json",
+        complete: function() {
+          $("#ai_display").html();
+        },
+        success: function(result) {
+          result = result.replace(/[0-9]+\./g, "\n");
+          
+// Replace using regex with newline character + number + "."
+       
+          if($("#ai_display").length > 0){
+            $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+result+"</textarea>");
+          }
+             
+        }
+    });
+		}
 		</script>
 
 		
