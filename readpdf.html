@@ -5,10 +5,10 @@
 	</head>
 
 	<body style="background:black">
-	<div id='aiOverlay' style='display:none;z-index:99999'>
+	<div id='aiOverlay' style='z-index:99999'>
 		<div style='line-height:1.2 !important;font-size:14px;background:black;width:100%;height:800px;z-index:99999;position:fixed;top:0px'><div id='aiToolbar' style='height:100%;width:150px;padding:10px;background:#2457a7;'></div></div><div style='padding:50px;overflow:auto;position:fixed;z-index:999999999;top:10%;width:60%;right:20%;height:800px;background:white;'><h3 style='color: #2457a7;font-size:20px;margin:10px;'>Easy Read</h3>
 		<hr style='margin-bottom:20px'>"+article.content+"</div></div>
-		<h1>AI scan of any of your document ver 2</h1>
+		<h1>AI scan of any of your document</h1>
 		Load your pdf here to understand it in easily understandable language.<br>
 		 <input type="file" id="pdf-file" accept="application/pdf">
 		Limit: <input type="text" id="limit" value="1000"/>
@@ -17,6 +17,7 @@
 		<hr>
 		<br>
 		<div style="width:50%; height:600px;overflow:auto; " contenteditable="true" id="text-area">Paste the text here or upload PDF</div>
+		<div id='ai_launch' style='background:#eef;padding:5px;z-index:999999999999;position:fixed;bottom:10px;right:0px;width:100%px;height:40px;cursor:pointer;'></div>
 		<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
 		
@@ -94,37 +95,7 @@
 			
 			   
 				copyToClipboard(question + " ### transcript" + selectedtext,"https://bard.google.com");
-	/*
-				 if($("#ai_display").length > 0){
-			      $("#ai_display").html("Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div>"+selectedtext+"</p>");
-			    }else{
-			      $("body").append("<div style='line-height:1.2 !important;font-size:14px;background:black;width:40%;height:800px;z-index:99999;position:fixed;top:100px;right:0px'></div><div id='ai_display' style='padding:50px;overflow:auto;position:fixed;z-index:999999999;top:10%;width:40%;right:20px;height:800px;background:white;'>Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div></p></div>");
-			    
-			    }
-				$.ajax({
-			        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
-			        type: 'POST',
-			        data: JSON.stringify({q:question +": #transcript:"+ limitCharacters(selectedtext,limit)}),
-			        contentType: "application/json",
-			        complete: function() {
-			          $("#ai_display").html();
-			        },
-		        success: function(result) {
-		          result = result.replace(/[0-9]+\./g, "\n");
-		          
-			// Replace using regex with newline character + number + "."
-		       
-		          if($("#ai_display").length > 0){
-		            $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+result+"</textarea>");
-		          }
-		             
-		        },
-				error: function(error) {
-    if (error.status === 500) {
-      $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+error.message+"</textarea>"); 
-    }
-  }
-		    });*/
+	
 
 		}
 	function limitCharacters(text, maxTokens) {
