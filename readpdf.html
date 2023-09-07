@@ -6,7 +6,7 @@
 
 	<body>
        
-		<h1>AI scan of any of your document ver 1.2</h1>
+		<h1>AI scan of any of your document ver 1.3</h1>
 		Load your pdf here to understand it in easily understandable language.<br>
 		 <input type="file" id="pdf-file" accept="application/pdf">
 		Limit: <input type="text" id="limit" value="1000"/>
@@ -90,14 +90,15 @@
 			}
 			question = $('#prompt').val();
 			
-			    if($("#ai_display").length > 0){
+			   
+				copyToClipboard(question + " ### transcript" + selectedtext,"https://bard.google.com");
+	/*
+				 if($("#ai_display").length > 0){
 			      $("#ai_display").html("Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div>"+selectedtext+"</p>");
 			    }else{
 			      $("body").append("<div style='line-height:1.2 !important;font-size:14px;background:black;width:40%;height:800px;z-index:99999;position:fixed;top:100px;right:0px'></div><div id='ai_display' style='padding:50px;overflow:auto;position:fixed;z-index:999999999;top:10%;width:40%;right:20px;height:800px;background:white;'>Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div></p></div>");
 			    
 			    }
-				copyToClipboard(question + " ### transcript" + selectedtext,"https://bard.google.com");
-	/*
 				$.ajax({
 			        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
 			        type: 'POST',
