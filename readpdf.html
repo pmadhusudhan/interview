@@ -6,7 +6,7 @@
 
 	<body>
        
-		<h1>AI scan of any of your document</h1>
+		<h1>AI scan of any of your document ver 1.1</h1>
 		Load your pdf here to understand it in easily understandable language.<br>
 		 <input type="file" id="pdf-file" accept="application/pdf">
 		Limit: <input type="text" id="limit" value="1000"/>
@@ -96,8 +96,9 @@
 			      $("body").append("<div style='line-height:1.2 !important;font-size:14px;background:black;width:40%;height:800px;z-index:99999;position:fixed;top:100px;right:0px'></div><div id='ai_display' style='padding:50px;overflow:auto;position:fixed;z-index:999999999;top:10%;width:40%;right:20px;height:800px;background:white;'>Loading AI response for : "+question +"<img src='https://cdn.dribbble.com/users/720991/screenshots/4945468/ava1_loader.gif' width='150px' height='50px' /><p><div>Preview</div></p></div>");
 			    
 			    }
-						
-			$.ajax({
+				copyToClipboard(question + " ### transcript" + selectedText,"https://bard.google.com");
+	/*
+				$.ajax({
 			        url: "https://askai-node-ndmd3ghqma-ue.a.run.app",
 			        type: 'POST',
 			        data: JSON.stringify({q:question +": #transcript:"+ limitCharacters(selectedtext,limit)}),
@@ -120,7 +121,8 @@
       $("#ai_display").html("<textarea style='width:100%;height:600px;font-size: 16px;font-family:Helvetica;border:none;'>"+error.message+"</textarea>"); 
     }
   }
-		    });
+		    });*/
+
 		}
 	function limitCharacters(text, maxTokens) {
 				  const tokens = text.split(" ");
@@ -130,7 +132,35 @@
 				  } else {
 				    return text;
 				  }
-		}
+				}
+		
+	function copyToClipboard(text,url) {
+    
+			var i = document.createElement("input");
+			i.setAttribute("id","in");
+		   
+			document.getElementsByTagName("body")[0].appendChild(i);
+			$("#in").hide();
+			
+			copyText = document.getElementById("in");
+			copyText.value = text;
+			// Select the text field
+			
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); // For mobile devices
+		  
+			// Copy the text inside the text field
+		
+			
+			navigator.clipboard.writeText(copyText.value)
+				.then(() => {
+			open(url);
+			})
+			.catch(err => {
+			console.log('Failed to copy text: ', err);  
+			});
+			
+		  }
 		</script>
 
 		
