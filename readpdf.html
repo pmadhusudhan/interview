@@ -4,14 +4,16 @@
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	</head>
 
-	<body>
-       
-		<h1>AI scan of any of your document ver 1.3</h1>
+	<body style="background:black">
+	<div id='aiOverlay' style='display:none;z-index:99999'>
+		<div style='line-height:1.2 !important;font-size:14px;background:black;width:100%;height:800px;z-index:99999;position:fixed;top:0px'><div id='aiToolbar' style='height:100%;width:150px;padding:10px;background:#2457a7;'></div></div><div style='padding:50px;overflow:auto;position:fixed;z-index:999999999;top:10%;width:60%;right:20%;height:800px;background:white;'><h3 style='color: #2457a7;font-size:20px;margin:10px;'>Easy Read</h3>
+		<hr style='margin-bottom:20px'>"+article.content+"</div></div>
+		<h1>AI scan of any of your document ver 2</h1>
 		Load your pdf here to understand it in easily understandable language.<br>
 		 <input type="file" id="pdf-file" accept="application/pdf">
 		Limit: <input type="text" id="limit" value="1000"/>
 		Question : <input type="text" id="prompt" value="Identify this document based on selected text and list easy to understand bullet points to understand the document"/>
-		<button onclick="getSummary()">Summarize</button>
+		<button onclick="getSummary()">AskAI</button>
 		<hr>
 		<br>
 		<div style="width:50%; height:600px;overflow:auto; " contenteditable="true" id="text-area">Paste the text here or upload PDF</div>
