@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Camera with Background Image</title>
+<style>
+  body{
+    background-color: black;
+  }
+  #video-container {
+    position: relative;
+  }
+
+  #player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1000px;
+    object-fit: cover;
+    z-index: 3; /* Ensure background image is behind the video */
+  }
+
+  #video {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    opacity:0.3;
+   /* filter: invert(.7);*/
+    filter: brightness(0.7) contrast(5) saturate(0.8);
+    transform: scaleX(-1);
+    z-index: 2; /* Ensure video is above the background image */
+  }
+</style>
+</head>
+<body>
+    <button onclick="document.querySelector('iframe').play()">Play Video</button>
+
+<div id="video-container">
+    <!-- <iframe id="background-image" width="560" height="315" src="https://www.youtube.com/embed/JbL7M6fzXl4?si=cWgJoR6YiSDKWHy3&amp;start=3594&amp;autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+    <div id="background-image"></div>
+  <img  src="https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29zbW9zfGVufDB8fDB8fHww" alt="Background Image">
+  <video id="video" autoplay playsinline></video>
+  <canvas id="canvas"></canvas>
+</div>
+<script>
+const video = document.getElementById('video');
+const backgroundImage = document.getElementById('background-image');
+function selfie(){
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => {
+    video.srcObject = stream;
+    video.play();
+  })
+  .catch(error => {
+    console.error('Error accessing camera:', error);
+    // Handle camera access errors appropriately, e.g., display an error message
+  });
+}
+ var v= 'aCAGeTUM6Wg';
+ l = location.href;
+
+ if(l.indexOf("?") > 0){
+
+ v = l.substring(l.indexOf("?")+1);
+ }
+ 
+</script>
+
+<div id="player"></div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: v,
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+       
+      player.playVideo();
+    }
+
+    function onPlayerStateChange(event) {
+        
+      if (event.data === YT.PlayerState.PLAYING) {
+        // Mute the video if it starts playing without being muted
+        document.getElementById("player").style.zIndex = 1;
+        selfie();
+      }
+    }
+  </script>
+</body>
+</html>
